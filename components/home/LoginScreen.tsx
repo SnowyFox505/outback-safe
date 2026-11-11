@@ -29,6 +29,12 @@ function GoogleMark() {
   );
 }
 
+/**
+ * Google sign-in is built (see AuthProvider) but hidden for now.
+ * Set this to true to show the button again.
+ */
+const SHOW_GOOGLE = false;
+
 type Mode = "options" | "signin" | "signup";
 
 const inputClass =
@@ -77,14 +83,16 @@ function EmailForm({
 
   return (
     <form onSubmit={submit} className="space-y-3">
-      <button
-        type="button"
-        onClick={() => onModeChange("options")}
-        className="-ml-1 flex h-11 items-center gap-1 text-[14px] text-bone-dim active:text-bone"
-      >
-        <ChevronLeft size={18} strokeWidth={1.5} />
-        Other options
-      </button>
+      {SHOW_GOOGLE && (
+        <button
+          type="button"
+          onClick={() => onModeChange("options")}
+          className="-ml-1 flex h-11 items-center gap-1 text-[14px] text-bone-dim active:text-bone"
+        >
+          <ChevronLeft size={18} strokeWidth={1.5} />
+          Other options
+        </button>
+      )}
       <input
         type="email"
         inputMode="email"
@@ -146,7 +154,7 @@ function EmailForm({
 export function LoginScreen() {
   const { signIn, error } = useAuth();
   const [busy, setBusy] = useState(false);
-  const [mode, setMode] = useState<Mode>("options");
+  const [mode, setMode] = useState<Mode>(SHOW_GOOGLE ? "options" : "signin");
 
   async function go() {
     setBusy(true);
