@@ -66,6 +66,10 @@
       {
         "name": "Northern Territory Government: Jellyfish",
         "url": "https://nt.gov.au/wellbeing/emergencies-injuries-and-accidents/bites-and-stings/jellyfish"
+      },
+      {
+        "name": "healthdirect: Jellyfish stings",
+        "url": "https://www.healthdirect.gov.au/jellyfish-stings"
       }
     ],
     "activities": [
@@ -214,7 +218,7 @@
     ],
     "description": "Summer in central Australia is very hot, and walking in the heat can quickly lead to dehydration and heat illness.",
     "whatToDo": "Drink at least one litre of water per person per hour when walking. Walk only in the cooler part of the day and not after 11 am in summer. Wear a broad-brimmed hat and sunscreen, and stay on marked tracks. Do not walk on tracks closed because of heat.",
-    "firstAid": "If someone is confused, faint or stops sweating, move them into shade, cool them with water and call 000.",
+    "firstAid": "If someone is confused, faint or stops sweating, suspect heatstroke: call 000, move them into shade, lay them down and cool them with water, fanning and cold packs.",
     "sources": [
       {
         "name": "Parks Australia: Staying safe at Uluru-Kata Tjuta",
@@ -223,6 +227,10 @@
       {
         "name": "Northern Territory Government: Beat the heat",
         "url": "https://nt.gov.au/__data/assets/pdf_file/0007/590560/beat-the-heat-fact-sheet.pdf"
+      },
+      {
+        "name": "healthdirect: Hot weather risks and staying cool",
+        "url": "https://healthdirect.gov.au/hot-weather-risks-and-staying-cool"
       }
     ]
   },

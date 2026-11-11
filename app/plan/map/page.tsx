@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useHydrated } from "@/lib/useHydrated";
-import { Check, ChevronLeft, Save } from "lucide-react";
+import { Check, ChevronLeft, Phone, Save } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { isFirebaseConfigured } from "@/lib/firebase";
@@ -151,6 +151,15 @@ export default function MapPage() {
         <Link href="/" aria-label="Back to home" className="pointer-events-auto">
           <IconButton label="Back" tabIndex={-1} aria-hidden>
             <ChevronLeft size={22} strokeWidth={1.5} />
+          </IconButton>
+        </Link>
+        <Link
+          href="/emergency"
+          aria-label="Emergency"
+          className="pointer-events-auto ml-2 mr-auto"
+        >
+          <IconButton label="Emergency" tabIndex={-1} aria-hidden>
+            <Phone size={18} strokeWidth={1.5} className="text-rust" />
           </IconButton>
         </Link>
         <div className="pointer-events-auto flex items-center gap-2">

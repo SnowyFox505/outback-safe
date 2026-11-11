@@ -1,0 +1,131 @@
+{
+  "emergency": {
+    "number": "000",
+    "mobileAlternative": "112",
+    "policeAssistanceLine": "131 444",
+    "whenToCall": "Call when someone is seriously injured or needs urgent medical help, or when life or property is in immediate danger.",
+    "whatToSay": "Say which service you need: police, fire or ambulance. Stay calm and give your location.",
+    "mobileNote": "From a mobile phone you can also dial 112. It connects to the same services. If there is no mobile coverage on any network, you cannot reach Triple Zero.",
+    "appNote": "The free Emergency+ app can show your GPS location to read out to the operator if you do not know where you are.",
+    "sources": [
+      {
+        "name": "Australian Government: Triple Zero",
+        "url": "https://www.infrastructure.gov.au/media-communications/phone/triple-zero"
+      },
+      {
+        "name": "Australian Government: Using other emergency numbers",
+        "url": "https://www.infrastructure.gov.au/media-communications/phone/triple-zero/using-other-emergency-numbers"
+      }
+    ]
+  },
+  "tips": [
+    {
+      "id": "crocodile",
+      "title": "Crocodile attack",
+      "steps": [
+        "Call 000 immediately.",
+        "Move away from the water's edge.",
+        "Press firmly on any bleeding wound with a clean cloth.",
+        "Keep the person still until help arrives."
+      ],
+      "sources": [
+        {
+          "name": "Northern Territory Government: Be Crocwise",
+          "url": "https://becrocwise.nt.gov.au/crocodiles-and-me/stay-safe-while-swimming"
+        }
+      ]
+    },
+    {
+      "id": "snake",
+      "title": "Snake bite",
+      "steps": [
+        "Call 000 and ask for an ambulance.",
+        "Keep the person still. Do not let them walk around.",
+        "Put a firm bandage over the bite, then wrap up the whole limb and splint it.",
+        "Do not cut the bite, suck out venom, use a tourniquet or wash the area."
+      ],
+      "sources": [
+        {
+          "name": "healthdirect: Snake bites",
+          "url": "https://healthdirect.gov.au/snake-bites"
+        }
+      ]
+    },
+    {
+      "id": "jellyfish",
+      "title": "Jellyfish sting (box jellyfish, Irukandji)",
+      "steps": [
+        "Call 000, or get a lifeguard to help.",
+        "Pour plenty of vinegar over the stung area for at least 30 seconds. Do not use fresh water.",
+        "If there is no vinegar, pick off any remaining tentacles.",
+        "Start CPR if the person is not breathing normally.",
+        "Get urgent medical care."
+      ],
+      "sources": [
+        {
+          "name": "Northern Territory Government: Box jellyfish",
+          "url": "https://nt.gov.au/wellbeing/emergencies-injuries-and-accidents/bites-and-stings/box-jellyfish"
+        },
+        {
+          "name": "healthdirect: Jellyfish stings",
+          "url": "https://www.healthdirect.gov.au/jellyfish-stings"
+        }
+      ]
+    },
+    {
+      "id": "heat",
+      "title": "Heatstroke and extreme heat",
+      "steps": [
+        "If you suspect heatstroke, call 000 and ask for an ambulance.",
+        "Move the person to shade or a cool place and lay them down.",
+        "Cool them down: wet the skin, fan them and put cold packs on the neck, armpits and groin.",
+        "Give cool water only if the person is fully alert and able to swallow."
+      ],
+      "sources": [
+        {
+          "name": "healthdirect: Hot weather risks and staying cool",
+          "url": "https://healthdirect.gov.au/hot-weather-risks-and-staying-cool"
+        },
+        {
+          "name": "Better Health Channel: Extreme heat",
+          "url": "https://www.betterhealth.vic.gov.au/extreme-heat"
+        }
+      ]
+    },
+    {
+      "id": "bushfire",
+      "title": "Bushfire",
+      "steps": [
+        "Call 000 if a fire threatens life or property.",
+        "Follow the advice of the fire service and local emergency alerts.",
+        "Leave if you are told to evacuate.",
+        "In NSW you can also call the Bush Fire Information Line on 1800 679 737."
+      ],
+      "sources": [
+        {
+          "name": "NSW Rural Fire Service: Total Fire Bans factsheet",
+          "url": "https://www.rfs.nsw.gov.au/__data/assets/pdf_file/0016/9430/NSW-RFS-Total-Fire-Bans-A5-Factsheet.pdf"
+        }
+      ]
+    },
+    {
+      "id": "rip-current",
+      "title": "Caught in a rip current",
+      "steps": [
+        "Stay calm and float to save your energy.",
+        "Raise an arm and call out for help.",
+        "Swim parallel to the beach or towards the breaking waves until you are out of the rip."
+      ],
+      "sources": [
+        {
+          "name": "NSW National Parks: Beach safety",
+          "url": "https://www.nationalparks.nsw.gov.au/safety/water-activities/beaches"
+        },
+        {
+          "name": "Royal Life Saving WA: Rip currents",
+          "url": "https://www.royallifesavingwa.com.au/staying-safe/safety-advice/risk-factors/rip-currents"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 "use client";
 
-import { LogOut } from "lucide-react";
+import Link from "next/link";
+import { LogOut, Phone } from "lucide-react";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { useTrip } from "@/lib/store";
 import { IconButton } from "@/components/ui/Button";
@@ -60,6 +61,14 @@ export function HomeScreen() {
         <div className="mt-8">
           <PlanButton />
         </div>
+
+        <Link
+          href="/emergency"
+          className="mt-3 flex h-14 items-center justify-center gap-2 rounded-full border border-rust/50 text-[16px] text-bone transition-colors duration-200 active:bg-rust/15"
+        >
+          <Phone size={18} strokeWidth={1.5} className="text-rust" />
+          Emergency: call 000 and first aid
+        </Link>
 
         <div className="mt-10">
           {status === "signedIn" && user ? (
