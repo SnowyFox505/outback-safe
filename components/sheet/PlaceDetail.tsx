@@ -36,10 +36,10 @@ export function PlaceDetail({
   );
 
   return (
-    <div className="space-y-6 pt-1">
+    <div className="rise-group space-y-6 pt-1">
       <PlaceArt place={place} />
 
-      <div className="flex items-center gap-2">
+      <div className="rise flex items-center gap-2">
         {inRoute ? (
           <Button variant="glass" className="flex-1" onClick={onRemove}>
             <Check size={18} strokeWidth={1.5} />
@@ -61,7 +61,7 @@ export function PlaceDetail({
         </Button>
       </div>
 
-      <div className="space-y-2">
+      <div className="rise space-y-2">
         {place.access && (
           <p className="flex items-start gap-2 text-[13px] text-bone-dim">
             <MapPin size={14} strokeWidth={1.5} className="mt-0.5 shrink-0" />
@@ -74,7 +74,7 @@ export function PlaceDetail({
       </div>
 
       {place.trail && (
-        <section className="rounded-[24px] border border-bone/[0.07] bg-char-800 p-4">
+        <section className="rise rounded-[24px] border border-bone/[0.07] bg-char-800 p-4">
           <p className="mb-2 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-ochre">
             <Route size={13} strokeWidth={1.5} />
             {place.trail.name ?? "Walk"}
@@ -91,7 +91,7 @@ export function PlaceDetail({
       )}
 
       {place.tip && (
-        <section className="flex items-start gap-3 rounded-[24px] border border-bone/[0.07] bg-char-800 p-4">
+        <section className="rise flex items-start gap-3 rounded-[24px] border border-bone/[0.07] bg-char-800 p-4">
           <Lightbulb
             size={16}
             strokeWidth={1.5}
@@ -102,7 +102,7 @@ export function PlaceDetail({
       )}
 
       {place.funFacts.length > 0 && (
-        <section className="rounded-[24px] border border-bone/[0.07] bg-char-800 p-4">
+        <section className="rise rounded-[24px] border border-bone/[0.07] bg-char-800 p-4">
           <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-ochre">
             Did you know
           </p>
@@ -114,7 +114,7 @@ export function PlaceDetail({
         </section>
       )}
 
-      <section>
+      <section className="rise">
         <p className="mb-2.5 font-mono text-[10px] uppercase tracking-[0.16em] text-bone-faint">
           Hazards in {monthName(month)}
         </p>

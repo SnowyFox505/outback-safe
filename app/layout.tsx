@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/components/auth/AuthProvider";
+import { MotionProvider } from "@/components/ui/MotionProvider";
 import { LoadingScreen } from "@/components/loading/LoadingScreen";
 import { ServiceWorkerRegister } from "@/components/pwa/ServiceWorkerRegister";
 
@@ -63,7 +64,9 @@ export default function RootLayout({
       <body className="h-full">
         <LoadingScreen />
         <ServiceWorkerRegister />
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <MotionProvider>{children}</MotionProvider>
+        </AuthProvider>
       </body>
     </html>
   );

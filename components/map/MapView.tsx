@@ -76,9 +76,10 @@ export function MapView({
     mapRef.current = map;
 
     // Place pins.
-    for (const place of places) {
+    places.forEach((place, index) => {
       const el = document.createElement("button");
       el.className = "pin";
+      el.style.setProperty("--i", String(index));
       el.setAttribute("aria-label", place.name);
       el.innerHTML = `<span class="pin-dot"></span><span class="pin-label">${place.name}</span>`;
       el.addEventListener("click", (e) => {
@@ -89,7 +90,7 @@ export function MapView({
         .setLngLat([place.lng, place.lat])
         .addTo(map);
       pinsRef.current.set(place.id, el);
-    }
+    });
 
     // Day trips only show once zoomed in, so the country view stays calm.
     const updateLod = () => {

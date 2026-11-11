@@ -54,6 +54,7 @@ export function OnboardingFlow() {
   } = useTrip();
   const [step, setStep] = useState(0);
   const [dir, setDir] = useState<1 | -1>(1);
+  const [leaving, setLeaving] = useState(false);
   const advanceTimer = useRef<number | undefined>(undefined);
 
   const isSummary = step >= TOTAL;
@@ -163,7 +164,16 @@ export function OnboardingFlow() {
                 <p className="mb-6 mt-2 text-[15px] text-bone-dim">
                   Check the details, then pick your stops on the map.
                 </p>
-                <TripSummary trip={trip} />
+                <motion.div
+                  animate={
+                    leaving
+                      ? { opacity: 0, y: -36, scale: 0.96 }
+                      : { opacity: 1, y: 0, scale: 1 }
+                  }
+                  transition={{ duration: 0.38, ease: [0.4, 0, 0.9, 0.4] }}
+                >
+                  <TripSummary trip={trip} />
+                </motion.div>
               </>
             ) : (
               <>
@@ -185,9 +195,10 @@ export function OnboardingFlow() {
                         : "flex flex-col gap-2.5"
                   }
                 >
-                  {q.options.map((o) => (
+                  {q.options.map((o, i) => (
                     <AnswerCard
                       key={o.id}
+                      index={i}
                       option={o}
                       compact={q.layout !== "list"}
                       multi={q.multi}
@@ -207,14 +218,24 @@ export function OnboardingFlow() {
 
       <footer className="pt-4">
         {isSummary ? (
-          <Button
-            size="lg"
-            className="w-full"
-            disabled={!trip.month}
-            onClick={() => router.push("/plan/map")}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.7, duration: 0.45, ease: [0.22, 0.8, 0.28, 1] }}
           >
-            Confirm and open map
-          </Button>
+            <Button
+              size="lg"
+              className="w-full"
+              disabled={!trip.month || leaving}
+              onClick={() => {
+                // The letter lifts away, then the map opens.
+                setLeaving(true);
+                window.setTimeout(() => router.push("/plan/map"), 380);
+              }}
+            >
+              Confirm and open map
+            </Button>
+          </motion.div>
         ) : q.multi || (q.key === "duration" && trip.duration === "longer") ? (
           <Button
             size="lg"

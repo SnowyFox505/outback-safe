@@ -39,13 +39,15 @@ export function PlaceArt({
     const { image } = place;
     return (
       <figure className={`m-0 ${className}`}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={image.src}
-          alt={image.alt}
-          loading="lazy"
-          className="block h-[190px] w-full rounded-[24px] bg-char-800 object-cover"
-        />
+        <div className="overflow-hidden rounded-[24px] bg-char-800">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={image.src}
+            alt={image.alt}
+            loading="lazy"
+            className="kenburns block h-[190px] w-full object-cover"
+          />
+        </div>
         <figcaption className="mt-1.5 px-1 text-[11px] leading-snug text-bone-faint">
           Photo:{" "}
           <a

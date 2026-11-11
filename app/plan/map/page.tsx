@@ -163,6 +163,7 @@ export default function MapPage() {
       >
         {selected ? (
           <PlaceDetail
+            key={selected.id}
             place={selected}
             month={month}
             context={context}

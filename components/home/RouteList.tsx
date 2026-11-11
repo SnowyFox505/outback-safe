@@ -77,10 +77,11 @@ export function RouteList({ uid }: { uid: string }) {
         </p>
       ) : (
         <ul className="space-y-2.5">
-          {routes.map((r) => (
+          {routes.map((r, i) => (
             <li
               key={r.id}
-              className="flex items-center gap-1 rounded-[24px] border border-bone/[0.07] bg-char-800 pr-1.5"
+              style={{ "--i": Math.min(i, 8) } as React.CSSProperties}
+              className="rise flex items-center gap-1 rounded-[24px] border border-bone/[0.07] bg-char-800 pr-1.5"
             >
               <button
                 onClick={() => {

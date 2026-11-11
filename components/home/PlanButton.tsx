@@ -19,7 +19,7 @@ export function PlanButton() {
           reset();
           router.push("/plan/onboarding");
         }}
-        className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-ochre text-[17px] font-semibold text-ink transition-colors duration-200 active:bg-ochre-deep"
+        className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-ochre text-[17px] font-semibold text-ink transition-[colors,transform] duration-200 active:scale-[0.98] active:bg-ochre-deep"
       >
         <Route size={19} strokeWidth={1.75} />
         Plan a new trip

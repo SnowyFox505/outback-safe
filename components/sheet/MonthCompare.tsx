@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import { monthName } from "@/lib/data";
 import { bestMonth, compareMonths } from "@/lib/monthCompare";
 import type { HazardContext } from "@/lib/risk";
@@ -64,7 +65,7 @@ export function MonthCompare({
         )}
       </p>
       <ul className="space-y-1.5">
-        {scores.map(({ month, risk }) => {
+        {scores.map(({ month, risk }, index) => {
           const isBest = month === best;
           const isActive = month === active;
           return (
@@ -97,10 +98,16 @@ export function MonthCompare({
                   role="img"
                   aria-label={`Risk score ${risk.score} out of 100`}
                 >
-                  <span
+                  <motion.span
                     className="block h-full rounded-full"
+                    initial={{ width: 0 }}
+                    animate={{ width: `${Math.max(6, risk.score)}%` }}
+                    transition={{
+                      duration: 0.7,
+                      delay: 0.15 + index * 0.07,
+                      ease: [0.22, 0.8, 0.28, 1],
+                    }}
                     style={{
-                      width: `${Math.max(6, risk.score)}%`,
                       background: risk.level
                         ? severityColor[risk.level]
                         : "var(--color-bone-faint)",

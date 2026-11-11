@@ -52,27 +52,28 @@ export function HomeScreen() {
       </header>
 
       <div className="scroll-y min-h-0 flex-1 px-6 pb-6 pt-8">
-        <h1 className="font-display text-[40px] font-semibold leading-[1.04] tracking-tight text-bone">
+        <h1 className="rise font-display text-[40px] font-semibold leading-[1.04] tracking-tight text-bone">
           Know the road before you go.
         </h1>
-        <p className="mt-3 max-w-[30ch] text-[15px] leading-relaxed text-bone-dim">
+        <p className="rise mt-3 max-w-[30ch] text-[15px] leading-relaxed text-bone-dim">
           Plan an Australian road trip and see which hazards wait on your route,
           month by month.
         </p>
 
-        <div className="mt-8">
+        <div className="rise mt-8" style={{ "--i": 1 } as React.CSSProperties}>
           <PlanButton />
         </div>
 
         <Link
           href="/emergency"
-          className="mt-3 flex h-14 items-center justify-center gap-2 rounded-full border border-rust/50 text-[16px] text-bone transition-colors duration-200 active:bg-rust/15"
+          style={{ "--i": 2 } as React.CSSProperties}
+          className="rise mt-3 flex h-14 items-center justify-center gap-2 rounded-full border border-rust/50 text-[16px] text-bone transition-colors duration-200 active:bg-rust/15"
         >
           <Phone size={18} strokeWidth={1.5} className="text-rust" />
           Emergency: call 000 and first aid
         </Link>
 
-        <div className="mt-10">
+        <div className="rise mt-10" style={{ "--i": 3 } as React.CSSProperties}>
           {status === "signedIn" && user ? (
             <RouteList uid={user.uid} />
           ) : (
@@ -84,7 +85,7 @@ export function HomeScreen() {
         </div>
 
         {status === "signedIn" && (
-          <section className="mt-10" aria-labelledby="settings">
+          <section className="rise mt-10" style={{ "--i": 4 } as React.CSSProperties} aria-labelledby="settings">
             <h2
               id="settings"
               className="mb-3 font-mono text-[10px] uppercase tracking-[0.16em] text-bone-faint"
@@ -110,7 +111,7 @@ export function HomeScreen() {
                 }`}
               >
                 <span
-                  className={`absolute top-0.5 h-6 w-6 rounded-full bg-ink transition-all duration-200 ${
+                  className={`absolute top-0.5 h-6 w-6 rounded-full bg-ink transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
                     autoSave ? "left-[22px]" : "left-0.5"
                   }`}
                 />

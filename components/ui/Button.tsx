@@ -28,7 +28,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         {...props}
-        className={`inline-flex min-w-[44px] items-center justify-center gap-2 rounded-full transition-colors duration-200 ${height} ${variants[variant]} ${className}`}
+        className={`inline-flex min-w-[44px] items-center justify-center gap-2 rounded-full transition-[colors,transform] duration-200 active:scale-[0.97] ${height} ${variants[variant]} ${className}`}
       />
     );
   },
@@ -46,7 +46,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         ref={ref}
         aria-label={label}
         {...props}
-        className={`grid h-11 w-11 shrink-0 place-items-center rounded-full border border-bone/10 bg-ink/70 text-bone backdrop-blur-md transition-colors duration-200 active:bg-char-700 disabled:opacity-40 ${className}`}
+        className={`grid h-11 w-11 shrink-0 place-items-center rounded-full border border-bone/10 bg-ink/70 text-bone backdrop-blur-md transition-[colors,transform] duration-200 active:scale-90 active:bg-char-700 disabled:opacity-40 ${className}`}
       />
     );
   },

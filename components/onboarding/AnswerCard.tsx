@@ -1,6 +1,7 @@
 "use client";
 
 import { Check } from "lucide-react";
+import { motion } from "motion/react";
 import type { Option } from "@/lib/questions";
 
 interface AnswerCardProps {
@@ -11,6 +12,8 @@ interface AnswerCardProps {
   compact?: boolean;
   /** Multi-select cards show a checkbox so it is clear more than one can be picked. */
   multi?: boolean;
+  /** Position in the list, used to stagger the entrance. */
+  index?: number;
 }
 
 /** Large tap target for onboarding answers. */
@@ -20,13 +23,22 @@ export function AnswerCard({
   onSelect,
   compact,
   multi,
+  index = 0,
 }: AnswerCardProps) {
   const Icon = option.icon;
   return (
-    <button
+    <motion.button
       onClick={onSelect}
       aria-pressed={selected}
-      className={`relative flex w-full text-left transition-colors duration-200 active:scale-[0.985] ${
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.35,
+        delay: Math.min(index, 10) * 0.04,
+        ease: [0.22, 0.8, 0.28, 1],
+      }}
+      whileTap={{ scale: 0.97 }}
+      className={`relative flex w-full text-left transition-colors duration-200 ${
         compact
           ? "min-h-[84px] flex-col justify-between rounded-[22px] p-3.5"
           : "min-h-[64px] items-center gap-4 rounded-[24px] px-5 py-3"
@@ -66,17 +78,29 @@ export function AnswerCard({
             selected ? "border-ochre bg-ochre" : "border-bone/25"
           }`}
         >
-          {selected && <Check size={14} strokeWidth={2.5} className="text-ink" />}
+          {selected && (
+            <motion.span
+              initial={{ scale: 0.3, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 520, damping: 22 }}
+              className="grid place-items-center"
+            >
+              <Check size={14} strokeWidth={2.5} className="text-ink" />
+            </motion.span>
+          )}
         </span>
       ) : (
         selected && (
-          <Check
-            size={16}
-            strokeWidth={2}
-            className={`text-ochre ${compact ? "absolute right-3 top-3" : ""}`}
-          />
+          <motion.span
+            initial={{ scale: 0.3, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 520, damping: 22 }}
+            className={compact ? "absolute right-3 top-3" : ""}
+          >
+            <Check size={16} strokeWidth={2} className="text-ochre" />
+          </motion.span>
         )
       )}
-    </button>
+    </motion.button>
   );
 }

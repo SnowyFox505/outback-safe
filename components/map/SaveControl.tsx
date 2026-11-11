@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Check, Cloud, CloudOff, Loader2, Save } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { isFirebaseConfigured } from "@/lib/firebase";
 import type { SaveState } from "@/lib/useRouteSaver";
 
@@ -41,7 +42,10 @@ export function SaveControl({
 
   if (state === "error") {
     return (
-      <button onClick={onSave} className={`${pill} text-hz-3 active:bg-char-700`}>
+      <button
+        onClick={onSave}
+        className={`${pill} text-hz-3 active:bg-char-700`}
+      >
         <CloudOff size={16} strokeWidth={1.5} />
         Not saved · Retry
       </button>
@@ -51,22 +55,43 @@ export function SaveControl({
   if (autoSave) {
     return (
       <span className={pill} role="status" aria-live="polite">
-        {state === "saving" ? (
-          <>
-            <Loader2 size={16} strokeWidth={1.5} className="animate-spin text-bone-dim" />
-            Saving
-          </>
-        ) : state === "saved" || (routeId && hasStops) ? (
-          <>
-            <Check size={16} strokeWidth={2} className="text-ochre" />
-            Saved
-          </>
-        ) : (
-          <>
-            <Cloud size={16} strokeWidth={1.5} className="text-bone-dim" />
-            Auto-save
-          </>
-        )}
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.span
+            key={
+              state === "saving"
+                ? "saving"
+                : state === "saved" || (routeId && hasStops)
+                  ? "saved"
+                  : "idle"
+            }
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -5 }}
+            transition={{ duration: 0.18 }}
+            className="flex items-center gap-2"
+          >
+            {state === "saving" ? (
+              <>
+                <Loader2
+                  size={16}
+                  strokeWidth={1.5}
+                  className="animate-spin text-bone-dim"
+                />
+                Saving
+              </>
+            ) : state === "saved" || (routeId && hasStops) ? (
+              <>
+                <Check size={16} strokeWidth={2} className="text-ochre" />
+                Saved
+              </>
+            ) : (
+              <>
+                <Cloud size={16} strokeWidth={1.5} className="text-bone-dim" />
+                Auto-save
+              </>
+            )}
+          </motion.span>
+        </AnimatePresence>
       </span>
     );
   }
@@ -83,7 +108,13 @@ export function SaveControl({
       ) : (
         <Save size={16} strokeWidth={1.5} />
       )}
-      {state === "saving" ? "Saving" : state === "saved" ? "Saved" : routeId ? "Update" : "Save"}
+      {state === "saving"
+        ? "Saving"
+        : state === "saved"
+          ? "Saved"
+          : routeId
+            ? "Update"
+            : "Save"}
     </button>
   );
 }
