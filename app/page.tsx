@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { Map as MapIcon } from "lucide-react";
+import { PlanButton } from "@/components/home/PlanButton";
 
 export default function Home() {
   return (
@@ -16,15 +15,7 @@ export default function Home() {
           month by month.
         </p>
       </div>
-      <div className="space-y-3">
-        <Link
-          href="/plan/map"
-          className="flex h-14 items-center justify-center gap-2 rounded-full bg-ochre text-[17px] font-semibold text-ink active:bg-ochre-deep"
-        >
-          <MapIcon size={19} strokeWidth={1.75} />
-          Plan a new trip
-        </Link>
-      </div>
+      <PlanButton />
     </main>
   );
 }

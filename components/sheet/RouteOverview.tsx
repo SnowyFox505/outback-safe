@@ -201,7 +201,7 @@ export function RouteOverview({
             <p>
               We list every hazard that is active in your travel month at each
               stop. Each hazard counts 1 (low), 2 (moderate) or 3 (high). The
-              score compares the total with a busy trip of 18 points. The level
+              score compares the total with a busy trip of 30 points. The level
               is the highest hazard found, so one high hazard always shows as
               High.
             </p>

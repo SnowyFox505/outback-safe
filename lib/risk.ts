@@ -57,7 +57,7 @@ export interface RouteRisk {
  * Route risk, in plain words:
  * - Take every distinct hazard active at any stop in the chosen month.
  * - Each hazard adds its severity (1, 2 or 3) to a total.
- * - The score is that total compared with a busy trip (18 points), capped at 100.
+ * - The score is that total compared with a busy trip (30 points), capped at 100.
  * - The level is the highest severity found, so one high hazard always shows as High.
  */
 export function routeRisk(stops: Stop[], month: Month): RouteRisk {
@@ -69,7 +69,7 @@ export function routeRisk(stops: Stop[], month: Month): RouteRisk {
   const total = list.reduce((sum, h) => sum + h.severity, 0);
   return {
     level: maxSeverity(list),
-    score: Math.min(100, Math.round((total / 18) * 100)),
+    score: Math.min(100, Math.round((total / 30) * 100)),
     hazardCount: list.length,
     highCount: list.filter((h) => h.severity === 3).length,
   };
