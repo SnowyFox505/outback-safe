@@ -1,0 +1,106 @@
+[
+  {
+    "id": "sydney",
+    "name": "Sydney",
+    "kind": "city",
+    "state": "NSW",
+    "lat": -33.8688,
+    "lng": 151.2093,
+    "description": "Australia's biggest city wraps around a harbour of beaches, ferries and sandstone headlands. Easy to reach, easy to explore on foot.",
+    "funFacts": [
+      "The sails of the Sydney Opera House are covered in more than one million tiles.",
+      "Locals call the Sydney Harbour Bridge \"the Coathanger\"."
+    ]
+  },
+  {
+    "id": "cairns",
+    "name": "Cairns",
+    "kind": "city",
+    "state": "QLD",
+    "lat": -16.9186,
+    "lng": 145.7781,
+    "description": "A tropical gateway city in Far North Queensland, and the usual base for reef trips and the Daintree rainforest.",
+    "funFacts": [
+      "Cairns sits between two World Heritage areas: the Great Barrier Reef and the Wet Tropics rainforest.",
+      "The nearby Daintree Rainforest is estimated to be around 180 million years old."
+    ]
+  },
+  {
+    "id": "darwin",
+    "name": "Darwin",
+    "kind": "city",
+    "state": "NT",
+    "lat": -12.4634,
+    "lng": 130.8456,
+    "description": "The tropical capital of the Northern Territory and the starting point for Kakadu and the Top End.",
+    "funFacts": [
+      "Darwin was bombed by Japanese aircraft on 19 February 1942, the largest attack ever made on Australia.",
+      "Cyclone Tracy destroyed most of the city on Christmas Eve 1974, and Darwin was rebuilt."
+    ]
+  },
+  {
+    "id": "alice-springs",
+    "name": "Alice Springs",
+    "kind": "city",
+    "state": "NT",
+    "lat": -23.698,
+    "lng": 133.8807,
+    "description": "The main town of the Red Centre, set among the MacDonnell Ranges and a long way from anywhere else.",
+    "funFacts": [
+      "Alice Springs lies close to the geographic centre of Australia.",
+      "The Ghan train stops here on its Adelaide to Darwin journey."
+    ]
+  },
+  {
+    "id": "uluru",
+    "name": "Uluru",
+    "kind": "park",
+    "state": "NT",
+    "lat": -25.3444,
+    "lng": 131.0369,
+    "description": "The great sandstone monolith of Uluru-Kata Tjuta National Park, a sacred place for the Anangu people.",
+    "funFacts": [
+      "Uluru stands 348 metres high and is about 9.4 kilometres around its base.",
+      "Climbing Uluru was permanently closed on 26 October 2019."
+    ]
+  },
+  {
+    "id": "great-barrier-reef",
+    "name": "Great Barrier Reef",
+    "kind": "reef",
+    "state": "QLD",
+    "lat": -19.75,
+    "lng": 149.2,
+    "description": "The outer reef, reached by boat from Cairns, Port Douglas or the Whitsundays. Snorkelling and diving at their best.",
+    "funFacts": [
+      "It is the world's largest coral reef system, stretching about 2,300 kilometres along the Queensland coast.",
+      "The reef is made up of around 2,900 individual reefs."
+    ]
+  },
+  {
+    "id": "great-ocean-road",
+    "name": "Great Ocean Road",
+    "kind": "coast",
+    "state": "VIC",
+    "lat": -38.6624,
+    "lng": 143.1048,
+    "description": "A winding coastal road in Victoria with surf beaches, cliffs and the Twelve Apostles limestone stacks.",
+    "funFacts": [
+      "The road was built by returned soldiers after World War I and is a memorial to those who died in the war.",
+      "Construction began in 1919 and the road opened in 1932."
+    ]
+  },
+  {
+    "id": "perth",
+    "name": "Perth",
+    "kind": "city",
+    "state": "WA",
+    "lat": -31.9505,
+    "lng": 115.8605,
+    "description": "A sunny Indian Ocean city on the Swan River, with white beaches and Rottnest Island just offshore.",
+    "funFacts": [
+      "Perth is one of the most isolated major cities in the world.",
+      "Rottnest Island, a short ferry ride away, is home to the quokka."
+    ]
+  }
+]

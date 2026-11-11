@@ -1,26 +1,186 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  Outback Safe design tokens.
+  Dark, calm, earthy. Ochre / rust / sea blue as accents on near-black charcoal.
+*/
+@theme {
+  /* Surfaces */
+  --color-ink: #0d0c0b;
+  --color-char-900: #141210;
+  --color-char-800: #1b1815;
+  --color-char-700: #25211d;
+  --color-char-600: #322d28;
+
+  /* Text */
+  --color-bone: #ede6da;
+  --color-bone-dim: #a79f92;
+  --color-bone-faint: #6f685e;
+
+  /* Accents */
+  --color-ochre: #d9a441;
+  --color-ochre-deep: #b8832a;
+  --color-rust: #b5502d;
+  --color-sea: #3e8fa6;
+
+  /* Hazard scale: calm three-step ramp (sand -> ochre -> rust) */
+  --color-hz-1: #c9b98f;
+  --color-hz-2: #d9a441;
+  --color-hz-3: #d1643a;
+
+  /* Typography */
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Radii */
+  --radius-card: 28px;
+  --radius-sheet: 32px;
+
+  /* Shadows */
+  --shadow-card: 0 10px 30px -12px rgb(0 0 0 / 0.6);
+  --shadow-sheet: 0 -18px 50px -16px rgb(0 0 0 / 0.7);
+
+  /* Motion */
+  --ease-soft: cubic-bezier(0.22, 0.8, 0.28, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@utility pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+@utility pl-safe {
+  padding-left: env(safe-area-inset-left);
+}
+@utility pr-safe {
+  padding-right: env(safe-area-inset-right);
+}
+@utility tabular {
+  font-variant-numeric: tabular-nums;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
+  background: var(--color-ink);
+  color: var(--color-bone);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+/* Scroll areas inside the app opt in explicitly */
+.scroll-y {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.scroll-y::-webkit-scrollbar {
+  display: none;
+}
+
+button,
+a,
+[role="button"] {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ochre);
+  outline-offset: 2px;
+}
+
+/* MapLibre attribution: keep it visible, restyle quietly to match the UI */
+.maplibregl-ctrl-attrib {
+  background: rgb(13 12 11 / 0.72) !important;
+  color: var(--color-bone-dim) !important;
+  border-radius: 999px !important;
+  font-size: 10px !important;
+  backdrop-filter: blur(8px);
+}
+.maplibregl-ctrl-attrib a {
+  color: var(--color-bone-dim) !important;
+}
+.maplibregl-ctrl-attrib-button {
+  filter: invert(0.85);
+}
+
+/* Map pins (DOM markers). 44px hit area, small visual dot. */
+.pin {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.pin-dot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--pin-color, var(--color-bone-dim));
+  border: 2px solid var(--color-ink);
+  box-shadow: 0 0 0 1.5px rgb(237 230 218 / 0.35);
+  font: 600 11px/1 var(--font-mono);
+  color: var(--color-ink);
+  transition:
+    width 220ms var(--ease-soft),
+    height 220ms var(--ease-soft),
+    background 220ms var(--ease-soft);
+}
+.pin.in-route .pin-dot {
+  width: 26px;
+  height: 26px;
+  background: var(--color-ochre);
+  box-shadow: 0 0 0 1.5px var(--color-ochre);
+}
+.pin.selected .pin-dot {
+  box-shadow: 0 0 0 2px var(--color-bone);
+}
+.pin-label {
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font: 500 11px/1 var(--font-sans);
+  letter-spacing: 0.01em;
+  color: var(--color-bone);
+  text-shadow:
+    0 0 6px var(--color-ink),
+    0 0 2px var(--color-ink);
+  pointer-events: none;
+}
+.pin.custom .pin-dot {
+  border-radius: 6px;
+  background: var(--color-sea);
+  box-shadow: 0 0 0 1.5px var(--color-sea);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

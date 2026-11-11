@@ -1,0 +1,199 @@
+[
+  {
+    "id": "saltwater-crocodiles",
+    "name": "Saltwater crocodiles",
+    "category": "wildlife",
+    "severity": 3,
+    "months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "placeIds": ["cairns", "darwin"],
+    "description": "Saltwater crocodiles live in tropical rivers, estuaries, creeks and along the coast, and can be in water that looks harmless. They see you long before you see them.",
+    "whatToDo": "Do not swim here. Only swim where signs say it is safe. Stay more than 5 metres from the water's edge, keep a sturdy object between you and the water, and keep arms and legs inside boats.",
+    "firstAid": "Call 000 immediately. Press firmly on any bleeding wound with a clean cloth and keep the person still until help arrives.",
+    "sources": [
+      {
+        "name": "Northern Territory Government: Be Crocwise",
+        "url": "https://becrocwise.nt.gov.au/crocodiles-and-me/stay-safe-while-swimming"
+      },
+      {
+        "name": "Queensland Government: Be Crocwise top tips",
+        "url": "https://www.qld.gov.au/environment/plants-animals/animals/living-with/crocodiles/becrocwise/be-crocwise-top-tips"
+      }
+    ]
+  },
+  {
+    "id": "box-jellyfish-irukandji",
+    "name": "Box jellyfish and Irukandji",
+    "category": "wildlife",
+    "severity": 3,
+    "months": [11, 12, 1, 2, 3, 4, 5],
+    "placeIds": ["cairns", "darwin", "great-barrier-reef"],
+    "description": "Dangerous marine stingers are present in tropical waters all year, but the risk is higher in the stinger season from November to May. Irukandji are tiny and can pass through stinger nets.",
+    "whatToDo": "In stinger season, swim only in netted areas and wear a stinger suit. Obey beach signs. If you feel unwell after a sting, treat it as serious.",
+    "firstAid": "Call 000 and get out of the water. For a tropical jellyfish sting, pour vinegar over the area for at least 30 seconds and follow the advice of lifeguards or the ambulance.",
+    "sources": [
+      {
+        "name": "Queensland Government: Dangerous marine life",
+        "url": "https://www.qld.gov.au/emergency/safety/dangerous-marine"
+      },
+      {
+        "name": "Northern Territory Government: Jellyfish",
+        "url": "https://nt.gov.au/wellbeing/emergencies-injuries-and-accidents/bites-and-stings/jellyfish"
+      }
+    ]
+  },
+  {
+    "id": "sharks",
+    "name": "Sharks",
+    "category": "wildlife",
+    "severity": 1,
+    "months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "placeIds": ["sydney", "perth", "great-ocean-road"],
+    "description": "Shark encounters are rare, but no beach is completely safe from sharks.",
+    "whatToDo": "Swim at patrolled beaches between the red and yellow flags, avoid dawn, dusk and night, stay away from river mouths and bait fish, and check the SharkSmart app. Leave the water at once if an alarm sounds.",
+    "sources": [
+      {
+        "name": "SharkSmart NSW: Staying safe",
+        "url": "https://www.sharksmart.nsw.gov.au/staying-safe"
+      },
+      {
+        "name": "SharkSmart WA: Sea sense",
+        "url": "https://www.sharksmart.com.au/staying-safe/sea-sense"
+      }
+    ]
+  },
+  {
+    "id": "venomous-snakes",
+    "name": "Venomous snakes",
+    "category": "wildlife",
+    "severity": 2,
+    "months": [9, 10, 11, 12, 1, 2, 3, 4],
+    "placeIds": ["sydney", "cairns", "darwin", "alice-springs", "uluru", "perth"],
+    "description": "Snakes are most active in the warmer months, and in the tropical north they can be active all year. Most bites happen when a snake is stepped on or handled.",
+    "whatToDo": "Wear closed shoes and long trousers on bush walks, watch where you step and put your hands, and never try to catch or kill a snake. Give it space and it will usually move away.",
+    "firstAid": "Call 000. Keep the person still and put a firm bandage over the bite, then wrap up the whole limb and splint it. Do not cut the bite, suck the venom out, use a tourniquet or wash the area.",
+    "sources": [
+      {
+        "name": "healthdirect: Snake bites",
+        "url": "https://healthdirect.gov.au/snake-bites"
+      },
+      {
+        "name": "Australian Reptile Park: Snake season",
+        "url": "https://www.reptilepark.com.au/about/zoo-news/snake-season-is-here"
+      }
+    ]
+  },
+  {
+    "id": "rip-currents",
+    "name": "Rip currents",
+    "category": "terrain-water",
+    "severity": 3,
+    "months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "placeIds": ["sydney", "perth", "great-ocean-road"],
+    "description": "Rips are strong currents that pull swimmers away from shore. They are the leading cause of coastal drowning in New South Wales and can form on any surf beach.",
+    "whatToDo": "Swim between the red and yellow flags on a patrolled beach. If there are no flags, do not swim. Look for gaps in the breaking waves before you enter the water.",
+    "firstAid": "Stay calm and float to save energy. Raise an arm and call for help. Then swim parallel to the beach or towards the breaking waves until you are out of the rip.",
+    "sources": [
+      {
+        "name": "NSW National Parks: Beach safety",
+        "url": "https://www.nationalparks.nsw.gov.au/safety/water-activities/beaches"
+      },
+      {
+        "name": "Royal Life Saving WA: Rip currents",
+        "url": "https://www.royallifesavingwa.com.au/staying-safe/safety-advice/risk-factors/rip-currents"
+      }
+    ]
+  },
+  {
+    "id": "extreme-heat",
+    "name": "Extreme heat",
+    "category": "weather",
+    "severity": 3,
+    "months": [12, 1, 2],
+    "placeIds": ["alice-springs", "uluru"],
+    "description": "Summer in central Australia is very hot, and walking in the heat can quickly lead to dehydration and heat illness.",
+    "whatToDo": "Drink at least one litre of water per person per hour when walking. Walk only in the cooler part of the day and not after 11 am in summer. Wear a broad-brimmed hat and sunscreen, and stay on marked tracks. Do not walk on tracks closed because of heat.",
+    "firstAid": "If someone is confused, faint or stops sweating, move them into shade, cool them with water and call 000.",
+    "sources": [
+      {
+        "name": "Parks Australia: Staying safe at Uluru-Kata Tjuta",
+        "url": "https://parksaustralia.gov.au/uluru/plan/staying-safe"
+      },
+      {
+        "name": "Northern Territory Government: Beat the heat",
+        "url": "https://nt.gov.au/__data/assets/pdf_file/0007/590560/beat-the-heat-fact-sheet.pdf"
+      }
+    ]
+  },
+  {
+    "id": "sun-uv",
+    "name": "Sun and UV",
+    "category": "health",
+    "severity": 2,
+    "months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "placeIds": ["sydney", "cairns", "darwin", "alice-springs", "uluru", "great-barrier-reef", "great-ocean-road", "perth"],
+    "description": "UV levels in Australia are high, and cloud does not stop UV. Sunburn can happen in minutes on a bright day.",
+    "whatToDo": "When the UV Index is 3 or above, use all five steps: slip on clothing, slop on SPF50 or higher sunscreen, slap on a broad-brimmed hat, seek shade and slide on sunglasses. Reapply sunscreen every two hours.",
+    "sources": [
+      {
+        "name": "Cancer Council Australia: Five SunSmart steps",
+        "url": "https://cancer.org.au/save-your-skin/five-sunsmart-steps"
+      }
+    ]
+  },
+  {
+    "id": "tropical-cyclones",
+    "name": "Tropical cyclones",
+    "category": "weather",
+    "severity": 3,
+    "months": [11, 12, 1, 2, 3, 4],
+    "placeIds": ["cairns", "darwin", "great-barrier-reef"],
+    "description": "The official cyclone season runs from 1 November to 30 April. Most cyclones occur from January to March and can bring destructive winds, heavy rain and flooding.",
+    "whatToDo": "Check the Bureau of Meteorology warnings daily, follow local emergency advice and be ready to change or cancel plans. Leave the area early if told to evacuate.",
+    "sources": [
+      {
+        "name": "Bureau of Meteorology: Tropical cyclones, your questions answered",
+        "url": "https://media.bom.gov.au/social/blog/2364/tropical-cyclones-your-questions-answered"
+      }
+    ]
+  },
+  {
+    "id": "wildlife-on-roads",
+    "name": "Wildlife on the road",
+    "category": "road",
+    "severity": 2,
+    "months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "placeIds": ["great-ocean-road", "alice-springs", "uluru"],
+    "description": "Kangaroos, wallabies and stock are most active around dawn and dusk and can be on the road at night.",
+    "whatToDo": "Avoid driving at dawn, dusk and at night. Slow down in the open country and plan your rest stops around these times.",
+    "sources": [
+      {
+        "name": "Northern Territory Government: Personal safety",
+        "url": "https://pfes.nt.gov.au/node/344"
+      },
+      {
+        "name": "Northern Territory Government: Travel in the Territory",
+        "url": "https://jointheterritory.nt.gov.au/move/moving-from-interstate/intrastate-travel"
+      }
+    ]
+  },
+  {
+    "id": "remote-roads-fuel-water",
+    "name": "Long roads, no fuel or water",
+    "category": "road",
+    "severity": 3,
+    "months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "placeIds": ["alice-springs", "uluru"],
+    "description": "Outback distances between towns and fuel stops are long. In the wet season, from November to April, some roads and tracks can become impassable.",
+    "whatToDo": "Carry at least 20 litres of water and keep an emergency supply of fuel and food. Plan your fuel stops, tell someone your route and check road conditions before you leave.",
+    "sources": [
+      {
+        "name": "Northern Territory Government: Personal safety",
+        "url": "https://pfes.nt.gov.au/node/344"
+      },
+      {
+        "name": "Northern Territory Government: Travel in the Territory",
+        "url": "https://jointheterritory.nt.gov.au/move/moving-from-interstate/intrastate-travel"
+      }
+    ]
+  }
+]
