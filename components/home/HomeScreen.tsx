@@ -12,6 +12,8 @@ import { RouteList } from "./RouteList";
 export function HomeScreen() {
   const { status, user, signOut } = useAuth();
   const setRouteId = useTrip((s) => s.setRouteId);
+  const autoSave = useTrip((s) => s.autoSave);
+  const setAutoSave = useTrip((s) => s.setAutoSave);
 
   if (status === "loading") {
     return (
@@ -80,6 +82,42 @@ export function HomeScreen() {
             </p>
           )}
         </div>
+
+        {status === "signedIn" && (
+          <section className="mt-10" aria-labelledby="settings">
+            <h2
+              id="settings"
+              className="mb-3 font-mono text-[10px] uppercase tracking-[0.16em] text-bone-faint"
+            >
+              Settings
+            </h2>
+            <button
+              role="switch"
+              aria-checked={autoSave}
+              onClick={() => setAutoSave(!autoSave)}
+              className="flex min-h-[64px] w-full items-center justify-between gap-4 rounded-[24px] border border-bone/[0.07] bg-char-800 px-5 text-left"
+            >
+              <span>
+                <span className="block text-[16px] text-bone">Auto-save routes</span>
+                <span className="block text-[13px] text-bone-dim">
+                  Save changes while you plan, no button needed.
+                </span>
+              </span>
+              <span
+                aria-hidden
+                className={`relative h-7 w-12 shrink-0 rounded-full transition-colors duration-200 ${
+                  autoSave ? "bg-ochre" : "bg-bone/15"
+                }`}
+              >
+                <span
+                  className={`absolute top-0.5 h-6 w-6 rounded-full bg-ink transition-all duration-200 ${
+                    autoSave ? "left-[22px]" : "left-0.5"
+                  }`}
+                />
+              </span>
+            </button>
+          </section>
+        )}
       </div>
       <div className="pb-safe" />
     </main>

@@ -18,11 +18,14 @@ import type { Month, Severity, Stop } from "@/lib/types";
 import { MonthStrip } from "@/components/ui/MonthPicker";
 import { SeverityDot, severityLabel } from "@/components/ui/SeverityBadge";
 import { HazardCard } from "./HazardCard";
+import { MonthCompare } from "./MonthCompare";
 import { RiskRing } from "./RiskRing";
 
 interface RouteOverviewProps {
   stops: Stop[];
   month: Month;
+  /** Months the traveller can go, for comparison. */
+  candidateMonths: Month[];
   context: HazardContext;
   onMonthChange: (m: Month) => void;
   onOpenStop: (stop: Stop) => void;
@@ -33,6 +36,7 @@ interface RouteOverviewProps {
 export function RouteOverview({
   stops,
   month,
+  candidateMonths,
   context,
   onMonthChange,
   onOpenStop,
@@ -49,8 +53,20 @@ export function RouteOverview({
         <p className="mb-2.5 font-mono text-[10px] uppercase tracking-[0.16em] text-bone-faint">
           Travel month
         </p>
-        <MonthStrip value={month} onChange={onMonthChange} />
+        <MonthStrip
+          value={month}
+          onChange={onMonthChange}
+          highlight={candidateMonths}
+        />
       </section>
+
+      <MonthCompare
+        stops={stops}
+        months={candidateMonths}
+        active={month}
+        context={context}
+        onSelect={onMonthChange}
+      />
 
       {stops.length === 0 ? (
         <div className="rounded-[24px] border border-dashed border-bone/15 px-5 py-8 text-center">

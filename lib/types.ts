@@ -66,8 +66,15 @@ export interface Place {
 }
 
 export interface TripAnswers {
+  /** The month currently used for hazards. */
   month: Month | null;
+  /** Every month the traveller could go, to compare. */
+  months: Month[];
   duration: string | null;
+  /** Only for duration "longer". */
+  durationWeeks: number | null;
+  /** Optional start date (YYYY-MM-DD) for long trips. */
+  startDate: string | null;
   transport: Transport[];
   accommodation: Accommodation | null;
   party: string | null;

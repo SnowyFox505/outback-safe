@@ -38,6 +38,21 @@ and see hazards, but routes cannot be saved.
 
 A route with one stop works the same way, there are just no legs.
 
+### Comparing months
+
+You can pick every month that works for you. Once the route has stops, the same
+calculation runs for each of those months. The month with the lowest score is
+marked "Best"; ties are broken by fewer high hazards, then fewer hazards in
+total. If the best months are identical, no month is marked. For long trips you
+can enter the number of weeks and an optional start date, but hazards are still
+shown for one active month at a time (no multi-month span logic yet).
+
+## Saving routes
+
+Signed-in users get auto-save by default (the route saves about 1.5 seconds after
+the last change). It can be switched off under Settings on the home screen, which
+brings back the manual Save/Update button.
+
 ## Firebase setup
 
 1. Create a project in the [Firebase console](https://console.firebase.google.com).

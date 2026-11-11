@@ -16,14 +16,15 @@ import type {
 } from "@/lib/types";
 import { Button, IconButton } from "@/components/ui/Button";
 import { AnswerCard } from "./AnswerCard";
+import { LongerTrip } from "./LongerTrip";
 import { TripSummary } from "./TripSummary";
 
 const TOTAL = questions.length;
 
 function selectedIds(q: Question, trip: TripAnswers): string[] {
   switch (q.key) {
-    case "month":
-      return trip.month ? [String(trip.month)] : [];
+    case "months":
+      return trip.months.map(String);
     case "activities":
       return trip.activities;
     case "firstTime":
@@ -41,7 +42,8 @@ function selectedIds(q: Question, trip: TripAnswers): string[] {
 
 export function OnboardingFlow() {
   const router = useRouter();
-  const { trip, setTrip, toggleActivity, toggleTransport } = useTrip();
+  const { trip, setTrip, toggleActivity, toggleTransport, toggleMonth } =
+    useTrip();
   const [step, setStep] = useState(0);
   const [dir, setDir] = useState<1 | -1>(1);
   const advanceTimer = useRef<number | undefined>(undefined);
@@ -62,9 +64,9 @@ export function OnboardingFlow() {
 
   function choose(question: Question, id: string) {
     switch (question.key) {
-      case "month":
-        setTrip({ month: Number(id) as Month });
-        break;
+      case "months":
+        toggleMonth(Number(id) as Month);
+        return; // multi-select: wait for Continue
       case "accommodation":
         setTrip({ accommodation: id as Accommodation });
         break;
@@ -72,7 +74,12 @@ export function OnboardingFlow() {
         toggleTransport(id as Transport);
         return; // multi-select: wait for Continue
       case "duration":
-        setTrip({ duration: id });
+        if (id === "longer") {
+          // Longer trips ask for a length first, so do not move on yet.
+          setTrip({ duration: id, durationWeeks: trip.durationWeeks ?? 6 });
+          return;
+        }
+        setTrip({ duration: id, durationWeeks: null, startDate: null });
         break;
       case "party":
         setTrip({ party: id });
@@ -178,6 +185,9 @@ export function OnboardingFlow() {
                     />
                   ))}
                 </div>
+                {q.key === "duration" && trip.duration === "longer" && (
+                  <LongerTrip trip={trip} onChange={setTrip} />
+                )}
               </>
             )}
           </motion.div>
@@ -194,8 +204,13 @@ export function OnboardingFlow() {
           >
             Confirm and open map
           </Button>
-        ) : q.multi ? (
-          <Button size="lg" className="w-full" onClick={() => go(step + 1)}>
+        ) : q.multi || (q.key === "duration" && trip.duration === "longer") ? (
+          <Button
+            size="lg"
+            className="w-full"
+            disabled={q.required && selectedIds(q, trip).length === 0}
+            onClick={() => go(step + 1)}
+          >
             Continue
           </Button>
         ) : null}

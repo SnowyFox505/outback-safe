@@ -11,11 +11,15 @@ interface TripState {
   month: Month;
   /** Id of the saved route being edited, or null for an unsaved plan. */
   routeId: string | null;
+  /** Save routes automatically while planning. */
+  autoSave: boolean;
+  setAutoSave: (on: boolean) => void;
   setRouteId: (id: string | null) => void;
   loadRoute: (route: { id: string; month: Month; trip: TripAnswers; stops: Stop[] }) => void;
   setTrip: (patch: Partial<TripAnswers>) => void;
   toggleActivity: (a: Activity) => void;
   toggleTransport: (t: Transport) => void;
+  toggleMonth: (m: Month) => void;
   setMonth: (m: Month) => void;
   addPlace: (placeId: string) => void;
   addCustom: (lat: number, lng: number) => void;
@@ -26,7 +30,10 @@ interface TripState {
 
 const emptyTrip: TripAnswers = {
   month: null,
+  months: [],
   duration: null,
+  durationWeeks: null,
+  startDate: null,
   transport: [],
   accommodation: null,
   party: null,
@@ -43,12 +50,20 @@ export const useTrip = create<TripState>()(
       stops: [],
       month: (new Date().getMonth() + 1) as Month,
       routeId: null,
+      autoSave: true,
+      setAutoSave: (on) => set({ autoSave: on }),
       setRouteId: (id) => set({ routeId: id }),
       loadRoute: (route) =>
         set({
           routeId: route.id,
           month: route.month,
-          trip: { ...emptyTrip, ...route.trip, month: route.month },
+          trip: {
+            ...emptyTrip,
+            ...route.trip,
+            month: route.month,
+            // Routes saved before month comparison only know one month.
+            months: route.trip.months?.length ? route.trip.months : [route.month],
+          },
           stops: route.stops,
         }),
       setTrip: (patch) =>
@@ -75,7 +90,21 @@ export const useTrip = create<TripState>()(
           else next = [...s.trip.transport.filter((x) => x !== "stay"), t];
           return { trip: { ...s.trip, transport: next } };
         }),
-      setMonth: (m) => set({ month: m }),
+      // Picking months builds the list to compare. The first one becomes active.
+      toggleMonth: (m) =>
+        set((s) => {
+          const has = s.trip.months.includes(m);
+          const months = (
+            has ? s.trip.months.filter((x) => x !== m) : [...s.trip.months, m]
+          ).sort((a, b) => a - b);
+          const active = months.includes(s.month) ? s.month : (months[0] ?? s.month);
+          return {
+            month: active,
+            trip: { ...s.trip, months, month: months.length ? active : null },
+          };
+        }),
+      setMonth: (m) =>
+        set((s) => ({ month: m, trip: { ...s.trip, month: m } })),
       addPlace: (placeId) =>
         set((s) => ({
           stops: [...s.stops, { id: uid(), kind: "place", placeId }],
@@ -105,7 +134,7 @@ export const useTrip = create<TripState>()(
     }),
     {
       name: "outback-safe-trip",
-      version: 2,
+      version: 3,
       // v1 stored a single transport string and had no accommodation.
       migrate: (persisted) => {
         const state = persisted as {
@@ -115,6 +144,13 @@ export const useTrip = create<TripState>()(
           const t = state.trip.transport;
           state.trip.transport = Array.isArray(t) ? t : t ? [t] : [];
           state.trip.accommodation ??= null;
+          // v3: several candidate months and long-trip details.
+          if (!Array.isArray(state.trip.months)) {
+            const m = state.trip.month;
+            state.trip.months = typeof m === "number" ? [m] : [];
+          }
+          state.trip.durationWeeks ??= null;
+          state.trip.startDate ??= null;
         }
         return state as unknown as TripState;
       },

@@ -4,11 +4,9 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useHydrated } from "@/lib/useHydrated";
-import { Check, ChevronLeft, Phone, Save } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/components/auth/AuthProvider";
-import { isFirebaseConfigured } from "@/lib/firebase";
-import { defaultRouteName, saveRoute } from "@/lib/routes";
+import { ChevronLeft, Phone } from "lucide-react";
+import { useRouteSaver } from "@/lib/useRouteSaver";
+import { SaveControl } from "@/components/map/SaveControl";
 import { getPlace, monthName } from "@/lib/data";
 import {
   contextFromTrip,
@@ -46,34 +44,7 @@ export default function MapPage() {
     moveStop,
   } = useTrip();
   const context = useMemo(() => contextFromTrip(trip), [trip]);
-  const router = useRouter();
-  const { status, user } = useAuth();
-  const routeId = useTrip((s) => s.routeId);
-  const setRouteId = useTrip((s) => s.setRouteId);
-  const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error">("idle");
-
-  async function save() {
-    if (status !== "signedIn" || !user) {
-      router.push("/");
-      return;
-    }
-    setSaveState("saving");
-    try {
-      const id = await saveRoute({
-        uid: user.uid,
-        routeId,
-        name: defaultRouteName(stops, month),
-        month,
-        trip,
-        stops,
-      });
-      setRouteId(id);
-      setSaveState("saved");
-    } catch {
-      setSaveState("error");
-    }
-    window.setTimeout(() => setSaveState("idle"), 2200);
-  }
+  const saver = useRouteSaver();
   const [snap, setSnap] = useState<Snap>("peek");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [visible, setVisible] = useState(116);
@@ -163,29 +134,15 @@ export default function MapPage() {
           </IconButton>
         </Link>
         <div className="pointer-events-auto flex items-center gap-2">
-          {isFirebaseConfigured && (
-            <button
-              onClick={() => void save()}
-              disabled={stops.length === 0 || saveState === "saving"}
-              aria-label={routeId ? "Update saved route" : "Save route"}
-              className="flex h-11 items-center gap-2 rounded-full border border-bone/10 bg-ink/70 px-4 text-[13px] text-bone backdrop-blur-md transition-colors duration-200 active:bg-char-700 disabled:opacity-40"
-            >
-              {saveState === "saved" ? (
-                <Check size={16} strokeWidth={2} className="text-ochre" />
-              ) : (
-                <Save size={16} strokeWidth={1.5} />
-              )}
-              {saveState === "saving"
-                ? "Saving"
-                : saveState === "saved"
-                  ? "Saved"
-                  : saveState === "error"
-                    ? "Try again"
-                    : routeId
-                      ? "Update"
-                      : "Save"}
-            </button>
-          )}
+          <SaveControl
+            state={saver.state}
+            autoSave={saver.autoSave}
+            signedIn={saver.signedIn}
+            canSave={saver.canSave}
+            routeId={saver.routeId}
+            hasStops={stops.length > 0}
+            onSave={() => void saver.saveNow()}
+          />
         <button
           onClick={() => {
             setSelectedId(null);
@@ -221,6 +178,7 @@ export default function MapPage() {
           <RouteOverview
             stops={stops}
             month={month}
+            candidateMonths={trip.months}
             context={context}
             onMonthChange={setMonth}
             onOpenStop={openStop}

@@ -8,9 +8,12 @@ import type { Month } from "@/lib/types";
 export function MonthStrip({
   value,
   onChange,
+  highlight = [],
 }: {
   value: Month;
   onChange: (m: Month) => void;
+  /** Months the traveller can go. The others are dimmed but still selectable. */
+  highlight?: Month[];
 }) {
   return (
     <div
@@ -22,6 +25,11 @@ export function MonthStrip({
         <Chip
           key={label}
           active={value === i + 1}
+          className={
+            highlight.length > 0 && !highlight.includes((i + 1) as Month)
+              ? "opacity-45"
+              : ""
+          }
           onClick={() => onChange((i + 1) as Month)}
         >
           {label}

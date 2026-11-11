@@ -11,11 +11,28 @@ const seasonOf = (m: number) =>
         ? "Winter"
         : "Spring";
 
+function formatDate(iso: string): string {
+  const d = new Date(`${iso}T00:00:00`);
+  return Number.isNaN(d.getTime())
+    ? iso
+    : d.toLocaleDateString("en-AU", { day: "numeric", month: "short", year: "numeric" });
+}
+
 function labelFor(key: keyof TripAnswers, trip: TripAnswers): string | null {
   const q = questions.find((x) => x.key === key);
   if (!q) return null;
   const raw = trip[key];
-  if (key === "month") return trip.month ? `${monthName(trip.month)} · ${seasonOf(trip.month)}` : null;
+  if (key === "months") {
+    return trip.months.length
+      ? trip.months.map((m) => monthName(m).slice(0, 3)).join(", ")
+      : null;
+  }
+  if (key === "duration" && trip.duration === "longer") {
+    const parts = ["Longer"];
+    if (trip.durationWeeks) parts.push(`${trip.durationWeeks} weeks`);
+    if (trip.startDate) parts.push(`from ${formatDate(trip.startDate)}`);
+    return parts.join(" · ");
+  }
   if (key === "activities" || key === "transport") {
     const ids = key === "activities" ? trip.activities : trip.transport;
     if (ids.length === 0) return null;
@@ -32,7 +49,7 @@ function labelFor(key: keyof TripAnswers, trip: TripAnswers): string | null {
 }
 
 const rows: { key: keyof TripAnswers; label: string }[] = [
-  { key: "month", label: "When" },
+  { key: "months", label: "When" },
   { key: "duration", label: "How long" },
   { key: "transport", label: "Getting around" },
   { key: "accommodation", label: "Sleeping" },
@@ -43,7 +60,8 @@ const rows: { key: keyof TripAnswers; label: string }[] = [
 
 /** "Your trip at a glance": one ticket-style card, with a single quiet perforation. */
 export function TripSummary({ trip }: { trip: TripAnswers }) {
-  const month = trip.month;
+  const months = trip.months;
+  const single = months.length === 1 ? months[0] : null;
   return (
     <div className="overflow-hidden rounded-[28px] border border-bone/[0.08] bg-char-800">
       <div className="px-6 pb-5 pt-6">
@@ -51,11 +69,17 @@ export function TripSummary({ trip }: { trip: TripAnswers }) {
           Your trip
         </p>
         <p className="mt-1 font-display text-[34px] font-semibold leading-none text-bone">
-          {month ? monthName(month) : "Month not set"}
+          {single
+            ? monthName(single)
+            : months.length > 1
+              ? `${months.length} possible months`
+              : "Month not set"}
         </p>
-        {month && (
+        {months.length > 0 && (
           <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-bone-faint">
-            {seasonOf(month)} in Australia
+            {single
+              ? `${seasonOf(single)} in Australia`
+              : months.map((m) => monthName(m).slice(0, 3)).join(" · ")}
           </p>
         )}
       </div>

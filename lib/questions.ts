@@ -22,7 +22,6 @@ import {
   Waves,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import type { TripAnswers } from "./types";
 
 export interface Option {
   id: string;
@@ -31,7 +30,14 @@ export interface Option {
   icon?: LucideIcon;
 }
 
-export type QuestionKey = keyof TripAnswers;
+export type QuestionKey =
+  | "months"
+  | "duration"
+  | "transport"
+  | "accommodation"
+  | "party"
+  | "activities"
+  | "firstTime";
 
 export interface Question {
   key: QuestionKey;
@@ -75,10 +81,12 @@ const monthLabels = [
 
 export const questions: Question[] = [
   {
-    key: "month",
-    title: "When are you travelling?",
-    subtitle: "This decides which hazards we show. Seasons are Australian.",
+    key: "months",
+    title: "When can you travel?",
+    subtitle:
+      "Pick every month that works. We will compare them for your route. Seasons are Australian.",
     layout: "months",
+    multi: true,
     required: true,
     options: monthLabels.map((label, i) => ({
       id: String(i + 1),
