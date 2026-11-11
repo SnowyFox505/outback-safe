@@ -11,7 +11,7 @@ interface TripState {
   month: Month;
   setTrip: (patch: Partial<TripAnswers>) => void;
   toggleActivity: (a: Activity) => void;
-  setTransport: (t: Transport) => void;
+  toggleTransport: (t: Transport) => void;
   setMonth: (m: Month) => void;
   addPlace: (placeId: string) => void;
   addCustom: (lat: number, lng: number) => void;
@@ -23,7 +23,8 @@ interface TripState {
 const emptyTrip: TripAnswers = {
   month: null,
   duration: null,
-  transport: null,
+  transport: [],
+  accommodation: null,
   party: null,
   activities: [],
   firstTime: null,
@@ -51,7 +52,16 @@ export const useTrip = create<TripState>()(
               : [...s.trip.activities, a],
           },
         })),
-      setTransport: (t) => set((s) => ({ trip: { ...s.trip, transport: t } })),
+      // "Staying in one place" excludes the other options, and vice versa.
+      toggleTransport: (t) =>
+        set((s) => {
+          const has = s.trip.transport.includes(t);
+          let next: Transport[];
+          if (has) next = s.trip.transport.filter((x) => x !== t);
+          else if (t === "stay") next = ["stay"];
+          else next = [...s.trip.transport.filter((x) => x !== "stay"), t];
+          return { trip: { ...s.trip, transport: next } };
+        }),
       setMonth: (m) => set({ month: m }),
       addPlace: (placeId) =>
         set((s) => ({
@@ -80,6 +90,21 @@ export const useTrip = create<TripState>()(
         }),
       reset: () => set({ trip: emptyTrip, stops: [] }),
     }),
-    { name: "outback-safe-trip", version: 1 },
+    {
+      name: "outback-safe-trip",
+      version: 2,
+      // v1 stored a single transport string and had no accommodation.
+      migrate: (persisted) => {
+        const state = persisted as {
+          trip?: Record<string, unknown> & { transport?: unknown };
+        };
+        if (state?.trip) {
+          const t = state.trip.transport;
+          state.trip.transport = Array.isArray(t) ? t : t ? [t] : [];
+          state.trip.accommodation ??= null;
+        }
+        return state as unknown as TripState;
+      },
+    },
   ),
 );

@@ -2,11 +2,18 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useHydrated } from "@/lib/useHydrated";
 import { ChevronLeft } from "lucide-react";
 import { getPlace, monthName } from "@/lib/data";
-import { hazardsForPlace, maxSeverity, routeDistanceKm, routeRisk, stopName } from "@/lib/risk";
+import {
+  contextFromTrip,
+  hazardsForPlace,
+  maxSeverity,
+  routeDistanceKm,
+  routeRisk,
+  stopName,
+} from "@/lib/risk";
 import { useTrip } from "@/lib/store";
 import type { Stop } from "@/lib/types";
 import { IconButton } from "@/components/ui/Button";
@@ -24,8 +31,17 @@ const MapView = dynamic(
 export default function MapPage() {
   const mounted = useHydrated();
 
-  const { stops, month, setMonth, addPlace, addCustom, removeStop, moveStop } =
-    useTrip();
+  const {
+    trip,
+    stops,
+    month,
+    setMonth,
+    addPlace,
+    addCustom,
+    removeStop,
+    moveStop,
+  } = useTrip();
+  const context = useMemo(() => contextFromTrip(trip), [trip]);
   const [snap, setSnap] = useState<Snap>("peek");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [visible, setVisible] = useState(116);
@@ -35,7 +51,7 @@ export default function MapPage() {
   const selected = selectedId ? getPlace(selectedId) : undefined;
   const routeStop = (id: string) =>
     stops.find((s) => s.kind === "place" && s.placeId === id);
-  const risk = routeRisk(stops, month);
+  const risk = routeRisk(stops, month, context);
 
   function selectPlace(id: string) {
     setSelectedId(id);
@@ -57,7 +73,7 @@ export default function MapPage() {
         </h1>
       </div>
       {(() => {
-        const sev = maxSeverity(hazardsForPlace(selected.id, month));
+        const sev = maxSeverity(hazardsForPlace(selected.id, month, context));
         return sev ? <SeverityBadge severity={sev} /> : null;
       })()}
     </div>
@@ -89,6 +105,7 @@ export default function MapPage() {
       <MapView
         stops={stops}
         month={month}
+        context={context}
         selectedPlaceId={selectedId}
         bottomInset={visible}
         onSelectPlace={selectPlace}
@@ -125,6 +142,7 @@ export default function MapPage() {
           <PlaceDetail
             place={selected}
             month={month}
+            context={context}
             inRoute={!!routeStop(selected.id)}
             onAdd={() => addPlace(selected.id)}
             onRemove={() => {
@@ -137,6 +155,7 @@ export default function MapPage() {
           <RouteOverview
             stops={stops}
             month={month}
+            context={context}
             onMonthChange={setMonth}
             onOpenStop={openStop}
             onMove={moveStop}

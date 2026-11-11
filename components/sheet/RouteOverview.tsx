@@ -5,6 +5,7 @@ import { ArrowDown, ArrowUp, ChevronDown, X } from "lucide-react";
 import { monthName } from "@/lib/data";
 import {
   distanceKm,
+  isBoosted,
   legHazards,
   maxSeverity,
   routeRisk,
@@ -12,6 +13,7 @@ import {
   stopHazards,
   stopName,
 } from "@/lib/risk";
+import type { HazardContext } from "@/lib/risk";
 import type { Month, Severity, Stop } from "@/lib/types";
 import { MonthStrip } from "@/components/ui/MonthPicker";
 import { SeverityDot, severityLabel } from "@/components/ui/SeverityBadge";
@@ -21,6 +23,7 @@ import { RiskRing } from "./RiskRing";
 interface RouteOverviewProps {
   stops: Stop[];
   month: Month;
+  context: HazardContext;
   onMonthChange: (m: Month) => void;
   onOpenStop: (stop: Stop) => void;
   onMove: (id: string, dir: -1 | 1) => void;
@@ -30,6 +33,7 @@ interface RouteOverviewProps {
 export function RouteOverview({
   stops,
   month,
+  context,
   onMonthChange,
   onOpenStop,
   onMove,
@@ -37,7 +41,7 @@ export function RouteOverview({
 }: RouteOverviewProps) {
   const [explain, setExplain] = useState(false);
   const [openLeg, setOpenLeg] = useState<string | null>(null);
-  const risk = routeRisk(stops, month);
+  const risk = routeRisk(stops, month, context);
 
   return (
     <div className="space-y-6 pt-1">
@@ -71,6 +75,11 @@ export function RouteOverview({
                 {risk.hazardCount} hazard{risk.hazardCount === 1 ? "" : "s"}
                 {risk.highCount > 0 ? `, ${risk.highCount} high` : ""}
               </p>
+              {risk.boostedCount > 0 && (
+                <p className="mt-0.5 text-[12px] text-bone-faint">
+                  {risk.boostedCount} count for more because you camp
+                </p>
+              )}
             </div>
           </section>
 
@@ -80,10 +89,10 @@ export function RouteOverview({
             </p>
             <ol>
               {stops.map((stop, i) => {
-                const hz = stopHazards(stop, month);
+                const hz = stopHazards(stop, month, context);
                 const sev = maxSeverity(hz);
                 const next = stops[i + 1];
-                const leg = next ? legHazards(stop, next, month) : [];
+                const leg = next ? legHazards(stop, next, month, context) : [];
                 const km = next
                   ? Math.round(distanceKm(stopCoords(stop), stopCoords(next)))
                   : 0;
@@ -167,7 +176,13 @@ export function RouteOverview({
                                 Nothing flagged for this leg in {monthName(month)}.
                               </p>
                             ) : (
-                              leg.map((h) => <HazardCard key={h.id} hazard={h} />)
+                              leg.map((h) => (
+                                <HazardCard
+                                  key={h.id}
+                                  hazard={h}
+                                  boosted={isBoosted(h, context)}
+                                />
+                              ))
                             )}
                           </div>
                         )}
@@ -177,6 +192,21 @@ export function RouteOverview({
                 );
               })}
             </ol>
+            {stops.length === 1 && (
+              <div className="mt-3 space-y-2">
+                <p className="text-[13px] leading-relaxed text-bone-dim">
+                  One stop: showing the hazards for this place only. Add another
+                  stop to see hazards on the way.
+                </p>
+                {stopHazards(stops[0], month, context).map((h) => (
+                  <HazardCard
+                    key={h.id}
+                    hazard={h}
+                    boosted={isBoosted(h, context)}
+                  />
+                ))}
+              </div>
+            )}
           </section>
         </>
       )}
@@ -200,7 +230,10 @@ export function RouteOverview({
           <div className="space-y-2 pb-2 text-[13px] leading-relaxed text-bone-dim">
             <p>
               We list every hazard that is active in your travel month at each
-              stop. Each hazard counts 1 (low), 2 (moderate) or 3 (high). The
+              stop. Each hazard counts 1 (low), 2 (moderate) or 3 (high), with one
+              extra point for camping hazards if you sleep in a campsite, tent or
+              campervan. Hazards that do not apply to how you travel or what
+              you plan to do are left out. The
               score compares the total with a busy trip of 30 points. The level
               is the highest hazard found, so one high hazard always shows as
               High.

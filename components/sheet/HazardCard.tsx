@@ -8,7 +8,14 @@ import type { Hazard } from "@/lib/types";
 import { SeverityBadge, SeverityDot } from "@/components/ui/SeverityBadge";
 
 /** Expandable hazard row: name and level up front, details on tap. */
-export function HazardCard({ hazard }: { hazard: Hazard }) {
+export function HazardCard({
+  hazard,
+  boosted = false,
+}: {
+  hazard: Hazard;
+  /** True when this hazard counts for more because you are camping. */
+  boosted?: boolean;
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -25,6 +32,7 @@ export function HazardCard({ hazard }: { hazard: Hazard }) {
           </span>
           <span className="block font-mono text-[10px] uppercase tracking-[0.14em] text-bone-faint">
             {categoryLabel[hazard.category]}
+            {boosted && " · Higher when camping"}
           </span>
         </span>
         <SeverityBadge severity={hazard.severity} />
@@ -47,6 +55,12 @@ export function HazardCard({ hazard }: { hazard: Hazard }) {
           >
             <div className="space-y-4 px-4 pb-4 text-[14px] leading-relaxed text-bone-dim">
               <p>{hazard.description}</p>
+              {boosted && (
+                <p className="rounded-[14px] bg-ochre/10 px-3 py-2 text-[13px] text-bone">
+                  This counts for more on your trip because you will be sleeping
+                  in a campsite, tent or campervan.
+                </p>
+              )}
               <div>
                 <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ochre">
                   What to do

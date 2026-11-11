@@ -7,7 +7,13 @@ import { ChevronLeft } from "lucide-react";
 import { questions } from "@/lib/questions";
 import type { Question } from "@/lib/questions";
 import { useTrip } from "@/lib/store";
-import type { Activity, Month, Transport, TripAnswers } from "@/lib/types";
+import type {
+  Accommodation,
+  Activity,
+  Month,
+  Transport,
+  TripAnswers,
+} from "@/lib/types";
 import { Button, IconButton } from "@/components/ui/Button";
 import { AnswerCard } from "./AnswerCard";
 import { TripSummary } from "./TripSummary";
@@ -23,7 +29,9 @@ function selectedIds(q: Question, trip: TripAnswers): string[] {
     case "firstTime":
       return trip.firstTime === null ? [] : [trip.firstTime ? "first" : "before"];
     case "transport":
-      return trip.transport ? [trip.transport] : [];
+      return trip.transport;
+    case "accommodation":
+      return trip.accommodation ? [trip.accommodation] : [];
     case "duration":
       return trip.duration ? [trip.duration] : [];
     case "party":
@@ -33,7 +41,7 @@ function selectedIds(q: Question, trip: TripAnswers): string[] {
 
 export function OnboardingFlow() {
   const router = useRouter();
-  const { trip, setTrip, toggleActivity } = useTrip();
+  const { trip, setTrip, toggleActivity, toggleTransport } = useTrip();
   const [step, setStep] = useState(0);
   const [dir, setDir] = useState<1 | -1>(1);
   const advanceTimer = useRef<number | undefined>(undefined);
@@ -57,9 +65,12 @@ export function OnboardingFlow() {
       case "month":
         setTrip({ month: Number(id) as Month });
         break;
-      case "transport":
-        setTrip({ transport: id as Transport });
+      case "accommodation":
+        setTrip({ accommodation: id as Accommodation });
         break;
+      case "transport":
+        toggleTransport(id as Transport);
+        return; // multi-select: wait for Continue
       case "duration":
         setTrip({ duration: id });
         break;
@@ -161,6 +172,7 @@ export function OnboardingFlow() {
                       key={o.id}
                       option={o}
                       compact={q.layout !== "list"}
+                      multi={q.multi}
                       selected={selectedIds(q, trip).includes(o.id)}
                       onSelect={() => choose(q, o.id)}
                     />

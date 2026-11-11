@@ -9,6 +9,8 @@ interface AnswerCardProps {
   onSelect: () => void;
   /** Compact tile for month and grid layouts. */
   compact?: boolean;
+  /** Multi-select cards show a checkbox so it is clear more than one can be picked. */
+  multi?: boolean;
 }
 
 /** Large tap target for onboarding answers. */
@@ -17,6 +19,7 @@ export function AnswerCard({
   selected,
   onSelect,
   compact,
+  multi,
 }: AnswerCardProps) {
   const Icon = option.icon;
   return (
@@ -54,12 +57,25 @@ export function AnswerCard({
           </span>
         )}
       </span>
-      {selected && (
-        <Check
-          size={16}
-          strokeWidth={2}
-          className={`text-ochre ${compact ? "absolute right-3 top-3" : ""}`}
-        />
+      {multi ? (
+        <span
+          aria-hidden
+          className={`grid h-[22px] w-[22px] shrink-0 place-items-center rounded-md border transition-colors duration-200 ${
+            compact ? "absolute right-3 top-3" : ""
+          } ${
+            selected ? "border-ochre bg-ochre" : "border-bone/25"
+          }`}
+        >
+          {selected && <Check size={14} strokeWidth={2.5} className="text-ink" />}
+        </span>
+      ) : (
+        selected && (
+          <Check
+            size={16}
+            strokeWidth={2}
+            className={`text-ochre ${compact ? "absolute right-3 top-3" : ""}`}
+          />
+        )
       )}
     </button>
   );

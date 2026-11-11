@@ -9,7 +9,15 @@ export type HazardCategory =
 
 export type Month = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
-export type Transport = "car" | "campervan" | "4wd" | "bus" | "flights";
+export type Transport =
+  | "car"
+  | "campervan"
+  | "4wd"
+  | "bus"
+  | "flights"
+  | "stay";
+
+export type Accommodation = "hotel" | "campervan" | "camp";
 
 export type Activity =
   | "beach"
@@ -40,6 +48,8 @@ export interface Hazard {
   /** Optional narrowing: only show when the trip uses one of these. */
   transports?: Transport[];
   activities?: Activity[];
+  /** Counts for more when you sleep in a campsite, tent or campervan. */
+  campingBoost?: boolean;
 }
 
 export type PlaceKind = "city" | "park" | "region" | "reef" | "coast";
@@ -58,7 +68,8 @@ export interface Place {
 export interface TripAnswers {
   month: Month | null;
   duration: string | null;
-  transport: Transport | null;
+  transport: Transport[];
+  accommodation: Accommodation | null;
   party: string | null;
   activities: Activity[];
   firstTime: boolean | null;

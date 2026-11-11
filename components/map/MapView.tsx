@@ -5,6 +5,7 @@ import * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { places } from "@/lib/data";
 import { hazardsForPlace, maxSeverity, stopCoords } from "@/lib/risk";
+import type { HazardContext } from "@/lib/risk";
 import { severityColor } from "@/components/ui/SeverityBadge";
 import type { Month, Stop } from "@/lib/types";
 
@@ -22,6 +23,7 @@ const AUSTRALIA_BOUNDS: [[number, number], [number, number]] = [
 interface MapViewProps {
   stops: Stop[];
   month: Month;
+  context: HazardContext;
   selectedPlaceId: string | null;
   /** Pixels covered by the bottom sheet, so the map keeps focus visible. */
   bottomInset: number;
@@ -36,6 +38,7 @@ function prefersReducedMotion() {
 export function MapView({
   stops,
   month,
+  context,
   selectedPlaceId,
   bottomInset,
   onSelectPlace,
@@ -193,7 +196,7 @@ export function MapView({
       for (const place of places) {
         const el = pinsRef.current.get(place.id);
         if (!el) continue;
-        const sev = maxSeverity(hazardsForPlace(place.id, month));
+        const sev = maxSeverity(hazardsForPlace(place.id, month, context));
         el.style.setProperty(
           "--pin-color",
           sev ? severityColor[sev] : "var(--color-bone-dim)",
@@ -252,7 +255,7 @@ export function MapView({
 
     syncRef.current = sync;
     if (readyRef.current) sync();
-  }, [stops, month, selectedPlaceId]);
+  }, [stops, month, context, selectedPlaceId]);
 
   // Bring the selected place into the visible area above the sheet.
   useEffect(() => {

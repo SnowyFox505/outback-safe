@@ -1,8 +1,9 @@
 "use client";
 
 import { Check, MapPin, Plus, X } from "lucide-react";
-import { hazards, monthName } from "@/lib/data";
-import { hazardsForPlace } from "@/lib/risk";
+import { monthName } from "@/lib/data";
+import { isBoosted, placeHazardGroups } from "@/lib/risk";
+import type { HazardContext } from "@/lib/risk";
 import type { Month, Place } from "@/lib/types";
 import { Button } from "@/components/ui/Button";
 import { HazardCard } from "./HazardCard";
@@ -11,6 +12,7 @@ import { PlaceArt } from "./PlaceArt";
 interface PlaceDetailProps {
   place: Place;
   month: Month;
+  context: HazardContext;
   inRoute: boolean;
   onAdd: () => void;
   onRemove: () => void;
@@ -20,15 +22,16 @@ interface PlaceDetailProps {
 export function PlaceDetail({
   place,
   month,
+  context,
   inRoute,
   onAdd,
   onRemove,
   onClose,
 }: PlaceDetailProps) {
-  const active = hazardsForPlace(place.id, month);
-  const activeIds = new Set(active.map((h) => h.id));
-  const inactive = hazards.filter(
-    (h) => h.placeIds.includes(place.id) && !activeIds.has(h.id),
+  const { active, offSeason, notRelevant } = placeHazardGroups(
+    place.id,
+    month,
+    context,
   );
 
   return (
@@ -78,16 +81,29 @@ export function PlaceDetail({
         ) : (
           <div className="space-y-2">
             {active.map((h) => (
-              <HazardCard key={h.id} hazard={h} />
+              <HazardCard
+                key={h.id}
+                hazard={h}
+                boosted={isBoosted(h, context)}
+              />
             ))}
           </div>
         )}
-        {inactive.length > 0 && (
+        {offSeason.length > 0 && (
           <p className="mt-3 flex items-start gap-2 text-[12px] leading-relaxed text-bone-faint">
             <MapPin size={14} strokeWidth={1.5} className="mt-0.5 shrink-0" />
             <span>
               Not active in {monthName(month)}:{" "}
-              {inactive.map((h) => h.name).join(", ")}.
+              {offSeason.map((h) => h.name).join(", ")}.
+            </span>
+          </p>
+        )}
+        {notRelevant.length > 0 && (
+          <p className="mt-2 flex items-start gap-2 text-[12px] leading-relaxed text-bone-faint">
+            <MapPin size={14} strokeWidth={1.5} className="mt-0.5 shrink-0" />
+            <span>
+              Hidden because of your trip answers:{" "}
+              {notRelevant.map((h) => h.name).join(", ")}.
             </span>
           </p>
         )}

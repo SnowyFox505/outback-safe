@@ -16,9 +16,10 @@ function labelFor(key: keyof TripAnswers, trip: TripAnswers): string | null {
   if (!q) return null;
   const raw = trip[key];
   if (key === "month") return trip.month ? `${monthName(trip.month)} · ${seasonOf(trip.month)}` : null;
-  if (key === "activities") {
-    if (trip.activities.length === 0) return null;
-    return trip.activities
+  if (key === "activities" || key === "transport") {
+    const ids = key === "activities" ? trip.activities : trip.transport;
+    if (ids.length === 0) return null;
+    return ids
       .map((id) => q.options.find((o) => o.id === id)?.label ?? id)
       .join(", ");
   }
@@ -33,7 +34,8 @@ function labelFor(key: keyof TripAnswers, trip: TripAnswers): string | null {
 const rows: { key: keyof TripAnswers; label: string }[] = [
   { key: "month", label: "When" },
   { key: "duration", label: "How long" },
-  { key: "transport", label: "Travel by" },
+  { key: "transport", label: "Getting around" },
+  { key: "accommodation", label: "Sleeping" },
   { key: "party", label: "Who" },
   { key: "activities", label: "Plans" },
   { key: "firstTime", label: "Experience" },
