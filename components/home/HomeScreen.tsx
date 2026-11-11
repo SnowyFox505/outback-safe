@@ -24,7 +24,8 @@ export function HomeScreen() {
 
   if (status === "signedOut") return <LoginScreen />;
 
-  const firstName = user?.displayName?.split(" ")[0];
+  const firstName =
+    user?.displayName?.split(" ")[0] ?? user?.email?.split("@")[0];
 
   return (
     <main className="flex h-full flex-col pt-[calc(env(safe-area-inset-top)+16px)]">

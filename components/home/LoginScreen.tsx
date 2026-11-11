@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { ChevronLeft } from "lucide-react";
 import { useAuth } from "@/components/auth/AuthProvider";
+import { Button } from "@/components/ui/Button";
 import { ContourBackdrop } from "@/components/ui/ContourBackdrop";
 
 function GoogleMark() {
@@ -27,9 +29,124 @@ function GoogleMark() {
   );
 }
 
+type Mode = "options" | "signin" | "signup";
+
+const inputClass =
+  "h-12 w-full rounded-[16px] border border-bone/10 bg-char-800 px-4 text-[16px] text-bone outline-none placeholder:text-bone-faint focus:border-ochre";
+
+function EmailForm({
+  mode,
+  onModeChange,
+}: {
+  mode: "signin" | "signup";
+  onModeChange: (m: Mode) => void;
+}) {
+  const { signInWithEmail, signUpWithEmail, resetPassword } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    setError(null);
+    setNotice(null);
+    setBusy(true);
+    const result =
+      mode === "signin"
+        ? await signInWithEmail(email, password)
+        : await signUpWithEmail(email, password);
+    setBusy(false);
+    if (result) setError(result);
+  }
+
+  async function forgot() {
+    setError(null);
+    setNotice(null);
+    if (!email.trim()) {
+      setError("Enter your email above first.");
+      return;
+    }
+    setBusy(true);
+    const result = await resetPassword(email);
+    setBusy(false);
+    if (result) setError(result);
+    else setNotice("If an account exists for this email, we sent a reset link.");
+  }
+
+  return (
+    <form onSubmit={submit} className="space-y-3">
+      <button
+        type="button"
+        onClick={() => onModeChange("options")}
+        className="-ml-1 flex h-11 items-center gap-1 text-[14px] text-bone-dim active:text-bone"
+      >
+        <ChevronLeft size={18} strokeWidth={1.5} />
+        Other options
+      </button>
+      <input
+        type="email"
+        inputMode="email"
+        autoComplete="email"
+        autoCapitalize="none"
+        autoCorrect="off"
+        placeholder="Email"
+        aria-label="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        className={inputClass}
+      />
+      <input
+        type="password"
+        autoComplete={mode === "signin" ? "current-password" : "new-password"}
+        placeholder={mode === "signin" ? "Password" : "Password (6+ characters)"}
+        aria-label="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+        className={inputClass}
+      />
+      {error && (
+        <p role="alert" className="px-1 text-[13px] text-hz-3">
+          {error}
+        </p>
+      )}
+      {notice && <p className="px-1 text-[13px] text-sea">{notice}</p>}
+      <Button type="submit" size="lg" className="w-full" disabled={busy}>
+        {mode === "signin" ? "Sign in" : "Create account"}
+      </Button>
+      <div className="flex items-center justify-between">
+        <button
+          type="button"
+          onClick={() => {
+            setError(null);
+            setNotice(null);
+            onModeChange(mode === "signin" ? "signup" : "signin");
+          }}
+          className="h-11 text-[14px] text-bone active:text-ochre"
+        >
+          {mode === "signin" ? "Create an account" : "I already have an account"}
+        </button>
+        {mode === "signin" && (
+          <button
+            type="button"
+            onClick={() => void forgot()}
+            className="h-11 text-[14px] text-bone-dim active:text-bone"
+          >
+            Forgot password?
+          </button>
+        )}
+      </div>
+    </form>
+  );
+}
+
 export function LoginScreen() {
   const { signIn, error } = useAuth();
   const [busy, setBusy] = useState(false);
+  const [mode, setMode] = useState<Mode>("options");
 
   async function go() {
     setBusy(true);
@@ -38,7 +155,7 @@ export function LoginScreen() {
   }
 
   return (
-    <main className="relative flex h-full flex-col justify-between overflow-hidden px-6 pb-[calc(env(safe-area-inset-bottom)+28px)] pt-[calc(env(safe-area-inset-top)+48px)]">
+    <main className="scroll-y relative flex h-full flex-col justify-between gap-8 px-6 pb-[calc(env(safe-area-inset-bottom)+28px)] pt-[calc(env(safe-area-inset-top)+48px)]">
       <ContourBackdrop />
       <div className="relative">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ochre">
@@ -54,18 +171,30 @@ export function LoginScreen() {
       </div>
 
       <div className="relative space-y-3">
-        <button
-          onClick={go}
-          disabled={busy}
-          className="flex h-14 w-full items-center justify-center gap-3 rounded-full border border-bone/10 bg-bone/[0.07] text-[16px] font-medium text-bone backdrop-blur-md transition-colors duration-200 active:bg-bone/[0.12] disabled:opacity-50"
-        >
-          <GoogleMark />
-          Continue with Google
-        </button>
-        {error && (
-          <p role="alert" className="px-2 text-center text-[13px] text-hz-3">
-            {error}
-          </p>
+        {mode === "options" ? (
+          <>
+            <button
+              onClick={go}
+              disabled={busy}
+              className="flex h-14 w-full items-center justify-center gap-3 rounded-full border border-bone/10 bg-bone/[0.07] text-[16px] font-medium text-bone backdrop-blur-md transition-colors duration-200 active:bg-bone/[0.12] disabled:opacity-50"
+            >
+              <GoogleMark />
+              Continue with Google
+            </button>
+            <button
+              onClick={() => setMode("signin")}
+              className="flex h-14 w-full items-center justify-center rounded-full text-[16px] font-medium text-bone-dim transition-colors duration-200 active:text-bone"
+            >
+              Continue with email
+            </button>
+            {error && (
+              <p role="alert" className="px-2 text-center text-[13px] text-hz-3">
+                {error}
+              </p>
+            )}
+          </>
+        ) : (
+          <EmailForm mode={mode} onModeChange={setMode} />
         )}
         <p className="px-4 pt-1 text-center text-[12px] leading-relaxed text-bone-faint">
           Hazard information is a guide only, not official safety advice.
