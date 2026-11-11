@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Outback Safe
 
-## Getting Started
+A mobile-first PWA for planning an Australian road trip and seeing which hazards
+to expect on the route, depending on travel month, how you travel and what you
+plan to do. Built as a school project about Australia.
 
-First, run the development server:
+**Not official safety advice.** Hazard information is a guide based on public
+sources (listed on every hazard). Always follow local signs, rangers and
+emergency services. In Australia the emergency number is **000**.
+
+## Stack
+
+Next.js (App Router), TypeScript, Tailwind CSS, MapLibre GL JS (CARTO dark
+basemap), Framer Motion (`motion`), Firebase Auth + Firestore, deployed on
+Vercel. Hazard and place data are static JSON in `data/`.
+
+## Run locally
 
 ```bash
+npm install
+cp .env.example .env.local   # optional: only needed for sign-in and saving
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Without the Firebase variables the app runs in guest mode: you can plan trips
+and see hazards, but routes cannot be saved.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How risk is calculated
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. For each stop we collect the hazards that are active in the chosen month.
+2. Trip answers filter them: road hazards only apply if you drive (rental car,
+   campervan or 4WD), and activity hazards only apply if they match what you
+   plan to do. Unanswered questions never hide anything.
+3. Each hazard adds its severity (1 low, 2 moderate, 3 high). Camping hazards add
+   one extra point if you sleep in a campsite, tent or campervan.
+4. The score compares the total with a busy trip of 30 points (capped at 100).
+   The level is the highest severity found, so one high hazard always shows as High.
 
-## Learn More
+A route with one stop works the same way, there are just no legs.
 
-To learn more about Next.js, take a look at the following resources:
+## Firebase setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Create a project in the [Firebase console](https://console.firebase.google.com).
+2. Build > Authentication > Sign-in method: enable **Google**.
+3. Build > Firestore Database: create a database (production mode), then paste
+   the contents of `firestore.rules` into the Rules tab and publish.
+4. Project settings > Your apps: add a **Web app** and copy the config values
+   into `.env.local` (see `.env.example`).
+5. Authentication > Settings > Authorized domains: add `outback-safe.vercel.app`.
+6. Set the same `NEXT_PUBLIC_FIREBASE_*` variables in Vercel (Project > Settings >
+   Environment Variables), then redeploy.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Sign-in on iPhone
 
-## Deploy on Vercel
+Safari blocks the third-party storage that Firebase's default sign-in helper
+needs. To avoid this, the production auth domain is our own domain and
+`next.config.ts` proxies `/__/auth/*` to `<project-id>.firebaseapp.com`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- In Vercel set `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=outback-safe.vercel.app`.
+- In [Google Cloud console](https://console.cloud.google.com) > APIs & Services >
+  Credentials > the "Web client (auto created by Google Service)": add
+  `https://outback-safe.vercel.app/__/auth/handler` to **Authorized redirect URIs**
+  and `https://outback-safe.vercel.app` to **Authorized JavaScript origins**.
+- Locally, keep `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=<project-id>.firebaseapp.com`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Data model
+
+Routes are stored at `users/{uid}/routes/{routeId}`:
+`name`, `month`, `trip` (onboarding answers), `stops` (in order), `createdAt`,
+`updatedAt`. Security rules allow a user to read and write only their own routes.

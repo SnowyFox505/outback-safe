@@ -9,6 +9,10 @@ interface TripState {
   stops: Stop[];
   /** Month used for hazard filtering. Starts from the onboarding answer. */
   month: Month;
+  /** Id of the saved route being edited, or null for an unsaved plan. */
+  routeId: string | null;
+  setRouteId: (id: string | null) => void;
+  loadRoute: (route: { id: string; month: Month; trip: TripAnswers; stops: Stop[] }) => void;
   setTrip: (patch: Partial<TripAnswers>) => void;
   toggleActivity: (a: Activity) => void;
   toggleTransport: (t: Transport) => void;
@@ -38,6 +42,15 @@ export const useTrip = create<TripState>()(
       trip: emptyTrip,
       stops: [],
       month: (new Date().getMonth() + 1) as Month,
+      routeId: null,
+      setRouteId: (id) => set({ routeId: id }),
+      loadRoute: (route) =>
+        set({
+          routeId: route.id,
+          month: route.month,
+          trip: { ...emptyTrip, ...route.trip, month: route.month },
+          stops: route.stops,
+        }),
       setTrip: (patch) =>
         set((s) => {
           const trip = { ...s.trip, ...patch };
@@ -88,7 +101,7 @@ export const useTrip = create<TripState>()(
           [stops[i], stops[j]] = [stops[j], stops[i]];
           return { stops };
         }),
-      reset: () => set({ trip: emptyTrip, stops: [] }),
+      reset: () => set({ trip: emptyTrip, stops: [], routeId: null }),
     }),
     {
       name: "outback-safe-trip",
