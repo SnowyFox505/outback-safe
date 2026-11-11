@@ -10,7 +10,8 @@
     "funFacts": [
       "The sails of the Sydney Opera House are covered in more than one million tiles.",
       "Locals call the Sydney Harbour Bridge \"the Coathanger\"."
-    ]
+    ],
+    "isBase": true
   },
   {
     "id": "cairns",
@@ -23,7 +24,8 @@
     "funFacts": [
       "Cairns sits between two World Heritage areas: the Great Barrier Reef and the Wet Tropics rainforest.",
       "The nearby Daintree Rainforest is estimated to be around 180 million years old."
-    ]
+    ],
+    "isBase": true
   },
   {
     "id": "darwin",
@@ -36,7 +38,8 @@
     "funFacts": [
       "Darwin was bombed by Japanese aircraft on 19 February 1942, the largest attack ever made on Australia.",
       "Cyclone Tracy destroyed most of the city on Christmas Eve 1974, and Darwin was rebuilt."
-    ]
+    ],
+    "isBase": true
   },
   {
     "id": "alice-springs",
@@ -49,7 +52,8 @@
     "funFacts": [
       "Alice Springs lies close to the geographic centre of Australia.",
       "The Ghan train stops here on its Adelaide to Darwin journey."
-    ]
+    ],
+    "isBase": true
   },
   {
     "id": "uluru",
@@ -62,7 +66,14 @@
     "funFacts": [
       "Uluru stands 348 metres high and is about 9.4 kilometres around its base.",
       "Climbing Uluru was permanently closed on 26 October 2019."
-    ]
+    ],
+    "image": {
+      "src": "/places/uluru.jpg",
+      "alt": "Uluru glowing red in the desert",
+      "credit": "Dietmar Rabich / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Petermann_Ranges_(AU),_Uluru-Kata_Tjuta_National_Park,_Uluru_--_2019_--_3688.jpg"
+    }
   },
   {
     "id": "great-barrier-reef",
@@ -101,6 +112,369 @@
     "funFacts": [
       "Perth is one of the most isolated major cities in the world.",
       "Rottnest Island, a short ferry ride away, is home to the quokka."
+    ],
+    "isBase": true
+  },
+  {
+    "id": "yulara",
+    "name": "Yulara",
+    "kind": "city",
+    "state": "NT",
+    "lat": -25.2069,
+    "lng": 130.971,
+    "isBase": true,
+    "inherits": "uluru",
+    "description": "The village at the edge of Uluru-Kata Tjuta National Park, and the usual base for visiting Uluru and Kata Tjuta.",
+    "funFacts": [
+      "Kata Tjuta is about 50 km by road from Uluru.",
+      "The Curtin Springs roadhouse is approximately 100 km from Yulara."
+    ],
+    "sources": [
+      {
+        "name": "Parks Australia: walks",
+        "url": "https://uluru.gov.au/things-do/activities/walks/"
+      },
+      {
+        "name": "Parks Australia: nearby",
+        "url": "https://uluru.gov.au/plan/getting-here/nearby/"
+      }
+    ],
+    "minZoom": 7.4
+  },
+  {
+    "id": "uluru-base-walk",
+    "name": "Uluru Base Walk",
+    "kind": "trail",
+    "state": "NT",
+    "lat": -25.337011,
+    "lng": 131.048479,
+    "base": "yulara",
+    "inherits": "uluru",
+    "access": "Starts at the Mala car park",
+    "description": "A loop around the whole base of Uluru, with water and toilets. The park recommends starting early from the Mala car park and walking clockwise.",
+    "funFacts": [
+      "Some tracks at Uluru close in the afternoon during summer because of the high risk of heat stroke."
+    ],
+    "trail": {
+      "name": "Uluru Base Walk",
+      "distanceKm": 10.6,
+      "duration": "3 hours 30 minutes",
+      "grade": "Grade 3",
+      "shape": "loop",
+      "note": "In hot weather, walk only in the cooler morning hours and finish before 11 am."
+    },
+    "tip": "Short on time? The Mala Walk is 2 km return (about 1.5 hours) and the Kuniya Walk is 1 km return (30 to 45 minutes). Both start at the base.",
+    "sources": [
+      {
+        "name": "Parks Australia: Uluru base walk",
+        "url": "https://uluru.gov.au/things-do/activities/walks/uluru-walks/uluru-base-walk/"
+      },
+      {
+        "name": "Parks Australia: visitor essentials (PDF)",
+        "url": "https://api.parksaustralia.gov.au/sites/default/files/2022-11/document/uktnp-document-visitor-essentials.pdf"
+      }
+    ],
+    "image": {
+      "src": "/places/uluru-base-walk.jpg",
+      "alt": "The base of Uluru seen from the Kuniya Walk",
+      "credit": "Dietmar Rabich / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Petermann_Ranges_(AU),_Uluru-Kata_Tjuta_National_Park,_Uluru,_Kuniya_Walk_--_2019_--_3615.jpg"
+    }
+  },
+  {
+    "id": "talinguru-nyakunytjaku",
+    "name": "Talinguru Nyakunytjaku",
+    "kind": "sight",
+    "state": "NT",
+    "lat": -25.3696776,
+    "lng": 131.062898,
+    "base": "yulara",
+    "inherits": "uluru",
+    "access": "About 35 minutes' drive from Yulara",
+    "description": "The main sunrise viewing area for Uluru, with water and toilets.",
+    "funFacts": [
+      "Two short loops start here: the Minymaku (Women's) walk is 1 km (30 minutes) and the Watiku (Men's) walk is 1.5 km (45 minutes)."
+    ],
+    "suits": [
+      "family"
+    ],
+    "tip": "Both loops are wheelchair accessible, so they work for prams and slower walkers.",
+    "sources": [
+      {
+        "name": "Parks Australia: Talinguru Nyakunytjaku",
+        "url": "https://uluru.gov.au/things-do/activities/sunrise-sunset/talinguru-nyakunytjaku/"
+      }
     ]
+  },
+  {
+    "id": "kata-tjuta-walpa-gorge",
+    "name": "Walpa Gorge Walk",
+    "kind": "trail",
+    "state": "NT",
+    "lat": -25.3003,
+    "lng": 130.724,
+    "base": "yulara",
+    "inherits": "uluru",
+    "access": "Kata Tjuta is about 50 km by road from Uluru",
+    "description": "A walk into the gorge between the domes of Kata Tjuta. There is water at the start but no toilets.",
+    "funFacts": [],
+    "trail": {
+      "name": "Walpa Gorge Walk",
+      "distanceKm": 2.6,
+      "duration": "1 hour",
+      "grade": "Grade 3",
+      "shape": "return"
+    },
+    "sources": [
+      {
+        "name": "Parks Australia: Walpa Gorge walk",
+        "url": "https://uluru.gov.au/things-do/activities/walks/kata-tjuta-walks/walpa-gorge-walk/"
+      },
+      {
+        "name": "Parks Australia: walks",
+        "url": "https://uluru.gov.au/things-do/activities/walks/"
+      }
+    ],
+    "image": {
+      "src": "/places/kata-tjuta-walpa-gorge.jpg",
+      "alt": "Reflections in Walpa Gorge, Kata Tjuta",
+      "credit": "Weldon.r.thompson / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Walpa_Gorge_relections.jpg"
+    }
+  },
+  {
+    "id": "kata-tjuta-valley-of-the-winds",
+    "name": "Valley of the Winds",
+    "kind": "trail",
+    "state": "NT",
+    "lat": -25.2958757,
+    "lng": 130.7540409,
+    "base": "yulara",
+    "inherits": "uluru",
+    "access": "Kata Tjuta is about 50 km by road from Uluru",
+    "description": "The longer walk among the domes of Kata Tjuta. It is steep, rocky and difficult in places.",
+    "funFacts": [],
+    "trail": {
+      "name": "Valley of the Winds loop",
+      "distanceKm": 7.4,
+      "duration": "4 hours",
+      "grade": "Grade 4",
+      "shape": "loop",
+      "note": "The walk closes at the first lookout (Karu) from 11 am when the forecast or actual temperature reaches 36°C or more."
+    },
+    "suits": [
+      "friends",
+      "couple",
+      "solo"
+    ],
+    "tip": "No time for the full loop? The Karu lookout is 2.2 km return (about 1 hour) and the Karingana lookout is 5.4 km return (about 2.5 hours).",
+    "sources": [
+      {
+        "name": "Parks Australia: Valley of the Winds walks",
+        "url": "https://uluru.gov.au/things-do/activities/walks/kata-tjuta-walks/valley-winds-walks/"
+      }
+    ],
+    "image": {
+      "src": "/places/kata-tjuta-valley-of-the-winds.jpg",
+      "alt": "Valley of the Winds at Kata Tjuta",
+      "credit": "Toby Hudson / Wikimedia Commons",
+      "licence": "CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:KataTjuta_ValleyOfTheWinds.jpg"
+    }
+  },
+  {
+    "id": "kings-canyon",
+    "name": "Kings Canyon",
+    "kind": "park",
+    "state": "NT",
+    "lat": -24.257995,
+    "lng": 131.562557,
+    "isBase": true,
+    "inherits": "uluru",
+    "access": "About 450 km south-west of Alice Springs, roughly 4 hours' drive",
+    "description": "The sandstone canyon in Watarrka National Park, a long drive from Alice Springs or Uluru.",
+    "funFacts": [],
+    "sources": [
+      {
+        "name": "Tourism NT: Kings Canyon Rim Walk",
+        "url": "https://northernterritory.com/uluru-and-surrounds/see-and-do/kings-canyon-rim-walk"
+      }
+    ],
+    "image": {
+      "src": "/places/kings-canyon.jpg",
+      "alt": "View over Kings Canyon",
+      "credit": "Zoharby / Wikimedia Commons",
+      "licence": "CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Kings_Canyon_NT_view.jpg"
+    }
+  },
+  {
+    "id": "kings-canyon-rim-walk",
+    "name": "Kings Canyon Rim Walk",
+    "kind": "trail",
+    "state": "NT",
+    "lat": -24.255298,
+    "lng": 131.5708048,
+    "base": "kings-canyon",
+    "inherits": "uluru",
+    "description": "A loop along the top of the canyon walls in Watarrka National Park.",
+    "funFacts": [],
+    "trail": {
+      "name": "Rim Walk",
+      "distanceKm": 6,
+      "duration": "3 to 4 hours",
+      "grade": "Grade 4 (moderate to difficult)",
+      "shape": "loop",
+      "note": "On days forecast to reach 36°C or more you have to start early in the morning. Check the current cut-off time with the park on the day."
+    },
+    "suits": [
+      "friends",
+      "couple",
+      "solo"
+    ],
+    "sources": [
+      {
+        "name": "Tourism NT: Kings Canyon Rim Walk",
+        "url": "https://northernterritory.com/uluru-and-surrounds/see-and-do/kings-canyon-rim-walk"
+      },
+      {
+        "name": "NT Parks: short walks in Watarrka",
+        "url": "https://nt.gov.au/parks/find-a-park/watarrka-national-park/short-walks"
+      }
+    ],
+    "image": {
+      "src": "/places/kings-canyon-rim-walk.jpg",
+      "alt": "The Rim Walk above Kings Canyon",
+      "credit": "David Ashford from Dublin, Ireland / Wikimedia Commons",
+      "licence": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:The_Rim_Walk_1.jpg"
+    }
+  },
+  {
+    "id": "simpsons-gap",
+    "name": "Simpsons Gap",
+    "kind": "sight",
+    "state": "NT",
+    "lat": -23.675655,
+    "lng": 133.718561,
+    "base": "alice-springs",
+    "inherits": "alice-springs",
+    "access": "About 18 km from Alice Springs",
+    "description": "A gap in the West MacDonnell Ranges with several short walks. Sections 1 and 2 of the Larapinta Trail start here.",
+    "funFacts": [],
+    "suits": [
+      "family"
+    ],
+    "sources": [
+      {
+        "name": "Tourism NT: Simpsons Gap",
+        "url": "https://northernterritory.com/alice-springs-and-surrounds/see-and-do/simpsons-gap"
+      }
+    ],
+    "image": {
+      "src": "/places/simpsons-gap.jpg",
+      "alt": "Simpsons Gap in the West MacDonnell Ranges",
+      "credit": "Teckez / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Simpsons_Gap_at_Alice_Springs.jpg"
+    }
+  },
+  {
+    "id": "standley-chasm",
+    "name": "Standley Chasm",
+    "kind": "sight",
+    "state": "NT",
+    "lat": -23.722,
+    "lng": 133.47,
+    "base": "alice-springs",
+    "inherits": "alice-springs",
+    "description": "A narrow chasm in the West MacDonnell Ranges, reached by a well-maintained trail.",
+    "funFacts": [],
+    "suits": [
+      "family"
+    ],
+    "trail": {
+      "name": "Walk to the chasm",
+      "distanceKm": 1.2,
+      "duration": "15 minutes",
+      "shape": "return",
+      "eachWay": true
+    },
+    "sources": [
+      {
+        "name": "Tourism NT: Standley Chasm",
+        "url": "https://northernterritory.com/alice-springs-and-surrounds/see-and-do/standley-chasm--angkerle--atwatye"
+      }
+    ],
+    "image": {
+      "src": "/places/standley-chasm.jpg",
+      "alt": "The narrow walls of Standley Chasm",
+      "credit": "DaHuzyBru / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Standley_Chasm,_October_2025_11.jpg"
+    }
+  },
+  {
+    "id": "ormiston-gorge",
+    "name": "Ormiston Gorge",
+    "kind": "park",
+    "state": "NT",
+    "lat": -23.6322516,
+    "lng": 132.7264013,
+    "base": "alice-springs",
+    "inherits": "alice-springs",
+    "access": "135 km west of Alice Springs",
+    "description": "A gorge with a large waterhole in the West MacDonnell Ranges. The Pound Walk starts at the visitor centre and returns past the main waterhole.",
+    "funFacts": [],
+    "trail": {
+      "name": "Pound Walk",
+      "duration": "3 to 4 hours",
+      "shape": "loop"
+    },
+    "sources": [
+      {
+        "name": "Tourism NT: Ormiston Gorge",
+        "url": "https://northernterritory.com/alice-springs-and-surrounds/see-and-do/ormiston-gorge"
+      }
+    ],
+    "image": {
+      "src": "/places/ormiston-gorge.jpg",
+      "alt": "Ormiston Gorge",
+      "credit": "DaHuzyBru / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Ormiston_Gorge,_October_2025_08.jpg"
+    }
+  },
+  {
+    "id": "ellery-creek-big-hole",
+    "name": "Ellery Creek Big Hole",
+    "kind": "sight",
+    "state": "NT",
+    "lat": -23.7768439,
+    "lng": 133.0734075,
+    "base": "alice-springs",
+    "inherits": "alice-springs",
+    "description": "A waterhole in the West MacDonnell Ranges, reached by a gravel road that is suitable for two-wheel drive vehicles.",
+    "funFacts": [],
+    "tip": "The Dolomite walk here is 3 km.",
+    "trail": {
+      "name": "Dolomite walk",
+      "distanceKm": 3
+    },
+    "sources": [
+      {
+        "name": "Tourism NT: Ellery Creek Big Hole",
+        "url": "https://northernterritory.com/alice-springs-and-surrounds/see-and-do/ellery-creek-big-hole"
+      }
+    ],
+    "image": {
+      "src": "/places/ellery-creek-big-hole.jpg",
+      "alt": "Ellery Creek Big Hole waterhole",
+      "credit": "Iambexta / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Ellery_Creek_Big_Hole_-_West_Macdonnell_Ranges_NT.jpg"
+    }
   }
 ]

@@ -33,8 +33,9 @@ function labelFor(key: keyof TripAnswers, trip: TripAnswers): string | null {
     if (trip.startDate) parts.push(`from ${formatDate(trip.startDate)}`);
     return parts.join(" · ");
   }
-  if (key === "activities" || key === "transport") {
-    const ids = key === "activities" ? trip.activities : trip.transport;
+  if (key === "activities" || key === "transport" || key === "bases") {
+    const ids =
+      key === "activities" ? trip.activities : key === "bases" ? trip.bases : trip.transport;
     if (ids.length === 0) return null;
     return ids
       .map((id) => q.options.find((o) => o.id === id)?.label ?? id)
@@ -53,6 +54,7 @@ const rows: { key: keyof TripAnswers; label: string }[] = [
   { key: "duration", label: "How long" },
   { key: "transport", label: "Getting around" },
   { key: "accommodation", label: "Sleeping" },
+  { key: "bases", label: "Staying in" },
   { key: "party", label: "Who" },
   { key: "activities", label: "Plans" },
   { key: "firstTime", label: "Experience" },

@@ -7,6 +7,13 @@ export const places = placesJson as Place[];
 
 const placeIndex = new Map(places.map((p) => [p.id, p]));
 
+/** Day trips are only pinned once the map is zoomed in, to keep the country view calm. */
+export const DETAIL_ZOOM = 7.4;
+
+export function pinMinZoom(p: Place): number {
+  return p.minZoom ?? (p.base ? DETAIL_ZOOM : 0);
+}
+
 export function getPlace(id: string): Place | undefined {
   return placeIndex.get(id);
 }

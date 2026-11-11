@@ -22,6 +22,7 @@ import {
   Waves,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { places } from "./data";
 
 export interface Option {
   id: string;
@@ -35,6 +36,7 @@ export type QuestionKey =
   | "duration"
   | "transport"
   | "accommodation"
+  | "bases"
   | "party"
   | "activities"
   | "firstTime";
@@ -131,6 +133,17 @@ export const questions: Question[] = [
       { id: "campervan", label: "Campervan", icon: Caravan },
       { id: "camp", label: "Campsite or tent", icon: Tent },
     ],
+  },
+  {
+    key: "bases",
+    title: "Where will you stay?",
+    subtitle:
+      "Pick every city or town you will sleep in. We will suggest day trips and walks nearby.",
+    layout: "list",
+    multi: true,
+    options: places
+      .filter((p) => p.isBase)
+      .map((p) => ({ id: p.id, label: p.name, hint: p.state, icon: MapPin })),
   },
   {
     key: "party",

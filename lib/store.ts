@@ -20,6 +20,7 @@ interface TripState {
   toggleActivity: (a: Activity) => void;
   toggleTransport: (t: Transport) => void;
   toggleMonth: (m: Month) => void;
+  toggleBase: (id: string) => void;
   setMonth: (m: Month) => void;
   addPlace: (placeId: string) => void;
   addCustom: (lat: number, lng: number) => void;
@@ -36,6 +37,7 @@ const emptyTrip: TripAnswers = {
   startDate: null,
   transport: [],
   accommodation: null,
+  bases: [],
   party: null,
   activities: [],
   firstTime: null,
@@ -103,6 +105,14 @@ export const useTrip = create<TripState>()(
             trip: { ...s.trip, months, month: months.length ? active : null },
           };
         }),
+      toggleBase: (id) =>
+        set((s) => {
+          const has = s.trip.bases.includes(id);
+          const bases = has
+            ? s.trip.bases.filter((x) => x !== id)
+            : [...s.trip.bases, id];
+          return { trip: { ...s.trip, bases } };
+        }),
       setMonth: (m) =>
         set((s) => ({ month: m, trip: { ...s.trip, month: m } })),
       addPlace: (placeId) =>
@@ -134,7 +144,7 @@ export const useTrip = create<TripState>()(
     }),
     {
       name: "outback-safe-trip",
-      version: 3,
+      version: 4,
       // v1 stored a single transport string and had no accommodation.
       migrate: (persisted) => {
         const state = persisted as {
@@ -151,6 +161,8 @@ export const useTrip = create<TripState>()(
           }
           state.trip.durationWeeks ??= null;
           state.trip.startDate ??= null;
+          // v4: base cities.
+          if (!Array.isArray(state.trip.bases)) state.trip.bases = [];
         }
         return state as unknown as TripState;
       },

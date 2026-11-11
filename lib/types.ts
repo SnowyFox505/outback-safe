@@ -52,7 +52,41 @@ export interface Hazard {
   campingBoost?: boolean;
 }
 
-export type PlaceKind = "city" | "park" | "region" | "reef" | "coast";
+export type PlaceKind =
+  | "city"
+  | "park"
+  | "region"
+  | "reef"
+  | "coast"
+  | "trail"
+  | "sight";
+
+export type Party = "solo" | "couple" | "friends" | "family";
+
+export interface TrailInfo {
+  /** Name of the walk, if it differs from the place. */
+  name?: string;
+  distanceKm?: number;
+  /** As given by the source, e.g. "3 hours 30 minutes". */
+  duration?: string;
+  /** The source's own grade wording, e.g. "Grade 3". */
+  grade?: string;
+  shape?: "loop" | "return" | "one-way";
+  /** Distance and duration are for one direction only. */
+  eachWay?: boolean;
+  /** Short caution, only if the source states one. */
+  note?: string;
+}
+
+export interface PlaceImage {
+  /** File under /public/places. */
+  src: string;
+  alt: string;
+  credit: string;
+  licence: string;
+  /** Commons file page. */
+  url: string;
+}
 
 export interface Place {
   id: string;
@@ -63,6 +97,24 @@ export interface Place {
   lng: number;
   description: string;
   funFacts: string[];
+  /** Zoom level from which the pin shows on the map. Defaults to always. */
+  minZoom?: number;
+  /** A base city people can sleep in and use for day trips. */
+  isBase?: boolean;
+  /** Base this is a day trip from. */
+  base?: string;
+  /** Plain-text access note, e.g. "About 35 minutes' drive from Yulara". */
+  access?: string;
+  trail?: TrailInfo;
+  /** Who it suits. Empty or missing means everyone. */
+  suits?: Party[];
+  /** A lesser-known tip. */
+  secret?: boolean;
+  tip?: string;
+  /** Hazards of this place id apply here too. */
+  inherits?: string;
+  image?: PlaceImage;
+  sources?: Source[];
 }
 
 export interface TripAnswers {
@@ -78,6 +130,8 @@ export interface TripAnswers {
   transport: Transport[];
   accommodation: Accommodation | null;
   party: string | null;
+  /** Base cities the traveller will sleep in. */
+  bases: string[];
   activities: Activity[];
   firstTime: boolean | null;
 }

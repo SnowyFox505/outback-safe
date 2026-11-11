@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { places } from "@/lib/data";
+import { pinMinZoom, places } from "@/lib/data";
 import { hazardsForPlace, maxSeverity, stopCoords } from "@/lib/risk";
 import type { HazardContext } from "@/lib/risk";
 import { severityColor } from "@/components/ui/SeverityBadge";
@@ -90,6 +90,18 @@ export function MapView({
         .addTo(map);
       pinsRef.current.set(place.id, el);
     }
+
+    // Day trips only show once zoomed in, so the country view stays calm.
+    const updateLod = () => {
+      const z = map.getZoom();
+      for (const place of places) {
+        pinsRef.current
+          .get(place.id)
+          ?.classList.toggle("lod-hidden", z < pinMinZoom(place));
+      }
+    };
+    updateLod();
+    map.on("zoom", updateLod);
 
     map.on("load", () => {
       // Quiet the base map so the route and pins lead.
@@ -265,7 +277,7 @@ export function MapView({
     if (!place) return;
     map.easeTo({
       center: [place.lng, place.lat],
-      zoom: Math.max(map.getZoom(), 4.6),
+      zoom: Math.max(map.getZoom(), 4.6, pinMinZoom(place) ? pinMinZoom(place) + 0.6 : 0),
       padding: { top: 60, bottom: bottomInset, left: 0, right: 0 },
       duration: prefersReducedMotion() ? 0 : 600,
     });

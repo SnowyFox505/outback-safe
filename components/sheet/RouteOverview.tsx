@@ -14,11 +14,12 @@ import {
   stopName,
 } from "@/lib/risk";
 import type { HazardContext } from "@/lib/risk";
-import type { Month, Severity, Stop } from "@/lib/types";
+import type { Month, Severity, Stop, TripAnswers } from "@/lib/types";
 import { MonthStrip } from "@/components/ui/MonthPicker";
 import { SeverityDot, severityLabel } from "@/components/ui/SeverityBadge";
 import { HazardCard } from "./HazardCard";
 import { MonthCompare } from "./MonthCompare";
+import { NearbyIdeas } from "./NearbyIdeas";
 import { RiskRing } from "./RiskRing";
 
 interface RouteOverviewProps {
@@ -27,6 +28,8 @@ interface RouteOverviewProps {
   /** Months the traveller can go, for comparison. */
   candidateMonths: Month[];
   context: HazardContext;
+  trip: TripAnswers;
+  onSelectPlace: (id: string) => void;
   onMonthChange: (m: Month) => void;
   onOpenStop: (stop: Stop) => void;
   onMove: (id: string, dir: -1 | 1) => void;
@@ -38,6 +41,8 @@ export function RouteOverview({
   month,
   candidateMonths,
   context,
+  trip,
+  onSelectPlace,
   onMonthChange,
   onOpenStop,
   onMove,
@@ -226,6 +231,8 @@ export function RouteOverview({
           </section>
         </>
       )}
+
+      <NearbyIdeas trip={trip} stops={stops} onSelectPlace={onSelectPlace} />
 
       <section className="rounded-[20px] bg-bone/[0.04] px-4 py-3">
         <button

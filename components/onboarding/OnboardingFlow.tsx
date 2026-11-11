@@ -31,6 +31,8 @@ function selectedIds(q: Question, trip: TripAnswers): string[] {
       return trip.firstTime === null ? [] : [trip.firstTime ? "first" : "before"];
     case "transport":
       return trip.transport;
+    case "bases":
+      return trip.bases;
     case "accommodation":
       return trip.accommodation ? [trip.accommodation] : [];
     case "duration":
@@ -42,8 +44,14 @@ function selectedIds(q: Question, trip: TripAnswers): string[] {
 
 export function OnboardingFlow() {
   const router = useRouter();
-  const { trip, setTrip, toggleActivity, toggleTransport, toggleMonth } =
-    useTrip();
+  const {
+    trip,
+    setTrip,
+    toggleActivity,
+    toggleTransport,
+    toggleMonth,
+    toggleBase,
+  } = useTrip();
   const [step, setStep] = useState(0);
   const [dir, setDir] = useState<1 | -1>(1);
   const advanceTimer = useRef<number | undefined>(undefined);
@@ -66,6 +74,9 @@ export function OnboardingFlow() {
     switch (question.key) {
       case "months":
         toggleMonth(Number(id) as Month);
+        return; // multi-select: wait for Continue
+      case "bases":
+        toggleBase(id);
         return; // multi-select: wait for Continue
       case "accommodation":
         setTrip({ accommodation: id as Accommodation });

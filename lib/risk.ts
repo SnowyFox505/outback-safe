@@ -98,8 +98,14 @@ export function placeHazardGroups(
   ctx: HazardContext,
 ): PlaceHazards {
   const result: PlaceHazards = { active: [], offSeason: [], notRelevant: [] };
+  const inherited = getPlace(placeId)?.inherits;
   for (const h of hazards) {
-    if (!h.placeIds.includes(placeId)) continue;
+    if (
+      !h.placeIds.includes(placeId) &&
+      !(inherited && h.placeIds.includes(inherited))
+    ) {
+      continue;
+    }
     const status = hazardStatus(h, month, ctx);
     if (status === "active") result.active.push(h);
     else if (status === "off-season") result.offSeason.push(h);

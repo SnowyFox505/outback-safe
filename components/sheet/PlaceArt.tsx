@@ -20,6 +20,8 @@ const tint: Record<Place["kind"], string> = {
   region: "#d9a441",
   reef: "#3e8fa6",
   coast: "#3e8fa6",
+  trail: "#d9a441",
+  sight: "#b5502d",
 };
 
 /**
@@ -33,6 +35,32 @@ export function PlaceArt({
   place: Place;
   className?: string;
 }) {
+  if (place.image) {
+    const { image } = place;
+    return (
+      <figure className={`m-0 ${className}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={image.src}
+          alt={image.alt}
+          loading="lazy"
+          className="block h-[190px] w-full rounded-[24px] bg-char-800 object-cover"
+        />
+        <figcaption className="mt-1.5 px-1 text-[11px] leading-snug text-bone-faint">
+          Photo:{" "}
+          <a
+            href={image.url}
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-bone/20 underline-offset-2"
+          >
+            {image.credit}
+          </a>
+          , {image.licence}
+        </figcaption>
+      </figure>
+    );
+  }
   const rand = rng(place.id);
   const lines = Array.from({ length: 13 }, (_, i) => {
     const base = 14 + i * 13;

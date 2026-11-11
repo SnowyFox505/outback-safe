@@ -180,6 +180,8 @@ export default function MapPage() {
             month={month}
             candidateMonths={trip.months}
             context={context}
+            trip={trip}
+            onSelectPlace={selectPlace}
             onMonthChange={setMonth}
             onOpenStop={openStop}
             onMove={moveStop}

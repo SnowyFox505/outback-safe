@@ -53,6 +53,20 @@ Signed-in users get auto-save by default (the route saves about 1.5 seconds afte
 the last change). It can be switched off under Settings on the home screen, which
 brings back the manual Save/Update button.
 
+## Places, trails and photos
+
+- Every place in `data/places.json` carries its own `sources`. Walk distances,
+  times and grades are copied as the source states them, and anything a source
+  does not give is left out rather than guessed.
+- Pin coordinates come from Wikipedia and OpenStreetMap (ODbL). Day trips and
+  walks only show on the map once you zoom in, or when you open them from the
+  "Ideas near" list.
+- Photos are free-licence files from Wikimedia Commons, downloaded with
+  `node scripts/fetch-commons-image.mjs <placeId> "File:Title.jpg" "Alt text"`.
+  The photographer, licence and file page are shown under each photo.
+- "Staying in" (base cities) and "Who is travelling" drive the suggestions. A
+  place can name the groups it suits with `suits`; those come first.
+
 ## Firebase setup
 
 1. Create a project in the [Firebase console](https://console.firebase.google.com).
