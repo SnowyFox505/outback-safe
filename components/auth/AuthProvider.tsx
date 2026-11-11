@@ -50,7 +50,7 @@ function friendlyError(code: string): string {
     case "auth/network-request-failed":
       return "No connection. Check your internet and try again.";
     default:
-      return "Sign-in did not work. Please try again.";
+      return `Sign-in did not work. Please try again. (${code || "unknown error"})`;
   }
 }
 
@@ -83,6 +83,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       await signInWithPopup(auth, provider);
     } catch (e) {
       const code = (e as { code?: string }).code ?? "";
+      console.error("Sign-in failed", e);
       if (code === "auth/popup-blocked") {
         await signInWithRedirect(auth, provider);
         return;
