@@ -11,6 +11,18 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  // The service worker must never be served from a stale cache.
+  async headers() {
+    return [
+      {
+        source: "/sw.js",
+        headers: [
+          { key: "Cache-Control", value: "no-cache, no-store, must-revalidate" },
+          { key: "Content-Type", value: "application/javascript; charset=utf-8" },
+        ],
+      },
+    ];
+  },
   // Serve Firebase's sign-in helper from our own domain. Safari blocks the
   // third-party storage that the default firebaseapp.com handler needs, so the
   // auth domain is set to our own domain and these paths are proxied.

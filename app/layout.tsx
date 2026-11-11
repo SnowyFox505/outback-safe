@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/components/auth/AuthProvider";
+import { ServiceWorkerRegister } from "@/components/pwa/ServiceWorkerRegister";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -32,6 +33,13 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
   },
   formatDetection: { telephone: false },
+  icons: {
+    icon: [
+      { url: "/icons/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180" }],
+  },
 };
 
 export const viewport: Viewport = {
@@ -52,6 +60,7 @@ export default function RootLayout({
       className={`${bricolage.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="h-full">
+        <ServiceWorkerRegister />
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
