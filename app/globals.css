@@ -188,3 +188,48 @@ a,
     scroll-behavior: auto !important;
   }
 }
+
+/* Loading screen: the outline of Australia draws itself, then warms in. */
+.loading-outline path {
+  fill: none;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.loading-outline-base {
+  stroke: var(--color-bone);
+  stroke-opacity: 0.08;
+  stroke-width: 1;
+}
+.loading-outline-line {
+  stroke-width: 1.8;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: outline-draw 2.5s cubic-bezier(0.45, 0.05, 0.25, 1) 0.15s forwards;
+  filter: drop-shadow(0 0 4px rgb(217 164 65 / 0.3));
+}
+.loading-outline path.loading-outline-fill {
+  fill: var(--color-ochre);
+  fill-opacity: 0;
+  stroke: none;
+  animation: outline-fill 1s ease-out 1.9s forwards;
+}
+@keyframes outline-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes outline-fill {
+  to {
+    fill-opacity: 0.1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loading-outline-line {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .loading-outline path.loading-outline-fill {
+    animation: none;
+    fill-opacity: 0.1;
+  }
+}

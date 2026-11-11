@@ -8,7 +8,7 @@
  *
  * Bump VERSION to drop all old caches.
  */
-const VERSION = "v2";
+const VERSION = "v3";
 const SHELL_CACHE = `outback-shell-${VERSION}`;
 const ASSET_CACHE = `outback-assets-${VERSION}`;
 

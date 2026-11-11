@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/components/auth/AuthProvider";
+import { LoadingScreen } from "@/components/loading/LoadingScreen";
 import { ServiceWorkerRegister } from "@/components/pwa/ServiceWorkerRegister";
 
 const bricolage = Bricolage_Grotesque({
@@ -60,6 +61,7 @@ export default function RootLayout({
       className={`${bricolage.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="h-full">
+        <LoadingScreen />
         <ServiceWorkerRegister />
         <AuthProvider>{children}</AuthProvider>
       </body>
