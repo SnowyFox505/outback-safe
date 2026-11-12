@@ -1579,5 +1579,205 @@
       "licence": "CC BY-SA 4.0",
       "url": "https://commons.wikimedia.org/wiki/File:Family_fun_at_Berry_Springs_Nature_Reserve.jpg"
     }
+  },
+  {
+    "id": "rottnest-island",
+    "name": "Rottnest Island",
+    "kind": "coast",
+    "state": "WA",
+    "lat": -32.0022563,
+    "lng": 115.5496812,
+    "base": "perth",
+    "inherits": "perth",
+    "access": "About 30 minutes by ferry, 19 km offshore. Ferries leave from Fremantle and Hillarys Boat Harbour",
+    "description": "Wadjemup, an island with a 45 km trail network and snorkel routes at Parker Point and Little Salmon Bay with underwater signs.",
+    "funFacts": [],
+    "trail": {
+      "name": "Wadjemup Bidi",
+      "distanceKm": 45,
+      "note": "Five sections: Ngank Wen Bidi 7.6 km loop, Gabbi Karniny Bidi 9.7 km loop, Wardan Nara Bidi 10 km, Karlinyah Bidi 5.9 km one-way and Ngank Yira Bidi 9.4 km one-way. Plan 3 to 4 hours for most trails."
+    },
+    "sources": [
+      {
+        "name": "Tourism WA: Rottnest Island",
+        "url": "https://www.westernaustralia.com/de/places-to-visit/perth-and-surrounds/rottnest-island"
+      }
+    ],
+    "image": {
+      "src": "/places/rottnest-island.jpg",
+      "alt": "The clear water off Rottnest Island",
+      "credit": "Wonderofwildflowers / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Waters_off_Rottnest_Island.jpg"
+    }
+  },
+  {
+    "id": "fremantle",
+    "name": "Fremantle",
+    "kind": "city",
+    "state": "WA",
+    "lat": -32.0542,
+    "lng": 115.7475,
+    "base": "perth",
+    "inherits": "perth",
+    "access": "25 minutes by train from the Perth centre, or about 30 minutes by car",
+    "description": "A port city south-west of Perth, with Fremantle Prison and its markets.",
+    "funFacts": [],
+    "suits": [
+      "couple",
+      "friends"
+    ],
+    "sources": [
+      {
+        "name": "Tourism WA: Fremantle",
+        "url": "https://www.westernaustralia.com/de/places-to-visit/perth-and-surrounds/fremantle"
+      }
+    ],
+    "image": {
+      "src": "/places/fremantle.jpg",
+      "alt": "High Street in Fremantle",
+      "credit": "-wuppertaler / Wikimedia Commons",
+      "licence": "CC BY 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:AUS_Perth,_Fremantle,_High_Street_021.jpg"
+    }
+  },
+  {
+    "id": "kings-park",
+    "name": "Kings Park",
+    "kind": "park",
+    "state": "WA",
+    "lat": -31.962135,
+    "lng": 115.831712,
+    "base": "perth",
+    "inherits": "perth",
+    "skipHazards": [
+      "sharks",
+      "rip-currents"
+    ],
+    "access": "About 1.5 km from the Perth CBD",
+    "description": "Park and botanic garden close to the city centre.",
+    "funFacts": [],
+    "suits": [
+      "family"
+    ],
+    "sources": [
+      {
+        "name": "Tourism WA: day trips from Perth",
+        "url": "https://www.westernaustralia.com/de/plan-my-trip/itineraries/day-trips-from-perth"
+      }
+    ],
+    "image": {
+      "src": "/places/kings-park.jpg",
+      "alt": "Kings Park and the Narrows Bridge in Perth",
+      "credit": "Calistemon / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Narrows_Bridge_and_Kings_Park,_Perth,_February_2023.jpg"
+    }
+  },
+  {
+    "id": "pinnacles",
+    "name": "Pinnacles Desert",
+    "kind": "park",
+    "state": "WA",
+    "lat": -30.6019617,
+    "lng": 115.1574309,
+    "base": "perth",
+    "inherits": "perth",
+    "skipHazards": [
+      "sharks",
+      "rip-currents"
+    ],
+    "access": "About 200 km from Perth, within a couple of hours' drive",
+    "description": "The Pinnacles Desert in Nambung National Park. Dogs are not allowed, and the park advises carrying a personal locator beacon.",
+    "funFacts": [],
+    "trail": {
+      "name": "Desert View Walk",
+      "distanceKm": 1.5,
+      "note": "The first 300 m to a viewing platform is Class 1 and accessible. The remaining 1.2 km is a sandy Class 3 trail."
+    },
+    "sources": [
+      {
+        "name": "WA Parks: Nambung National Park",
+        "url": "https://exploreparks.dbca.wa.gov.au/park/nambung-national-park"
+      }
+    ],
+    "image": {
+      "src": "/places/pinnacles.jpg",
+      "alt": "Limestone pillars in the Pinnacles Desert",
+      "credit": "Dhx1 / Wikimedia Commons",
+      "licence": "CC0",
+      "url": "https://commons.wikimedia.org/wiki/File:Pinnacles_Desert,_Nambung_National_Park,_Western_Australia_15.jpg"
+    }
+  },
+  {
+    "id": "john-forrest",
+    "name": "John Forrest National Park",
+    "kind": "park",
+    "state": "WA",
+    "lat": -31.88194444,
+    "lng": 116.07388889,
+    "base": "perth",
+    "inherits": "perth",
+    "skipHazards": [
+      "sharks",
+      "rip-currents"
+    ],
+    "access": "About 30 minutes' drive from Perth",
+    "description": "A national park with many waterfalls and risk areas; the park advises extreme caution. The waterfalls flow in winter and spring.",
+    "funFacts": [],
+    "trail": {
+      "name": "Wildflower Walk",
+      "distanceKm": 4.6,
+      "grade": "Grade 3",
+      "note": "Short steep sections and slippery surfaces."
+    },
+    "tip": "The National Park Falls Walk is 2.5 km along Jane Brook to the falls.",
+    "sources": [
+      {
+        "name": "WA Parks: John Forrest National Park",
+        "url": "https://exploreparks.dbca.wa.gov.au/park/john-forrest-national-park"
+      }
+    ],
+    "image": {
+      "src": "/places/john-forrest.jpg",
+      "alt": "View from the Eagle View Walk in John Forrest National Park",
+      "credit": "Lennix3 / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:View_from_the_eagle_trail_in_John_Forrest_National_Park.jpg"
+    }
+  },
+  {
+    "id": "swan-valley",
+    "name": "Swan Valley",
+    "kind": "region",
+    "state": "WA",
+    "lat": -31.83333333,
+    "lng": 116,
+    "base": "perth",
+    "inherits": "perth",
+    "skipHazards": [
+      "sharks",
+      "rip-currents"
+    ],
+    "access": "About 30 minutes' drive from the Perth centre",
+    "description": "A wine region with a 32 km scenic route past about 150 sights.",
+    "funFacts": [],
+    "suits": [
+      "couple",
+      "friends"
+    ],
+    "sources": [
+      {
+        "name": "Tourism WA: Swan Valley",
+        "url": "https://www.westernaustralia.com/de/places-to-visit/perth-and-surrounds/swan-valley"
+      }
+    ],
+    "image": {
+      "src": "/places/swan-valley.jpg",
+      "alt": "Vineyards in the Swan Valley",
+      "credit": "Robert Young from Gdansk, Poland / Wikimedia Commons",
+      "licence": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Swan_Valley_1.jpg"
+    }
   }
 ]
