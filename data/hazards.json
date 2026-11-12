@@ -34,7 +34,14 @@
         "name": "Queensland Government: Be Crocwise top tips",
         "url": "https://www.qld.gov.au/environment/plants-animals/animals/living-with/crocodiles/becrocwise/be-crocwise-top-tips"
       }
-    ]
+    ],
+    "kidsNote": {
+      "text": "Supervise children and keep them away from the water's edge.",
+      "source": {
+        "name": "Queensland Government: Be Crocwise top tips",
+        "url": "https://www.qld.gov.au/environment/plants-animals/animals/living-with/crocodiles/becrocwise/be-crocwise-top-tips"
+      }
+    }
   },
   {
     "id": "box-jellyfish-irukandji",
@@ -252,7 +259,14 @@
         "name": "healthdirect: Hot weather risks and staying cool",
         "url": "https://healthdirect.gov.au/hot-weather-risks-and-staying-cool"
       }
-    ]
+    ],
+    "kidsNote": {
+      "text": "Babies and young children are at increased risk of heat-related illness, because they are less able to control their body temperature and to act to cool themselves down. Never leave babies or children alone in a car, no matter what the weather: even in mild weather a car quickly becomes too hot.",
+      "source": {
+        "name": "NSW Health: Babies and young children in hot weather",
+        "url": "https://www.health.nsw.gov.au/environment/beattheheat/Pages/babies-children-hot-weather.aspx"
+      }
+    }
   },
   {
     "id": "sun-uv",
@@ -290,7 +304,14 @@
         "name": "Cancer Council Australia: Five SunSmart steps",
         "url": "https://cancer.org.au/save-your-skin/five-sunsmart-steps"
       }
-    ]
+    ],
+    "kidsNote": {
+      "text": "Babies under 12 months should be kept out of direct sunlight when the UV level is 3 or above. Use shade, covering clothing and a hat. Sunscreen is not generally recommended for babies under six months; for babies over six months it is the last line of defence after shade, clothing and a hat.",
+      "source": {
+        "name": "Cancer Council Australia: Sun protection for babies",
+        "url": "https://www.cancer.org.au/about-us/policy-and-advocacy/prevention/uv-radiation/related-resources/sun-protection-babies"
+      }
+    }
   },
   {
     "id": "tropical-cyclones",

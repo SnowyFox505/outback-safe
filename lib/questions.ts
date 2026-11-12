@@ -81,6 +81,12 @@ const monthLabels = [
   "Dec",
 ];
 
+/** Follow-up shown under "Family" on the party question. */
+export const kidsOptions: Option[] = [
+  { id: "with", label: "With kids", icon: Baby },
+  { id: "without", label: "Without kids", icon: Users },
+];
+
 export const questions: Question[] = [
   {
     key: "months",
@@ -154,7 +160,7 @@ export const questions: Question[] = [
       { id: "solo", label: "Solo", icon: User },
       { id: "couple", label: "Couple", icon: Heart },
       { id: "friends", label: "Friends", icon: Users },
-      { id: "family", label: "Family with kids", icon: Baby },
+      { id: "family", label: "Family", icon: Baby },
     ],
   },
   {

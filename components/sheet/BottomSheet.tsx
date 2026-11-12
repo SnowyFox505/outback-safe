@@ -94,7 +94,7 @@ export function BottomSheet({
       dragMomentum={false}
       onDragEnd={(_, info) => settle(info.velocity.y)}
       style={{ y, height: sheetH }}
-      className="absolute inset-x-0 bottom-0 z-20 flex flex-col rounded-t-[32px] border-t border-bone/10 bg-char-900 shadow-[var(--shadow-sheet)]"
+      className="absolute inset-x-0 bottom-0 z-20 mx-auto flex w-full max-w-[560px] flex-col rounded-t-[32px] border-t border-bone/10 bg-char-900 shadow-[var(--shadow-sheet)]"
     >
       <div
         onPointerDown={(e) => controls.start(e)}

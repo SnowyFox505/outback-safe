@@ -11,12 +11,16 @@ import { SeverityBadge, SeverityDot } from "@/components/ui/SeverityBadge";
 export function HazardCard({
   hazard,
   boosted = false,
+  kids = false,
 }: {
   hazard: Hazard;
   /** True when this hazard counts for more because you are camping. */
   boosted?: boolean;
+  /** True when children are coming, so child advice is shown. */
+  kids?: boolean;
 }) {
   const [open, setOpen] = useState(false);
+  const kidsNote = kids ? hazard.kidsNote : undefined;
 
   return (
     <div className="rounded-[20px] border border-bone/[0.07] bg-char-800">
@@ -33,6 +37,7 @@ export function HazardCard({
           <span className="block font-mono text-[10px] uppercase tracking-[0.14em] text-bone-faint">
             {categoryLabel[hazard.category]}
             {boosted && " · Higher when camping"}
+            {kidsNote && " · Advice for kids"}
           </span>
         </span>
         <SeverityBadge severity={hazard.severity} />
@@ -60,6 +65,23 @@ export function HazardCard({
                   This counts for more on your trip because you will be sleeping
                   in a campsite, tent or campervan.
                 </p>
+              )}
+              {kidsNote && (
+                <div className="rounded-[14px] border border-sea/30 bg-sea/10 px-3 py-2.5">
+                  <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-sea">
+                    With children
+                  </p>
+                  <p className="text-[13px] text-bone">{kidsNote.text}</p>
+                  <a
+                    href={kidsNote.source.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1.5 inline-flex min-h-[28px] items-center gap-1.5 text-[12px] text-sea underline-offset-2 active:underline"
+                  >
+                    {kidsNote.source.name}
+                    <ExternalLink size={11} strokeWidth={1.5} />
+                  </a>
+                </div>
               )}
               <div>
                 <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ochre">

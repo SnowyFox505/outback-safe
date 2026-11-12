@@ -18,6 +18,10 @@ interface PlaceDetailProps {
   onAdd: () => void;
   onRemove: () => void;
   onClose: () => void;
+  /** True when the sheet is pulled all the way up: the photo grows. */
+  large?: boolean;
+  /** Tapping the photo pulls the sheet up. */
+  onExpand?: () => void;
 }
 
 export function PlaceDetail({
@@ -28,6 +32,8 @@ export function PlaceDetail({
   onAdd,
   onRemove,
   onClose,
+  large,
+  onExpand,
 }: PlaceDetailProps) {
   const { active, offSeason, notRelevant } = placeHazardGroups(
     place.id,
@@ -37,7 +43,7 @@ export function PlaceDetail({
 
   return (
     <div className="rise-group space-y-6 pt-1">
-      <PlaceArt place={place} />
+      <PlaceArt place={place} large={large} onExpand={onExpand} />
 
       <div className="rise flex items-center gap-2">
         {inRoute ? (
@@ -129,6 +135,7 @@ export function PlaceDetail({
                 key={h.id}
                 hazard={h}
                 boosted={isBoosted(h, context)}
+                kids={context.kids}
               />
             ))}
           </div>

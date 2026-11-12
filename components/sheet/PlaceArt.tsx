@@ -31,21 +31,35 @@ const tint: Record<Place["kind"], string> = {
 export function PlaceArt({
   place,
   className = "",
+  large = false,
+  onExpand,
 }: {
   place: Place;
   className?: string;
+  /** Show the photo bigger, for example when the sheet is pulled up. */
+  large?: boolean;
+  /** Called when the photo is tapped while it is still small. */
+  onExpand?: () => void;
 }) {
   if (place.image) {
     const { image } = place;
     return (
       <figure className={`m-0 ${className}`}>
-        <div className="overflow-hidden rounded-[24px] bg-char-800">
+        <div
+          onClick={!large ? onExpand : undefined}
+          className={`overflow-hidden rounded-[24px] bg-char-800 transition-[height] duration-500 ease-[cubic-bezier(0.22,0.8,0.28,1)] ${
+            !large && onExpand ? "cursor-zoom-in" : ""
+          }`}
+          style={{
+            height: large ? "min(80vw, 52vh, 420px)" : "min(54vw, 230px)",
+          }}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={image.src}
             alt={image.alt}
             loading="lazy"
-            className="kenburns block h-[190px] w-full object-cover"
+            className="kenburns block h-full w-full object-cover"
           />
         </div>
         <figcaption className="mt-1.5 px-1 text-[11px] leading-snug text-bone-faint">

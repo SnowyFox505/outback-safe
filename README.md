@@ -36,6 +36,11 @@ and see hazards, but routes cannot be saved.
 4. The score compares the total with a busy trip of 30 points (capped at 100).
    The level is the highest severity found, so one high hazard always shows as High.
 
+Choosing "Family" asks whether children are coming. If so, hazards that have a
+sourced `kidsNote` (sun and UV, extreme heat, saltwater crocodiles) show an extra
+"With children" box with its own source. This is advice only and does not change
+the score. A hazard only gets a `kidsNote` when a readable official source says it.
+
 A route with one stop works the same way, there are just no legs.
 
 ### Comparing months

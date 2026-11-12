@@ -15,6 +15,8 @@ export interface HazardContext {
   transport: Transport[];
   activities: Activity[];
   accommodation: Accommodation | null;
+  /** True for a family trip with children. */
+  kids: boolean;
 }
 
 export function contextFromTrip(trip: TripAnswers): HazardContext {
@@ -22,6 +24,7 @@ export function contextFromTrip(trip: TripAnswers): HazardContext {
     transport: trip.transport,
     activities: trip.activities,
     accommodation: trip.accommodation,
+    kids: trip.party === "family" && trip.kids === true,
   };
 }
 
@@ -29,6 +32,7 @@ export const emptyContext: HazardContext = {
   transport: [],
   activities: [],
   accommodation: null,
+  kids: false,
 };
 
 export function isCamping(ctx: HazardContext): boolean {

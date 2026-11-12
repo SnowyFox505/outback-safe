@@ -39,6 +39,7 @@ const emptyTrip: TripAnswers = {
   accommodation: null,
   bases: [],
   party: null,
+  kids: null,
   activities: [],
   firstTime: null,
 };
@@ -144,7 +145,7 @@ export const useTrip = create<TripState>()(
     }),
     {
       name: "outback-safe-trip",
-      version: 4,
+      version: 5,
       // v1 stored a single transport string and had no accommodation.
       migrate: (persisted) => {
         const state = persisted as {
@@ -163,6 +164,10 @@ export const useTrip = create<TripState>()(
           state.trip.startDate ??= null;
           // v4: base cities.
           if (!Array.isArray(state.trip.bases)) state.trip.bases = [];
+          // v5: kids. The old family option meant "family with kids".
+          if (state.trip.kids === undefined) {
+            state.trip.kids = state.trip.party === "family" ? true : null;
+          }
         }
         return state as unknown as TripState;
       },

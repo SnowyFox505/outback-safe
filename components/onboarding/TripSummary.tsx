@@ -56,7 +56,11 @@ function labelFor(key: keyof TripAnswers, trip: TripAnswers): string | null {
     return trip.firstTime ? "First time" : "Been before";
   }
   if (typeof raw !== "string") return null;
-  return q.options.find((o) => o.id === raw)?.label ?? null;
+  const label = q.options.find((o) => o.id === raw)?.label ?? null;
+  if (key === "party" && raw === "family" && trip.kids !== null) {
+    return `${label} · ${trip.kids ? "with kids" : "without kids"}`;
+  }
+  return label;
 }
 
 const rows: { key: keyof TripAnswers; label: string }[] = [

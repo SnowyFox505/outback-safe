@@ -228,6 +228,7 @@ export function RouteOverview({
                                         key={h.id}
                                         hazard={h}
                                         boosted={isBoosted(h, context)}
+                                        kids={context.kids}
                                       />
                                     ))
                                   )}
@@ -253,6 +254,7 @@ export function RouteOverview({
                     key={h.id}
                     hazard={h}
                     boosted={isBoosted(h, context)}
+                    kids={context.kids}
                   />
                 ))}
               </div>

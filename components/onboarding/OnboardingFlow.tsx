@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { ChevronLeft } from "lucide-react";
-import { questions } from "@/lib/questions";
+import { kidsOptions, questions } from "@/lib/questions";
 import type { Question } from "@/lib/questions";
 import { useTrip } from "@/lib/store";
 import type {
@@ -94,7 +94,12 @@ export function OnboardingFlow() {
         setTrip({ duration: id, durationWeeks: null, startDate: null });
         break;
       case "party":
-        setTrip({ party: id });
+        if (id === "family") {
+          // Families get a follow-up (kids or not), so do not move on yet.
+          setTrip({ party: id });
+          return;
+        }
+        setTrip({ party: id, kids: null });
         break;
       case "firstTime":
         setTrip({ firstTime: id === "first" });
@@ -105,6 +110,12 @@ export function OnboardingFlow() {
     }
     window.clearTimeout(advanceTimer.current);
     advanceTimer.current = window.setTimeout(() => go(step + 1), 260);
+  }
+
+  function chooseKids(kids: boolean) {
+    setTrip({ kids });
+    window.clearTimeout(advanceTimer.current);
+    advanceTimer.current = window.setTimeout(() => go(step + 1), 320);
   }
 
   return (
@@ -210,6 +221,33 @@ export function OnboardingFlow() {
                 {q.key === "duration" && trip.duration === "longer" && (
                   <LongerTrip trip={trip} onChange={setTrip} />
                 )}
+                <AnimatePresence initial={false}>
+                  {q.key === "party" && trip.party === "family" && (
+                    <motion.div
+                      key="kids"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.32, ease: [0.22, 0.8, 0.28, 1] }}
+                      style={{ overflow: "hidden" }}
+                    >
+                      <p className="mb-2.5 mt-6 font-mono text-[10px] uppercase tracking-[0.16em] text-ochre">
+                        Are children coming?
+                      </p>
+                      <div className="flex flex-col gap-2.5 pb-2">
+                        {kidsOptions.map((o, i) => (
+                          <AnswerCard
+                            key={o.id}
+                            index={i}
+                            option={o}
+                            selected={trip.kids === (o.id === "with")}
+                            onSelect={() => chooseKids(o.id === "with")}
+                          />
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </>
             )}
           </motion.div>

@@ -174,6 +174,8 @@ export default function MapPage() {
               if (s) removeStop(s.id);
             }}
             onClose={() => setSelectedId(null)}
+            large={snap === "full"}
+            onExpand={() => setSnap("full")}
           />
         ) : (
           <RouteOverview

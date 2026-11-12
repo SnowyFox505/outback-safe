@@ -50,6 +50,8 @@ export interface Hazard {
   activities?: Activity[];
   /** Counts for more when you sleep in a campsite, tent or campervan. */
   campingBoost?: boolean;
+  /** Extra advice for travelling with children, with its own source. */
+  kidsNote?: { text: string; source: Source };
 }
 
 export type PlaceKind =
@@ -132,6 +134,8 @@ export interface TripAnswers {
   transport: Transport[];
   accommodation: Accommodation | null;
   party: string | null;
+  /** Only for party "family": true when children are coming. */
+  kids: boolean | null;
   /** Base cities the traveller will sleep in. */
   bases: string[];
   activities: Activity[];
