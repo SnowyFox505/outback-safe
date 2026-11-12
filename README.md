@@ -64,6 +64,12 @@ brings back the manual Save/Update button.
 - Photos are free-licence files from Wikimedia Commons, downloaded with
   `node scripts/fetch-commons-image.mjs <placeId> "File:Title.jpg" "Alt text"`.
   The photographer, licence and file page are shown under each photo.
+- Places that sit on the coast or near beaches carry sharks and rips from their
+  region; inland walks list `skipHazards` so those are left out. Victoria has its
+  own bushfire entry because its Fire Danger Period is declared by the CFA, not
+  by the NSW Rural Fire Service.
+- `node scripts/contact-sheet.mjs out.jpg` builds one overview image of all
+  photos for a quick visual check.
 - "Staying in" (base cities) and "Who is travelling" drive the suggestions. A
   place can name the groups it suits with `suits`; those come first.
 

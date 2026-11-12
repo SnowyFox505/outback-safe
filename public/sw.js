@@ -8,7 +8,7 @@
  *
  * Bump VERSION to drop all old caches.
  */
-const VERSION = "v3";
+const VERSION = "v4";
 const SHELL_CACHE = `outback-shell-${VERSION}`;
 const ASSET_CACHE = `outback-assets-${VERSION}`;
 
@@ -160,6 +160,8 @@ self.addEventListener("fetch", (event) => {
   if (
     url.pathname.startsWith("/_next/static/") ||
     url.pathname.startsWith("/icons/") ||
+    // Place photos are cached as you look at them, so they work offline later.
+    url.pathname.startsWith("/places/") ||
     url.pathname.startsWith("/maplibre-gl-") ||
     url.pathname === "/manifest.webmanifest"
   ) {

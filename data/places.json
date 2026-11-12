@@ -11,7 +11,14 @@
       "The sails of the Sydney Opera House are covered in more than one million tiles.",
       "Locals call the Sydney Harbour Bridge \"the Coathanger\"."
     ],
-    "isBase": true
+    "isBase": true,
+    "image": {
+      "src": "/places/sydney.jpg",
+      "alt": "Sydney Opera House on the harbour",
+      "credit": "Diliff / Wikimedia Commons",
+      "licence": "CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Sydney_Opera_House_-_Dec_2008.jpg"
+    }
   },
   {
     "id": "cairns",
@@ -25,7 +32,14 @@
       "Cairns sits between two World Heritage areas: the Great Barrier Reef and the Wet Tropics rainforest.",
       "The nearby Daintree Rainforest is estimated to be around 180 million years old."
     ],
-    "isBase": true
+    "isBase": true,
+    "image": {
+      "src": "/places/cairns.jpg",
+      "alt": "Central Cairns with the ranges behind",
+      "credit": "Bernard Gagnon / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Cairns_(Queensland).jpg"
+    }
   },
   {
     "id": "darwin",
@@ -39,7 +53,14 @@
       "Darwin was bombed by Japanese aircraft on 19 February 1942, the largest attack ever made on Australia.",
       "Cyclone Tracy destroyed most of the city on Christmas Eve 1974, and Darwin was rebuilt."
     ],
-    "isBase": true
+    "isBase": true,
+    "image": {
+      "src": "/places/darwin.jpg",
+      "alt": "The Darwin skyline across the harbour",
+      "credit": "Ken Hodge / Wikimedia Commons",
+      "licence": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Darwin_Skyline_in_January_2012.jpg"
+    }
   },
   {
     "id": "alice-springs",
@@ -53,7 +74,14 @@
       "Alice Springs lies close to the geographic centre of Australia.",
       "The Ghan train stops here on its Adelaide to Darwin journey."
     ],
-    "isBase": true
+    "isBase": true,
+    "image": {
+      "src": "/places/alice-springs.jpg",
+      "alt": "Anzac Hill above Alice Springs",
+      "credit": "Genet (Diskussion) / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Australia_-_Alice_Springs_-_ANZAC_Hill.jpg"
+    }
   },
   {
     "id": "uluru",
@@ -86,7 +114,14 @@
     "funFacts": [
       "It is the world's largest coral reef system, stretching about 2,300 kilometres along the Queensland coast.",
       "The reef is made up of around 2,900 individual reefs."
-    ]
+    ],
+    "image": {
+      "src": "/places/great-barrier-reef.jpg",
+      "alt": "Coral on the Great Barrier Reef",
+      "credit": "Toby Hudson / Wikimedia Commons",
+      "licence": "CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Coral_Outcrop_Flynn_Reef.jpg"
+    }
   },
   {
     "id": "great-ocean-road",
@@ -99,7 +134,22 @@
     "funFacts": [
       "The road was built by returned soldiers after World War I and is a memorial to those who died in the war.",
       "Construction began in 1919 and the road opened in 1932."
-    ]
+    ],
+    "access": "About 275 km west of Melbourne, roughly a four-hour drive along the Great Ocean Road",
+    "tip": "Bookings are essential to secure parking at the Twelve Apostles. Start at the Keerray Woorroong Visitor Centre.",
+    "sources": [
+      {
+        "name": "Visit Victoria: 12 Apostles",
+        "url": "https://www.visitvictoria.com/regions/great-ocean-road/see-and-do/nature-and-wildlife/beaches-and-coastlines/12-apostles"
+      }
+    ],
+    "image": {
+      "src": "/places/great-ocean-road.jpg",
+      "alt": "The Twelve Apostles on the Great Ocean Road",
+      "credit": "Dietmar Rabich / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Princetown_(AU),_Port_Campbell_National_Park,_Twelve_Apostles_--_2019_--_0969.jpg"
+    }
   },
   {
     "id": "perth",
@@ -113,7 +163,14 @@
       "Perth is one of the most isolated major cities in the world.",
       "Rottnest Island, a short ferry ride away, is home to the quokka."
     ],
-    "isBase": true
+    "isBase": true,
+    "image": {
+      "src": "/places/perth.jpg",
+      "alt": "Elizabeth Quay Bridge in Perth",
+      "credit": "Dietmar Rabich / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Perth_(AU),_Elizabeth_Quay_Bridge_--_2019_--_0375-9.jpg"
+    }
   },
   {
     "id": "yulara",
@@ -139,7 +196,14 @@
         "url": "https://uluru.gov.au/plan/getting-here/nearby/"
       }
     ],
-    "minZoom": 7.4
+    "minZoom": 7.4,
+    "image": {
+      "src": "/places/yulara.jpg",
+      "alt": "Uluru seen from the Naninga Lookout at Yulara",
+      "credit": "lulugal0870 / Wikimedia Commons",
+      "licence": "CC BY-SA 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:View_of_Uluru_from_the_Naninga_Lookout,_Yulara.jpg"
+    }
   },
   {
     "id": "uluru-base-walk",
@@ -205,7 +269,14 @@
         "name": "Parks Australia: Talinguru Nyakunytjaku",
         "url": "https://uluru.gov.au/things-do/activities/sunrise-sunset/talinguru-nyakunytjaku/"
       }
-    ]
+    ],
+    "image": {
+      "src": "/places/talinguru-nyakunytjaku.jpg",
+      "alt": "Visitors at the Uluru sunrise viewing area",
+      "credit": "CactusPolecat / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Tourists_at_the_sunrise_viewing_area_at_Uluru,_Northern_Territory,_Australia,_5_July_2023.jpg"
+    }
   },
   {
     "id": "kata-tjuta-walpa-gorge",
@@ -475,6 +546,510 @@
       "credit": "Iambexta / Wikimedia Commons",
       "licence": "CC BY-SA 4.0",
       "url": "https://commons.wikimedia.org/wiki/File:Ellery_Creek_Big_Hole_-_West_Macdonnell_Ranges_NT.jpg"
+    }
+  },
+  {
+    "id": "wentworth-falls",
+    "name": "Wentworth Falls",
+    "kind": "sight",
+    "state": "NSW",
+    "lat": -33.7260782,
+    "lng": 150.3720236,
+    "base": "sydney",
+    "inherits": "sydney",
+    "skipHazards": [
+      "sharks",
+      "rip-currents"
+    ],
+    "description": "A lookout and short walk to the falls in the Blue Mountains. The track has hidden cliff edges and many steep stairs.",
+    "funFacts": [],
+    "trail": {
+      "name": "Wentworth Falls track",
+      "distanceKm": 1.4,
+      "duration": "45 minutes to 1 hour",
+      "grade": "Grade 3",
+      "shape": "return",
+      "note": "Not suitable for prams and no wheelchair access."
+    },
+    "sources": [
+      {
+        "name": "NSW National Parks: Wentworth Falls track",
+        "url": "https://www.nationalparks.nsw.gov.au/things-to-do/walking-tracks/wentworth-falls-track"
+      }
+    ],
+    "image": {
+      "src": "/places/wentworth-falls.jpg",
+      "alt": "Wentworth Falls in the Blue Mountains",
+      "credit": "Alex Proimos from Sydney, Australia / Wikimedia Commons",
+      "licence": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Blue_Mountains_-_Wentworth_Falls_(6596121439).jpg"
+    }
+  },
+  {
+    "id": "national-pass",
+    "name": "National Pass",
+    "kind": "trail",
+    "state": "NSW",
+    "lat": -33.7215102,
+    "lng": 150.3599923,
+    "base": "sydney",
+    "inherits": "sydney",
+    "skipHazards": [
+      "sharks",
+      "rip-currents"
+    ],
+    "description": "A loop below the cliffs at Wentworth Falls with many steep stairs and hidden cliff edges. Mobile reception is limited.",
+    "funFacts": [],
+    "trail": {
+      "name": "National Pass",
+      "distanceKm": 4.5,
+      "duration": "2 hours 30 minutes to 3 hours 30 minutes",
+      "grade": "Grade 4",
+      "shape": "loop",
+      "note": "The park page lists a closure between Valley of the Waters and Slacks Stairs because of rockfall, and some sections can become impassable after rain. Check the current status before you go."
+    },
+    "suits": [
+      "friends",
+      "couple",
+      "solo"
+    ],
+    "sources": [
+      {
+        "name": "NSW National Parks: National Pass",
+        "url": "https://www.nationalparks.nsw.gov.au/things-to-do/walking-tracks/national-pass"
+      }
+    ],
+    "image": {
+      "src": "/places/national-pass.jpg",
+      "alt": "The National Pass track in the Blue Mountains",
+      "credit": "Dhx1 / Wikimedia Commons",
+      "licence": "CC0",
+      "url": "https://commons.wikimedia.org/wiki/File:National_Pass_trail,_Blue_Mountains_National_Park_20.jpg"
+    }
+  },
+  {
+    "id": "grand-canyon-track",
+    "name": "Grand Canyon Track",
+    "kind": "trail",
+    "state": "NSW",
+    "lat": -33.6521505,
+    "lng": 150.3160779,
+    "base": "sydney",
+    "inherits": "sydney",
+    "skipHazards": [
+      "sharks",
+      "rip-currents"
+    ],
+    "description": "A canyon walk at Blackheath in the Blue Mountains. There is no drinking water at the location.",
+    "funFacts": [],
+    "trail": {
+      "name": "Grand Canyon Track",
+      "distanceKm": 6.3,
+      "duration": "3 to 4 hours",
+      "grade": "Grade 3",
+      "shape": "loop",
+      "note": "The creek can flood after heavy rain. The park says never to walk in a canyon before, during or after heavy rain."
+    },
+    "sources": [
+      {
+        "name": "NSW National Parks: Grand Canyon track",
+        "url": "https://www.nationalparks.nsw.gov.au/things-to-do/walking-tracks/grand-canyon-track"
+      }
+    ],
+    "image": {
+      "src": "/places/grand-canyon-track.jpg",
+      "alt": "The Grand Canyon Track at Blackheath",
+      "credit": "Andrea Schaffer from Sydney, Australia / Wikimedia Commons",
+      "licence": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Grand_canyon_track_(50659740207).jpg"
+    }
+  },
+  {
+    "id": "royal-coast-track",
+    "name": "Royal National Park Coast Track",
+    "kind": "trail",
+    "state": "NSW",
+    "lat": -34.0918672,
+    "lng": 151.1572644,
+    "base": "sydney",
+    "inherits": "sydney",
+    "access": "By train on the Cronulla line, then the ferry to Bundeena and a 1.5 km walk to the track start",
+    "description": "The coast track from Bundeena to Otford is a two-day walk. There is no drinking water on the track, and the water at Wattamolla and Garie Beach is not drinkable.",
+    "funFacts": [],
+    "trail": {
+      "name": "The Coast Track (Bundeena to Otford)",
+      "distanceKm": 27,
+      "duration": "2 days",
+      "grade": "Grade 4",
+      "shape": "one-way",
+      "note": "Bring at least 2 litres of water per person per day. The beaches are not patrolled and can have strong rips. Total fire bans may apply, and the park can close for poor weather or fire danger."
+    },
+    "suits": [
+      "friends",
+      "couple",
+      "solo"
+    ],
+    "tip": "Shorter option from Bundeena: the Bundeena Drive to Marley walk is 7.8 km return, 3 to 4 hours (Grade 3).",
+    "sources": [
+      {
+        "name": "NSW National Parks: The Coast Track",
+        "url": "https://www.nationalparks.nsw.gov.au/things-to-do/walking-tracks/the-coast-track"
+      },
+      {
+        "name": "NSW National Parks: Bundeena Drive to Marley walk",
+        "url": "https://www.nationalparks.nsw.gov.au/things-to-do/walking-tracks/bundeena-drive-to-marley-walk"
+      }
+    ],
+    "image": {
+      "src": "/places/royal-coast-track.jpg",
+      "alt": "The Coast Track in Royal National Park",
+      "credit": "Maurice van Creij / Wikimedia Commons",
+      "licence": "CC BY 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Royal_National_Park_Coast_Track_-_panoramio.jpg"
+    }
+  },
+  {
+    "id": "west-head",
+    "name": "West Head",
+    "kind": "trail",
+    "state": "NSW",
+    "lat": -33.5791396,
+    "lng": 151.309244,
+    "base": "sydney",
+    "inherits": "sydney",
+    "description": "The West Head lookout in Ku-ring-gai Chase National Park, with the Aboriginal Heritage walk past rock art. Bring drinking water.",
+    "funFacts": [],
+    "trail": {
+      "name": "Aboriginal Heritage walk",
+      "distanceKm": 4.4,
+      "duration": "2 hours 30 minutes to 3 hours 30 minutes",
+      "grade": "Grade 4",
+      "shape": "loop",
+      "note": "The rock art is delicate, so do not touch it. The gates to West Head close at 8.30 pm in daylight saving time and at 6 pm the rest of the year, and open at 6 am."
+    },
+    "sources": [
+      {
+        "name": "NSW National Parks: Aboriginal Heritage walk",
+        "url": "https://www.nationalparks.nsw.gov.au/things-to-do/walking-tracks/aboriginal-heritage-walk"
+      },
+      {
+        "name": "NSW National Parks: West Head lookout",
+        "url": "https://www.nationalparks.nsw.gov.au/things-to-do/lookouts/west-head-lookout"
+      }
+    ],
+    "image": {
+      "src": "/places/west-head.jpg",
+      "alt": "West Head in Ku-ring-gai Chase National Park",
+      "credit": "Jackson A Douglas / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:West_Head_Beach_Sunrise.jpg"
+    }
+  },
+  {
+    "id": "melbourne",
+    "name": "Melbourne",
+    "kind": "city",
+    "state": "VIC",
+    "lat": -37.81416667,
+    "lng": 144.96305556,
+    "isBase": true,
+    "inherits": "great-ocean-road",
+    "skipHazards": [
+      "sharks",
+      "rip-currents"
+    ],
+    "description": "Victoria's capital, and the usual base for day trips to the Dandenong Ranges, Phillip Island, Wilsons Promontory and the Mornington Peninsula.",
+    "funFacts": [
+      "The Twelve Apostles are about 275 km west of Melbourne, roughly a four-hour drive along the Great Ocean Road.",
+      "Phillip Island's Penguin Parade is about 90 minutes' drive from Melbourne."
+    ],
+    "sources": [
+      {
+        "name": "Visit Victoria: 12 Apostles",
+        "url": "https://www.visitvictoria.com/regions/great-ocean-road/see-and-do/nature-and-wildlife/beaches-and-coastlines/12-apostles"
+      },
+      {
+        "name": "Phillip Island Nature Parks: Penguin Parade",
+        "url": "https://www.penguins.org.au/attractions/penguin-parade/"
+      }
+    ],
+    "image": {
+      "src": "/places/melbourne.jpg",
+      "alt": "The Melbourne skyline",
+      "credit": "DXR / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Northwest_view_of_South_Yarra_skyline_20230221_1.jpg"
+    }
+  },
+  {
+    "id": "dandenong-ranges",
+    "name": "Dandenong Ranges",
+    "kind": "park",
+    "state": "VIC",
+    "lat": -37.81027778,
+    "lng": 145.38555556,
+    "base": "melbourne",
+    "inherits": "great-ocean-road",
+    "skipHazards": [
+      "sharks",
+      "rip-currents"
+    ],
+    "access": "The 1000 Steps walk starts at the Ferntree Gully Picnic Area; the train station is about 1.2 km away",
+    "description": "Dandenong Ranges National Park, home of the 1000 Steps Kokoda Memorial Walk. You complete the loop by taking the Lyrebird Track back to the car park.",
+    "funFacts": [],
+    "trail": {
+      "name": "1000 Steps Kokoda Memorial Walk",
+      "shape": "loop",
+      "note": "The park closes on days of Extreme Fire Danger Rating or severe weather. The car park is usually full by 10 am on weekend mornings."
+    },
+    "sources": [
+      {
+        "name": "Parks Victoria: 1000 Steps walk",
+        "url": "https://www.parks.vic.gov.au/places-to-see/parks/dandenong-ranges-national-park/things-to-do/1000-steps-walk"
+      }
+    ],
+    "image": {
+      "src": "/places/dandenong-ranges.jpg",
+      "alt": "Forest in the Dandenong Ranges",
+      "credit": "Patche99z / Wikimedia Commons",
+      "licence": "Public domain",
+      "url": "https://commons.wikimedia.org/wiki/File:Sherbrooke_forest_Victoria_220rs.jpg"
+    }
+  },
+  {
+    "id": "penguin-parade",
+    "name": "Penguin Parade",
+    "kind": "sight",
+    "state": "VIC",
+    "lat": -38.507619,
+    "lng": 145.1481302,
+    "base": "melbourne",
+    "inherits": "great-ocean-road",
+    "skipHazards": [
+      "sharks",
+      "rip-currents"
+    ],
+    "access": "About 90 minutes' drive from Melbourne, plus around 20 minutes from the bridge",
+    "description": "Little penguins come ashore at Phillip Island at sunset, any night of the year. Bookings are essential.",
+    "funFacts": [],
+    "suits": [
+      "family",
+      "couple"
+    ],
+    "tip": "Arrive about an hour before the penguins. There are no return buses from the Parade, and drivers should take care at dawn, dusk and night.",
+    "sources": [
+      {
+        "name": "Phillip Island Nature Parks: Penguin Parade",
+        "url": "https://www.penguins.org.au/attractions/penguin-parade/"
+      }
+    ],
+    "image": {
+      "src": "/places/penguin-parade.jpg",
+      "alt": "The Penguin Parade at Phillip Island",
+      "credit": "Gambitek / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Phillip_Island_Penguin_Parade_exterior.jpg"
+    }
+  },
+  {
+    "id": "squeaky-beach",
+    "name": "Squeaky Beach",
+    "kind": "sight",
+    "state": "VIC",
+    "lat": -39.0249506,
+    "lng": 146.3051504,
+    "base": "melbourne",
+    "inherits": "great-ocean-road",
+    "skipHazards": [
+      "sharks"
+    ],
+    "access": "Wilsons Promontory is approximately three hours' drive from Melbourne",
+    "description": "A beach in Wilsons Promontory National Park, reached by a walk the park calls suitable for all levels, including strollers.",
+    "funFacts": [],
+    "suits": [
+      "family"
+    ],
+    "tip": "Swimming is not recommended because of persistent rips, and the beach is not patrolled. The car park is limited and fills quickly.",
+    "sources": [
+      {
+        "name": "Parks Victoria: Squeaky Beach",
+        "url": "https://www.parks.vic.gov.au/places-to-see/parks/wilsons-promontory-national-park/things-to-do/squeaky-beach"
+      },
+      {
+        "name": "Parks Victoria: Wilsons Promontory",
+        "url": "https://www.parks.vic.gov.au/places-to-see/parks/wilsons-promontory-national-park"
+      }
+    ],
+    "image": {
+      "src": "/places/squeaky-beach.jpg",
+      "alt": "The coast near Squeaky Beach in Wilsons Promontory National Park",
+      "credit": "Dietmar Rabich / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Wilsons_Promontory_National_Park_(AU),_Squeaky_Beach_--_2019_--_1644.jpg"
+    }
+  },
+  {
+    "id": "mount-oberon",
+    "name": "Mount Oberon Walk",
+    "kind": "trail",
+    "state": "VIC",
+    "lat": -39.0298923,
+    "lng": 146.3442501,
+    "base": "melbourne",
+    "inherits": "great-ocean-road",
+    "skipHazards": [
+      "sharks",
+      "rip-currents"
+    ],
+    "access": "Starts at the Telegraph Saddle car park in Wilsons Promontory",
+    "description": "A walk to a summit in Wilsons Promontory National Park. The final 100 m is a steep climb of timber and granite steps.",
+    "funFacts": [],
+    "trail": {
+      "name": "Mount Oberon Walk",
+      "distanceKm": 6.8,
+      "duration": "2 hours",
+      "grade": "Grade 4",
+      "shape": "return",
+      "note": "Beware of unprotected cliffs. Granite boulders may be slippery when wet."
+    },
+    "suits": [
+      "friends",
+      "couple",
+      "solo"
+    ],
+    "sources": [
+      {
+        "name": "Parks Victoria: Mount Oberon Walk",
+        "url": "https://www.parks.vic.gov.au/places-to-see/sites/mount-oberon-walk"
+      }
+    ],
+    "image": {
+      "src": "/places/mount-oberon.jpg",
+      "alt": "Mount Oberon in Wilsons Promontory",
+      "credit": "Dhx1 / Wikimedia Commons",
+      "licence": "CC0",
+      "url": "https://commons.wikimedia.org/wiki/File:Mount_Oberon,_Wilsons_Promontory_National_Park_01.jpg"
+    }
+  },
+  {
+    "id": "point-nepean",
+    "name": "Point Nepean",
+    "kind": "park",
+    "state": "VIC",
+    "lat": -38.3153803,
+    "lng": 144.6856017,
+    "base": "melbourne",
+    "inherits": "great-ocean-road",
+    "skipHazards": [
+      "sharks"
+    ],
+    "access": "110 km south of Melbourne, near Portsea",
+    "description": "Point Nepean National Park has the Bay Beach Walk, the Range Area Walk and the Coles Track, which is shared with cyclists.",
+    "funFacts": [],
+    "tip": "Snakes are common in the warmer months, there is no drinking water beyond the Quarantine Station, and the bay beach can have strong currents and rips.",
+    "sources": [
+      {
+        "name": "Parks Victoria: Point Nepean National Park",
+        "url": "https://www.parks.vic.gov.au/places-to-see/parks/point-nepean-national-park"
+      }
+    ],
+    "image": {
+      "src": "/places/point-nepean.jpg",
+      "alt": "Point Nepean at the entrance to Port Phillip Bay",
+      "credit": "Maias / Wikimedia Commons",
+      "licence": "CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Point_Nepean_from_Queenscliff.jpg"
+    }
+  },
+  {
+    "id": "mornington-peninsula",
+    "name": "Mornington Peninsula",
+    "kind": "park",
+    "state": "VIC",
+    "lat": -38.4987189,
+    "lng": 144.8883594,
+    "base": "melbourne",
+    "inherits": "great-ocean-road",
+    "skipHazards": [
+      "sharks"
+    ],
+    "description": "Mornington Peninsula National Park. Ocean beaches have dangerous undertows, rips and large swells, and the cliffs are unstable, so keep to marked trails.",
+    "funFacts": [],
+    "trail": {
+      "name": "Two Bays Walking Trail",
+      "distanceKm": 26,
+      "note": "A hike from Dromana to Cape Schanck."
+    },
+    "sources": [
+      {
+        "name": "Parks Victoria: Mornington Peninsula National Park",
+        "url": "https://www.parks.vic.gov.au/places-to-see/parks/mornington-peninsula-national-park"
+      }
+    ],
+    "image": {
+      "src": "/places/mornington-peninsula.jpg",
+      "alt": "Cape Schanck Lighthouse",
+      "credit": "Steve Bittinger from Canberra, Australia / Wikimedia Commons",
+      "licence": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Cape_Schanck_Lighthouse_(22435128833).jpg"
+    }
+  },
+  {
+    "id": "loch-ard-gorge",
+    "name": "Loch Ard Gorge",
+    "kind": "sight",
+    "state": "VIC",
+    "lat": -38.6464071,
+    "lng": 143.0703269,
+    "base": "melbourne",
+    "inherits": "great-ocean-road",
+    "access": "Just three minutes west of the Twelve Apostles",
+    "description": "A gorge on the Great Ocean Road with trails to lookouts. Accessible parking serves the Geology and Loch Ard lookout trails.",
+    "funFacts": [],
+    "sources": [
+      {
+        "name": "Visit Victoria: Loch Ard Gorge",
+        "url": "https://www.visitvictoria.com/regions/great-ocean-road/see-and-do/nature-and-wildlife/beaches-and-coastlines/vv-loch-ard-gorge"
+      }
+    ],
+    "image": {
+      "src": "/places/loch-ard-gorge.jpg",
+      "alt": "Loch Ard Gorge on the Great Ocean Road",
+      "credit": "Bernard Spragg. NZ / Wikimedia Commons",
+      "licence": "CC0",
+      "url": "https://commons.wikimedia.org/wiki/File:Loch_Ard_Gorge._Aust.jpg"
+    }
+  },
+  {
+    "id": "healesville-sanctuary",
+    "name": "Healesville Sanctuary",
+    "kind": "sight",
+    "state": "VIC",
+    "lat": -37.6842989,
+    "lng": 145.5310526,
+    "base": "melbourne",
+    "inherits": "great-ocean-road",
+    "skipHazards": [
+      "sharks",
+      "rip-currents"
+    ],
+    "description": "A wildlife sanctuary run by Zoos Victoria, open daily from 9 am to 5 pm.",
+    "funFacts": [],
+    "suits": [
+      "family"
+    ],
+    "sources": [
+      {
+        "name": "Zoos Victoria: Healesville Sanctuary",
+        "url": "https://www.zoo.org.au/healesville/"
+      }
+    ],
+    "image": {
+      "src": "/places/healesville-sanctuary.jpg",
+      "alt": "A short-beaked echidna at Healesville Sanctuary",
+      "credit": "Ymblanter / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Healesville_Tachyglossus_aculeatus_in_Healesville_Sanctuary_05.jpg"
     }
   }
 ]

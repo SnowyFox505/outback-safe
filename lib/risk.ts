@@ -98,14 +98,16 @@ export function placeHazardGroups(
   ctx: HazardContext,
 ): PlaceHazards {
   const result: PlaceHazards = { active: [], offSeason: [], notRelevant: [] };
-  const inherited = getPlace(placeId)?.inherits;
+  const place = getPlace(placeId);
+  const inherited = place?.inherits;
   for (const h of hazards) {
-    if (
-      !h.placeIds.includes(placeId) &&
-      !(inherited && h.placeIds.includes(inherited))
-    ) {
-      continue;
-    }
+    // Listed for this very place, or carried over from the place it inherits from.
+    const direct = h.placeIds.includes(placeId);
+    const carried =
+      !!inherited &&
+      h.placeIds.includes(inherited) &&
+      !place?.skipHazards?.includes(h.id);
+    if (!direct && !carried) continue;
     const status = hazardStatus(h, month, ctx);
     if (status === "active") result.active.push(h);
     else if (status === "off-season") result.offSeason.push(h);

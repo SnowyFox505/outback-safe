@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronRight } from "lucide-react";
-import { fitsParty, ideasNearBases, partyLabel, trailLine } from "@/lib/suggestions";
+import { fitsParty, ideasNearBases, partyLabel, trailSummary } from "@/lib/suggestions";
 import type { Party, Stop, TripAnswers } from "@/lib/types";
 
 interface NearbyIdeasProps {
@@ -34,9 +34,7 @@ export function NearbyIdeas({ trip, stops, onSelectPlace }: NearbyIdeasProps) {
                       {place.name}
                     </span>
                     <span className="tabular block truncate text-[12px] text-bone-dim">
-                      {place.trail && trailLine(place.trail)
-                        ? trailLine(place.trail)
-                        : place.access ?? place.description}
+                      {trailSummary(place) ?? place.access ?? place.description}
                     </span>
                     {fitsParty(place, trip.party) && (
                       <span className="mt-1 inline-block rounded-full bg-ochre/15 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.12em] text-ochre">

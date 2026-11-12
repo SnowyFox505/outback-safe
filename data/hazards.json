@@ -139,7 +139,8 @@
       "darwin",
       "alice-springs",
       "uluru",
-      "perth"
+      "perth",
+      "point-nepean"
     ],
     "description": "Snakes are most active in the warmer months, and in the tropical north they can be active all year. Most bites happen when a snake is stepped on or handled.",
     "whatToDo": "Wear closed shoes and long trousers on bush walks, watch where you step and put your hands, and never try to catch or kill a snake. Give it space and it will usually move away.",
@@ -152,6 +153,10 @@
       {
         "name": "Australian Reptile Park: Snake season",
         "url": "https://www.reptilepark.com.au/about/zoo-news/snake-season-is-here"
+      },
+      {
+        "name": "Parks Victoria: Point Nepean National Park",
+        "url": "https://www.parks.vic.gov.au/places-to-see/parks/point-nepean-national-park"
       }
     ],
     "activities": [
@@ -183,7 +188,10 @@
     "placeIds": [
       "sydney",
       "perth",
-      "great-ocean-road"
+      "great-ocean-road",
+      "squeaky-beach",
+      "point-nepean",
+      "mornington-peninsula"
     ],
     "description": "Rips are strong currents that pull swimmers away from shore. They are the leading cause of coastal drowning in New South Wales and can form on any surf beach.",
     "whatToDo": "Swim between the red and yellow flags on a patrolled beach. If there are no flags, do not swim. Look for gaps in the breaking waves before you enter the water.",
@@ -196,6 +204,18 @@
       {
         "name": "Royal Life Saving WA: Rip currents",
         "url": "https://www.royallifesavingwa.com.au/staying-safe/safety-advice/risk-factors/rip-currents"
+      },
+      {
+        "name": "Parks Victoria: Squeaky Beach",
+        "url": "https://www.parks.vic.gov.au/places-to-see/parks/wilsons-promontory-national-park/things-to-do/squeaky-beach"
+      },
+      {
+        "name": "Parks Victoria: Point Nepean National Park",
+        "url": "https://www.parks.vic.gov.au/places-to-see/parks/point-nepean-national-park"
+      },
+      {
+        "name": "Parks Victoria: Mornington Peninsula National Park",
+        "url": "https://www.parks.vic.gov.au/places-to-see/parks/mornington-peninsula-national-park"
       }
     ],
     "activities": [
@@ -478,6 +498,47 @@
       {
         "name": "NSW National Parks: Fire bans",
         "url": "https://www.nationalparks.nsw.gov.au/safety/fire-safety/fire-bans"
+      }
+    ],
+    "campingBoost": true
+  },
+  {
+    "id": "bushfires-victoria",
+    "name": "Bushfires (Victoria)",
+    "category": "weather",
+    "severity": 3,
+    "months": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "placeIds": [
+      "melbourne",
+      "dandenong-ranges",
+      "penguin-parade",
+      "squeaky-beach",
+      "mount-oberon",
+      "point-nepean",
+      "mornington-peninsula",
+      "healesville-sanctuary",
+      "loch-ard-gorge",
+      "great-ocean-road"
+    ],
+    "description": "In Victoria the CFA declares the Fire Danger Period council by council, depending on rain and local conditions. It can start as early as October and last until as late as May. A Total Fire Ban can be declared on any day.",
+    "whatToDo": "Check the fire danger rating and any Total Fire Ban before you travel, and follow the advice of the CFA and Emergency Victoria. Parks can close on days of Extreme Fire Danger Rating.",
+    "sources": [
+      {
+        "name": "CFA: About the Fire Danger Period",
+        "url": "https://www.cfa.vic.gov.au/warnings-restrictions/fire-danger-period/about-the-fire-danger-period"
+      },
+      {
+        "name": "Parks Victoria: 1000 Steps walk",
+        "url": "https://www.parks.vic.gov.au/places-to-see/parks/dandenong-ranges-national-park/things-to-do/1000-steps-walk"
       }
     ],
     "campingBoost": true

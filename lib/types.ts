@@ -113,6 +113,8 @@ export interface Place {
   tip?: string;
   /** Hazards of this place id apply here too. */
   inherits?: string;
+  /** Hazard ids that do not carry over from `inherits` (for example sharks inland). */
+  skipHazards?: string[];
   image?: PlaceImage;
   sources?: Source[];
 }

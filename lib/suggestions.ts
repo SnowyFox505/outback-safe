@@ -7,7 +7,13 @@ export function trailLine(t: TrailInfo): string {
   const way = t.eachWay ? " each way" : "";
   if (t.distanceKm !== undefined) {
     const shape =
-      t.shape === "loop" ? " loop" : t.shape === "return" && !t.eachWay ? " return" : "";
+      t.shape === "loop"
+        ? " loop"
+        : t.shape === "one-way"
+          ? " one-way"
+          : t.shape === "return" && !t.eachWay
+            ? " return"
+            : "";
     parts.push(`${t.distanceKm} km${shape}${way}`);
   } else if (t.shape === "loop") {
     parts.push("Loop");
@@ -15,6 +21,15 @@ export function trailLine(t: TrailInfo): string {
   if (t.duration) parts.push(`${t.duration}${way}`);
   if (t.grade) parts.push(t.grade);
   return parts.join(" · ");
+}
+
+/** One line for lists: the walk's name (when it differs from the place) and its facts. */
+export function trailSummary(place: Place): string | null {
+  const t = place.trail;
+  if (!t) return null;
+  const facts = trailLine(t);
+  const named = t.name && t.name !== place.name ? t.name : null;
+  return [named, facts].filter(Boolean).join(" · ") || null;
 }
 
 export const partyLabel: Record<Party, string> = {
