@@ -1,6 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useAnimationControls,
+  useReducedMotion,
+} from "motion/react";
 import { ChevronLeft } from "lucide-react";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { Button } from "@/components/ui/Button";
@@ -38,7 +44,24 @@ const SHOW_GOOGLE = false;
 type Mode = "options" | "signin" | "signup";
 
 const inputClass =
-  "h-12 w-full rounded-[16px] border border-bone/10 bg-char-800 px-4 text-[16px] text-bone outline-none placeholder:text-bone-faint focus:border-ochre";
+  "h-12 w-full rounded-[16px] border border-bone/10 bg-char-800/90 px-4 text-[16px] text-bone outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-bone-faint focus:border-ochre focus:shadow-[0_0_0_4px_rgb(217_164_65/0.12)]";
+
+const SOFT = [0.22, 0.8, 0.28, 1] as const;
+const BOUNCE = { type: "spring", stiffness: 360, damping: 22, mass: 0.9 } as const;
+
+/** Space around a field, so focus glows are not clipped while heights animate. */
+function Field({ children }: { children: React.ReactNode }) {
+  return <div className="-mx-2 px-2 pb-3">{children}</div>;
+}
+
+function Spinner() {
+  return (
+    <span
+      aria-hidden
+      className="h-5 w-5 animate-spin rounded-full border-2 border-ink/25 border-t-ink"
+    />
+  );
+}
 
 function EmailForm({
   mode,
@@ -48,11 +71,20 @@ function EmailForm({
   onModeChange: (m: Mode) => void;
 }) {
   const { signInWithEmail, signUpWithEmail, resetPassword } = useAuth();
+  const reduce = useReducedMotion();
+  const shake = useAnimationControls();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const signup = mode === "signup";
+
+  function fail(message: string) {
+    setError(message);
+    if (!reduce) void shake.start({ x: [0, -10, 9, -6, 4, 0], transition: { duration: 0.45 } });
+  }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -62,91 +94,190 @@ function EmailForm({
     const result =
       mode === "signin"
         ? await signInWithEmail(email, password)
-        : await signUpWithEmail(email, password);
+        : await signUpWithEmail(email, password, name);
     setBusy(false);
-    if (result) setError(result);
+    if (result) fail(result);
   }
 
   async function forgot() {
     setError(null);
     setNotice(null);
     if (!email.trim()) {
-      setError("Enter your email above first.");
+      fail("Enter your email above first.");
       return;
     }
     setBusy(true);
     const result = await resetPassword(email);
     setBusy(false);
-    if (result) setError(result);
+    if (result) fail(result);
     else setNotice("If an account exists for this email, we sent a reset link.");
   }
 
   return (
-    <form onSubmit={submit} className="space-y-3">
-      {SHOW_GOOGLE && (
-        <button
-          type="button"
-          onClick={() => onModeChange("options")}
-          className="-ml-1 flex h-11 items-center gap-1 text-[14px] text-bone-dim active:text-bone"
-        >
-          <ChevronLeft size={18} strokeWidth={1.5} />
-          Other options
-        </button>
-      )}
-      <input
-        type="email"
-        inputMode="email"
-        autoComplete="email"
-        autoCapitalize="none"
-        autoCorrect="off"
-        placeholder="Email"
-        aria-label="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-        className={inputClass}
-      />
-      <input
-        type="password"
-        autoComplete={mode === "signin" ? "current-password" : "new-password"}
-        placeholder={mode === "signin" ? "Password" : "Password (6+ characters)"}
-        aria-label="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-        className={inputClass}
-      />
-      {error && (
-        <p role="alert" className="px-1 text-[13px] text-hz-3">
-          {error}
-        </p>
-      )}
-      {notice && <p className="px-1 text-[13px] text-sea">{notice}</p>}
-      <Button type="submit" size="lg" className="w-full" disabled={busy}>
-        {mode === "signin" ? "Sign in" : "Create account"}
-      </Button>
-      <div className="flex items-center justify-between">
-        <button
-          type="button"
-          onClick={() => {
-            setError(null);
-            setNotice(null);
-            onModeChange(mode === "signin" ? "signup" : "signin");
-          }}
-          className="h-11 text-[14px] text-bone active:text-ochre"
-        >
-          {mode === "signin" ? "Create an account" : "I already have an account"}
-        </button>
-        {mode === "signin" && (
+    <form onSubmit={submit}>
+      <motion.div animate={shake}>
+        {SHOW_GOOGLE && (
           <button
             type="button"
-            onClick={() => void forgot()}
-            className="h-11 text-[14px] text-bone-dim active:text-bone"
+            onClick={() => onModeChange("options")}
+            className="-ml-1 flex h-11 items-center gap-1 text-[14px] text-bone-dim active:text-bone"
           >
-            Forgot password?
+            <ChevronLeft size={18} strokeWidth={1.5} />
+            Other options
           </button>
         )}
-      </div>
+
+        <div className="relative h-6 overflow-hidden">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.p
+              key={mode}
+              initial={reduce ? false : { y: 16, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={reduce ? undefined : { y: -16, opacity: 0 }}
+              transition={{ duration: 0.2, ease: SOFT }}
+              className="font-mono text-[10px] uppercase tracking-[0.18em] text-bone-dim"
+            >
+              {signup ? "Create your account" : "Welcome back"}
+            </motion.p>
+          </AnimatePresence>
+        </div>
+
+        <AnimatePresence initial={false}>
+          {signup && (
+            <motion.div
+              key="name"
+              initial={reduce ? false : { height: 0, opacity: 0, x: 64 }}
+              animate={{ height: "auto", opacity: 1, x: 0 }}
+              exit={reduce ? undefined : { height: 0, opacity: 0, x: -64 }}
+              transition={{
+                height: { duration: 0.32, ease: SOFT },
+                opacity: { duration: 0.2 },
+                x: reduce ? { duration: 0 } : BOUNCE,
+              }}
+              style={{ overflow: "hidden" }}
+            >
+              <Field>
+                <input
+                  type="text"
+                  autoComplete="given-name"
+                  autoCapitalize="words"
+                  placeholder="What should we call you? (optional)"
+                  aria-label="Your name (optional)"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  maxLength={40}
+                  className={inputClass}
+                />
+              </Field>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <Field>
+          <input
+            type="email"
+            inputMode="email"
+            autoComplete="email"
+            autoCapitalize="none"
+            autoCorrect="off"
+            placeholder="Email"
+            aria-label="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className={inputClass}
+          />
+        </Field>
+        <Field>
+          <input
+            type="password"
+            autoComplete={mode === "signin" ? "current-password" : "new-password"}
+            placeholder={mode === "signin" ? "Password" : "Password (6+ characters)"}
+            aria-label="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className={inputClass}
+          />
+        </Field>
+
+        <AnimatePresence initial={false}>
+          {(error || notice) && (
+            <motion.div
+              key={error ?? notice}
+              initial={reduce ? false : { height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={reduce ? undefined : { height: 0, opacity: 0 }}
+              transition={{ duration: 0.25, ease: SOFT }}
+              style={{ overflow: "hidden" }}
+            >
+              {error ? (
+                <p role="alert" className="px-1 pb-3 text-[13px] text-hz-3">
+                  {error}
+                </p>
+              ) : (
+                <p className="px-1 pb-3 text-[13px] text-sea">{notice}</p>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <Button type="submit" size="lg" className="relative w-full overflow-hidden" disabled={busy}>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.span
+              key={busy ? "busy" : mode}
+              initial={reduce ? false : { y: 18, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={reduce ? undefined : { y: -18, opacity: 0 }}
+              transition={{ duration: 0.18, ease: SOFT }}
+              className="flex items-center justify-center"
+            >
+              {busy ? <Spinner /> : signup ? "Create account" : "Sign in"}
+            </motion.span>
+          </AnimatePresence>
+        </Button>
+
+        <div className="mt-3 flex items-center justify-between">
+          <button
+            type="button"
+            onClick={() => {
+              setError(null);
+              setNotice(null);
+              onModeChange(signup ? "signin" : "signup");
+            }}
+            className="relative h-11 overflow-hidden text-left text-[14px] text-bone active:text-ochre"
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={mode}
+                initial={reduce ? false : { y: 14, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={reduce ? undefined : { y: -14, opacity: 0 }}
+                transition={{ duration: 0.18, ease: SOFT }}
+                className="flex h-full items-center"
+              >
+                {signup ? "I already have an account" : "Create an account"}
+              </motion.span>
+            </AnimatePresence>
+          </button>
+          <AnimatePresence initial={false}>
+            {!signup && (
+              <motion.button
+                key="forgot"
+                type="button"
+                onClick={() => void forgot()}
+                initial={reduce ? false : { opacity: 0, x: 18 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={reduce ? undefined : { opacity: 0, x: 18 }}
+                transition={{ duration: 0.22, ease: SOFT }}
+                className="h-11 text-[14px] text-bone-dim active:text-bone"
+              >
+                Forgot password?
+              </motion.button>
+            )}
+          </AnimatePresence>
+        </div>
+      </motion.div>
     </form>
   );
 }

@@ -6,6 +6,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import type { ReactNode } from "react";
@@ -18,6 +19,7 @@ import {
   signInWithPopup,
   signInWithRedirect,
   signOut as firebaseSignOut,
+  updateProfile,
 } from "firebase/auth";
 import type { User } from "firebase/auth";
 import { getFirebaseAuth, isFirebaseConfigured } from "@/lib/firebase";
@@ -28,12 +30,23 @@ interface AuthValue {
   status: Status;
   user: User | null;
   error: string | null;
+  /** Set right after someone signs in or registers in this session, for the arrival animation. */
+  arrival: Arrival | null;
+  clearArrival: () => void;
   signIn: () => Promise<void>;
   signOut: () => Promise<void>;
   /** Email methods resolve to an error message, or null on success. */
   signInWithEmail: (email: string, password: string) => Promise<string | null>;
-  signUpWithEmail: (email: string, password: string) => Promise<string | null>;
+  signUpWithEmail: (
+    email: string,
+    password: string,
+    name?: string,
+  ) => Promise<string | null>;
   resetPassword: (email: string) => Promise<string | null>;
+}
+
+export interface Arrival {
+  kind: "signin" | "signup";
 }
 
 const AuthContext = createContext<AuthValue | null>(null);
@@ -85,18 +98,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [arrival, setArrival] = useState<Arrival | null>(null);
+  // Bumped when the profile changes in place, so the name shows up right away.
+  const [profileVersion, setProfileVersion] = useState(0);
+  const pendingKind = useRef<Arrival["kind"] | null>(null);
 
   useEffect(() => {
     if (!isFirebaseConfigured) return;
     return onAuthStateChanged(getFirebaseAuth(), (next) => {
       setUser(next);
       setStatus(next ? "signedIn" : "signedOut");
+      // Only a sign-in started on this screen counts, not a restored session.
+      if (next && pendingKind.current) {
+        setArrival({ kind: pendingKind.current });
+        pendingKind.current = null;
+      }
     });
   }, []);
+
+  const clearArrival = useCallback(() => setArrival(null), []);
 
   const signIn = useCallback(async () => {
     if (!isFirebaseConfigured) return;
     setError(null);
+    pendingKind.current = "signin";
     const auth = getFirebaseAuth();
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({ prompt: "select_account", hl: "en" });
@@ -125,6 +150,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         await action();
         return null;
       } catch (e) {
+        pendingKind.current = null;
         const code = (e as { code?: string }).code ?? "";
         console.error("Email auth failed", e);
         return friendlyError(code) || "Something went wrong. Please try again.";
@@ -134,18 +160,36 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 
   const signInWithEmail = useCallback(
-    (email: string, password: string) =>
-      withEmail(() =>
+    (email: string, password: string) => {
+      pendingKind.current = "signin";
+      return withEmail(() =>
         signInWithEmailAndPassword(getFirebaseAuth(), email.trim(), password),
-      ),
+      );
+    },
     [withEmail],
   );
 
   const signUpWithEmail = useCallback(
-    (email: string, password: string) =>
-      withEmail(() =>
-        createUserWithEmailAndPassword(getFirebaseAuth(), email.trim(), password),
-      ),
+    (email: string, password: string, name?: string) => {
+      pendingKind.current = "signup";
+      return withEmail(async () => {
+        const cred = await createUserWithEmailAndPassword(
+          getFirebaseAuth(),
+          email.trim(),
+          password,
+        );
+        const displayName = name?.trim();
+        if (displayName) {
+          try {
+            await updateProfile(cred.user, { displayName });
+            setProfileVersion((v) => v + 1);
+          } catch (e) {
+            // The account exists; a missing name is not worth failing the sign-up.
+            console.error("Could not save the display name", e);
+          }
+        }
+      });
+    },
     [withEmail],
   );
 
@@ -160,11 +204,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await firebaseSignOut(getFirebaseAuth());
   }, []);
 
+  // profileVersion is a dependency on purpose: the user object is updated in
+  // place when a name is saved, so the context value must be rebuilt.
+  /* eslint-disable react-hooks/exhaustive-deps */
   const value = useMemo(
     () => ({
       status,
       user,
       error,
+      arrival,
+      clearArrival,
       signIn,
       signOut,
       signInWithEmail,
@@ -175,6 +224,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       status,
       user,
       error,
+      arrival,
+      clearArrival,
+      profileVersion,
       signIn,
       signOut,
       signInWithEmail,
@@ -182,6 +234,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       resetPassword,
     ],
   );
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
