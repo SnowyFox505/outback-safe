@@ -70,6 +70,8 @@ brings back the manual Save/Update button.
   by the NSW Rural Fire Service.
 - `node scripts/contact-sheet.mjs out.jpg` builds one overview image of all
   photos for a quick visual check.
+- `suits` (who a place is good for) is our own editorial suggestion, not a source
+  fact. Everything else on a place is copied from its sources.
 - "Staying in" (base cities) and "Who is travelling" drive the suggestions. A
   place can name the groups it suits with `suits`; those come first.
 

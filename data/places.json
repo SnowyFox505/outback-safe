@@ -1067,9 +1067,6 @@
     "access": "About 80 km north of Cairns",
     "description": "The gorge section of Daintree National Park, with several rainforest tracks from the Mossman Gorge Centre.",
     "funFacts": [],
-    "suits": [
-      "family"
-    ],
     "trail": {
       "name": "Rainforest circuit track",
       "distanceKm": 3.4,
@@ -1211,6 +1208,376 @@
       "credit": "Steve Fitzgerald / Wikimedia Commons",
       "licence": "CC BY-SA 4.0",
       "url": "https://commons.wikimedia.org/wiki/File:Crystal_Cascades_SF24334-02.jpg"
+    }
+  },
+  {
+    "id": "wangi-falls",
+    "name": "Wangi Falls",
+    "kind": "sight",
+    "state": "NT",
+    "lat": -13.1638778,
+    "lng": 130.6849317,
+    "base": "darwin",
+    "inherits": "darwin",
+    "skipHazards": [
+      "box-jellyfish-irukandji"
+    ],
+    "access": "Tourism NT gives the drive from Darwin as 60 to 90 minutes",
+    "description": "A waterfall and swimming hole in Litchfield National Park, reached by sealed roads. Picnic and camping areas are open all year.",
+    "funFacts": [],
+    "trail": {
+      "name": "Wangi Falls loop",
+      "distanceKm": 3,
+      "shape": "loop",
+      "note": "Up and over the falls and back to the car park. Swimming is not permitted in the wet season (about October to March) because of strong currents and possible saltwater crocodiles."
+    },
+    "tip": "You need an NT Parks Visitor Pass to enter Litchfield National Park.",
+    "sources": [
+      {
+        "name": "Tourism NT: Wangi Falls",
+        "url": "https://northernterritory.com/darwin-and-surrounds/see-and-do/wangi-falls"
+      }
+    ],
+    "image": {
+      "src": "/places/wangi-falls.jpg",
+      "alt": "Wangi Falls in Litchfield National Park",
+      "credit": "Dietmar Rabich / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Litchfield_National_Park_(AU),_Wangi_Falls_--_2019_--_3749.jpg"
+    }
+  },
+  {
+    "id": "florence-falls",
+    "name": "Florence Falls",
+    "kind": "sight",
+    "state": "NT",
+    "lat": -13.09888889,
+    "lng": 130.78055556,
+    "base": "darwin",
+    "inherits": "darwin",
+    "skipHazards": [
+      "box-jellyfish-irukandji"
+    ],
+    "description": "A waterfall in Litchfield National Park that flows year-round, and is best in the wet and early dry season.",
+    "funFacts": [],
+    "tip": "You can walk down 160 steps from the lookout, or take the 1 km Shady Creek Walk.",
+    "trail": {
+      "name": "Shady Creek Walk",
+      "distanceKm": 1
+    },
+    "sources": [
+      {
+        "name": "Tourism NT: Florence Falls",
+        "url": "https://northernterritory.com/darwin-and-surrounds/see-and-do/florence-falls"
+      }
+    ],
+    "image": {
+      "src": "/places/florence-falls.jpg",
+      "alt": "Florence Falls in Litchfield National Park",
+      "credit": "Dietmar Rabich / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Litchfield_National_Park_(AU),_Florence_Falls_--_2019_--_3738.jpg"
+    }
+  },
+  {
+    "id": "tolmer-falls",
+    "name": "Tolmer Falls",
+    "kind": "sight",
+    "state": "NT",
+    "lat": -13.205575,
+    "lng": 130.7150658,
+    "base": "darwin",
+    "inherits": "darwin",
+    "skipHazards": [
+      "box-jellyfish-irukandji"
+    ],
+    "description": "A waterfall viewed from platforms in Litchfield National Park. It is reached by sealed road.",
+    "funFacts": [],
+    "suits": [
+      "family"
+    ],
+    "trail": {
+      "name": "Tolmer Falls walk",
+      "distanceKm": 1.6,
+      "duration": "About 45 minutes",
+      "grade": "Easy",
+      "shape": "loop",
+      "note": "Rocky in parts. It is 400 m to the viewing platforms. Swimming is not permitted."
+    },
+    "sources": [
+      {
+        "name": "Tourism NT: Tolmer Falls",
+        "url": "https://northernterritory.com/darwin-and-surrounds/see-and-do/tolmer-falls"
+      }
+    ],
+    "image": {
+      "src": "/places/tolmer-falls.jpg",
+      "alt": "Tolmer Falls in Litchfield National Park",
+      "credit": "Georgel.pcs / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Tolmer_Falls_in_the_Litchfield_National_Park.jpg"
+    }
+  },
+  {
+    "id": "ubirr",
+    "name": "Ubirr",
+    "kind": "trail",
+    "state": "NT",
+    "lat": -12.409686,
+    "lng": 132.9561684,
+    "base": "darwin",
+    "inherits": "darwin",
+    "skipHazards": [
+      "box-jellyfish-irukandji"
+    ],
+    "description": "Rock art galleries and a lookout in Kakadu National Park. Road access is open most of the year.",
+    "funFacts": [],
+    "suits": [
+      "family"
+    ],
+    "trail": {
+      "name": "Ubirr walk",
+      "distanceKm": 1,
+      "duration": "1 hour",
+      "grade": "Grade 2",
+      "shape": "loop",
+      "note": "The lookout section adds a steep 250 m climb (Grade 3). The main art area is wheelchair accessible."
+    },
+    "sources": [
+      {
+        "name": "Kakadu National Park: Ubirr walk",
+        "url": "https://kakadu.gov.au/things-do/activities/walks/ubirr-walk/"
+      }
+    ],
+    "image": {
+      "src": "/places/ubirr.jpg",
+      "alt": "The Ubirr rock and floodplain in Kakadu",
+      "credit": "Reesa sc / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Floodplains_at_Ubirr,_Kakadu_National_Park.jpg"
+    }
+  },
+  {
+    "id": "burrungkuy-nourlangie",
+    "name": "Burrungkuy (Nourlangie)",
+    "kind": "trail",
+    "state": "NT",
+    "lat": -12.8638517,
+    "lng": 132.8113919,
+    "base": "darwin",
+    "inherits": "darwin",
+    "skipHazards": [
+      "box-jellyfish-irukandji"
+    ],
+    "description": "A walk to rock art galleries in Kakadu National Park.",
+    "funFacts": [],
+    "trail": {
+      "name": "Burrungkuy walk",
+      "distanceKm": 1.5,
+      "duration": "2 hours",
+      "grade": "Grade 3",
+      "shape": "return",
+      "note": "The gates are open from 7 am to 7 pm daily. The main gallery walk is open all year and wheelchair accessible."
+    },
+    "sources": [
+      {
+        "name": "Kakadu National Park: Burrungkuy walk",
+        "url": "https://kakadu.gov.au/things-do/activities/walks/burrungkuy-nourlangie-walk/"
+      }
+    ],
+    "image": {
+      "src": "/places/burrungkuy-nourlangie.jpg",
+      "alt": "Rock art at Burrungkuy in Kakadu",
+      "credit": "Kgbo / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Burrungkuy_(Nourlangie)_rock_art,_Northern_Territory,_32.jpg"
+    }
+  },
+  {
+    "id": "yellow-water",
+    "name": "Yellow Water cruise",
+    "kind": "sight",
+    "state": "NT",
+    "lat": -12.9055697,
+    "lng": 132.522371,
+    "base": "darwin",
+    "inherits": "darwin",
+    "skipHazards": [
+      "box-jellyfish-irukandji"
+    ],
+    "description": "Boat cruises on the Yellow Water billabong in Kakadu run year-round. They last 90 or 120 minutes, with up to six a day. The park says there are plenty of crocodiles.",
+    "funFacts": [],
+    "tip": "Meet at the Cooinda Lodge bus stop 20 minutes before departure.",
+    "sources": [
+      {
+        "name": "Kakadu National Park: Yellow Water cruises",
+        "url": "https://kakadu.gov.au/things-do/tours/boat-cruises/yellow-water-cruises/"
+      }
+    ],
+    "image": {
+      "src": "/places/yellow-water.jpg",
+      "alt": "The Yellow Water billabong in Kakadu",
+      "credit": "Dietmar Rabich / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Kakadu_(AU),_Kakadu_National_Park,_Yellow_Water_--_2019_--_3782.jpg"
+    }
+  },
+  {
+    "id": "jim-jim-falls",
+    "name": "Jim Jim and Twin Falls",
+    "kind": "sight",
+    "state": "NT",
+    "lat": -13.2726273,
+    "lng": 132.8399348,
+    "base": "darwin",
+    "inherits": "darwin",
+    "skipHazards": [
+      "box-jellyfish-irukandji"
+    ],
+    "description": "Closed for all of 2026, according to a Kakadu park notice of 1 June 2026. Upgrades are due by December 2026, with reopening planned for the 2027 dry season. The Twin Falls gorge and escarpment walk and the Karnamarr campground are closed too.",
+    "funFacts": [],
+    "sources": [
+      {
+        "name": "Kakadu National Park: Jim Jim and Twin Falls closure",
+        "url": "https://kakadu.gov.au/news/jim-jim-and-twin-falls-area-remain-closed-2026/"
+      }
+    ],
+    "image": {
+      "src": "/places/jim-jim-falls.jpg",
+      "alt": "Jim Jim Falls in Kakadu",
+      "credit": "Nigel Malone / Wikimedia Commons",
+      "licence": "CC BY-SA 1.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Jim_jim_falls.jpg"
+    }
+  },
+  {
+    "id": "mindil-beach-market",
+    "name": "Mindil Beach Sunset Market",
+    "kind": "sight",
+    "state": "NT",
+    "lat": -12.4445883,
+    "lng": 130.8316774,
+    "base": "darwin",
+    "inherits": "darwin",
+    "access": "A 6-minute drive or a 30-minute walk from the city centre",
+    "description": "A sunset market on Thursday and Sunday evenings from 4 pm to 9 pm, from April to October.",
+    "funFacts": [],
+    "suits": [
+      "couple",
+      "friends",
+      "family"
+    ],
+    "sources": [
+      {
+        "name": "Tourism NT: a local's guide to Darwin's markets",
+        "url": "https://northernterritory.com/articles/a-locals-guide-to-darwins-markets"
+      }
+    ],
+    "image": {
+      "src": "/places/mindil-beach-market.jpg",
+      "alt": "Mindil Beach Sunset Market",
+      "credit": "happinesswithin / Wikimedia Commons",
+      "licence": "CC BY 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Stalls_at_Mindil_Market_-_panoramio.jpg"
+    }
+  },
+  {
+    "id": "crocodylus-park",
+    "name": "Crocodylus Park",
+    "kind": "sight",
+    "state": "NT",
+    "lat": -12.4119488,
+    "lng": 130.9284806,
+    "base": "darwin",
+    "inherits": "darwin",
+    "skipHazards": [
+      "box-jellyfish-irukandji",
+      "saltwater-crocodiles"
+    ],
+    "access": "15 minutes from Darwin's CBD",
+    "description": "Daily crocodile feeding tours, which are included in admission, and a daily guided croc boat cruise.",
+    "funFacts": [],
+    "suits": [
+      "family"
+    ],
+    "sources": [
+      {
+        "name": "Tourism NT: Crocodylus Park",
+        "url": "https://northernterritory.com/tours/crocodylus-park"
+      }
+    ],
+    "image": {
+      "src": "/places/crocodylus-park.jpg",
+      "alt": "Crocodylus Park in Darwin",
+      "credit": "DaHuzyBru / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Crocodylus_Park,_Darwin,_September_2025_03.jpg"
+    }
+  },
+  {
+    "id": "territory-wildlife-park",
+    "name": "Territory Wildlife Park",
+    "kind": "sight",
+    "state": "NT",
+    "lat": -12.7064814,
+    "lng": 130.9896507,
+    "base": "darwin",
+    "inherits": "darwin",
+    "skipHazards": [
+      "box-jellyfish-irukandji",
+      "saltwater-crocodiles"
+    ],
+    "access": "45 minutes south of Darwin",
+    "description": "Walking trails, a free shuttle train and daily wildlife presentations.",
+    "funFacts": [],
+    "suits": [
+      "family"
+    ],
+    "sources": [
+      {
+        "name": "Tourism NT: Territory Wildlife Park",
+        "url": "https://northernterritory.com/darwin-and-surrounds/see-and-do/territory-wildlife-park"
+      }
+    ],
+    "image": {
+      "src": "/places/territory-wildlife-park.jpg",
+      "alt": "A wedge-tailed eagle at the Territory Wildlife Park",
+      "credit": "XiscoNL / Wikimedia Commons",
+      "licence": "CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Wedge-tailed_Eagle_at_Territory_Wildlife_Park.JPG"
+    }
+  },
+  {
+    "id": "berry-springs",
+    "name": "Berry Springs Nature Park",
+    "kind": "park",
+    "state": "NT",
+    "lat": -12.7023153,
+    "lng": 130.9981933,
+    "base": "darwin",
+    "inherits": "darwin",
+    "skipHazards": [
+      "box-jellyfish-irukandji"
+    ],
+    "access": "47 km south of Darwin",
+    "description": "A looped walk through monsoon forest and woodland from the picnic area, with swimming pools in the dry season. Open daily from 8 am to 6.30 pm.",
+    "funFacts": [],
+    "suits": [
+      "family"
+    ],
+    "tip": "Some pools close in the wet season, and the park closes at 5 pm then.",
+    "sources": [
+      {
+        "name": "Tourism NT: Berry Springs Nature Park",
+        "url": "https://northernterritory.com/darwin-and-surrounds/see-and-do/berry-springs-nature-park"
+      }
+    ],
+    "image": {
+      "src": "/places/berry-springs.jpg",
+      "alt": "People swimming at Berry Springs Nature Park",
+      "credit": "Jessica.Oreilly / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Family_fun_at_Berry_Springs_Nature_Reserve.jpg"
     }
   }
 ]
