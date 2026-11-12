@@ -260,7 +260,7 @@ a,
 /* Entrance: things rise into place one after another. */
 .rise {
   animation: rise 0.55s cubic-bezier(0.22, 0.8, 0.28, 1) both;
-  animation-delay: calc(var(--i, 0) * 70ms);
+  animation-delay: calc(var(--i, 0) * 70ms + var(--rise-wait, 0s));
 }
 /* Children of a .rise-group stagger on their own. */
 .rise-group > .rise:nth-child(1) { --i: 0; }

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { LogOut, Phone } from "lucide-react";
 import { useAuth } from "@/components/auth/AuthProvider";
+import { ARRIVAL_WAIT, ArrivalOverlay } from "@/components/auth/ArrivalOverlay";
 import { useTrip } from "@/lib/store";
 import { IconButton } from "@/components/ui/Button";
 import { LoginScreen } from "./LoginScreen";
@@ -10,7 +11,7 @@ import { PlanButton } from "./PlanButton";
 import { RouteList } from "./RouteList";
 
 export function HomeScreen() {
-  const { status, user, signOut } = useAuth();
+  const { status, user, signOut, arrival, clearArrival } = useAuth();
   const setRouteId = useTrip((s) => s.setRouteId);
   const autoSave = useTrip((s) => s.autoSave);
   const setAutoSave = useTrip((s) => s.setAutoSave);
@@ -25,13 +26,28 @@ export function HomeScreen() {
     );
   }
 
+
   if (status === "signedOut") return <LoginScreen />;
 
   const firstName =
     user?.displayName?.split(" ")[0] ?? user?.email?.split("@")[0];
 
   return (
-    <main className="flex h-full flex-col pt-[calc(env(safe-area-inset-top)+16px)]">
+    <main
+      className="flex h-full flex-col pt-[calc(env(safe-area-inset-top)+16px)]"
+      style={
+        arrival
+          ? ({ "--rise-wait": `${ARRIVAL_WAIT}s` } as React.CSSProperties)
+          : undefined
+      }
+    >
+      {arrival && (
+        <ArrivalOverlay
+          kind={arrival.kind}
+          name={user?.displayName}
+          onDone={clearArrival}
+        />
+      )}
       <header className="flex items-center justify-between gap-3 px-6">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ochre">
           Outback Safe

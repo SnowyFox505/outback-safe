@@ -77,6 +77,19 @@ brings back the manual Save/Update button.
 - "Staying in" (base cities) and "Who is travelling" drive the suggestions. A
   place can name the groups it suits with `suits`; those come first.
 
+## Motion
+
+- Animations use `motion` and plain CSS 3D (no WebGL). `prefers-reduced-motion`
+  turns them into short fades.
+- The trip summary is a tri-fold letter that unfolds in 3D and ends with a stamp
+  (`components/onboarding/TripSummary.tsx`).
+- The login screen shows Australia as stacked paper layers that tilt with the
+  pointer (`components/auth/LoginScene.tsx`). After signing in or registering,
+  the camera dives through the layers into Home (`ArrivalOverlay.tsx`); it only
+  plays right after a sign-in in the current session, not when a saved session
+  is restored.
+- Registering can save an optional display name, used in the welcome line.
+
 ## Firebase setup
 
 1. Create a project in the [Firebase console](https://console.firebase.google.com).
