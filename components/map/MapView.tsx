@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { pinMinZoom, places } from "@/lib/data";
+import { DETAIL_FOCUS_ZOOM, pinMinZoom, places } from "@/lib/data";
 import { hazardsForPlace, maxSeverity, stopCoords } from "@/lib/risk";
 import type { HazardContext } from "@/lib/risk";
 import { severityColor } from "@/components/ui/SeverityBadge";
@@ -19,6 +19,15 @@ const AUSTRALIA_BOUNDS: [[number, number], [number, number]] = [
   [112.5, -44.5],
   [154.5, -9.5],
 ];
+
+/** Minimum distance in screen pixels between two visible day-trip pins. */
+const LOD_GAP_X = 70;
+const LOD_GAP_Y = 34;
+
+/** Day trips in the order they claim space: sights before walks. */
+const detailPlaces = places
+  .filter((p) => pinMinZoom(p) > 0)
+  .sort((a, b) => Number(!!a.trail) - Number(!!b.trail));
 
 interface MapViewProps {
   stops: Stop[];
@@ -50,6 +59,7 @@ export function MapView({
   const customMarkersRef = useRef<Map<string, maplibregl.Marker>>(new Map());
   const readyRef = useRef(false);
   const syncRef = useRef<(() => void) | null>(null);
+  const lodRef = useRef<(() => void) | null>(null);
 
   const onSelectRef = useRef(onSelectPlace);
   const onAddCustomRef = useRef(onAddCustom);
@@ -92,15 +102,39 @@ export function MapView({
       pinsRef.current.set(place.id, el);
     });
 
-    // Day trips only show once zoomed in, so the country view stays calm.
+    // Day trips show from a regional zoom on, so the country view stays calm.
+    // Pins that would sit on top of each other are thinned out: main places,
+    // route stops and the selected place always win, day trips fill the gaps.
     const updateLod = () => {
       const z = map.getZoom();
+      const taken: { x: number; y: number }[] = [];
+      const claim = (place: (typeof places)[number]) => {
+        const p = map.project([place.lng, place.lat]);
+        taken.push({ x: p.x, y: p.y });
+      };
+      const isPinned = (el?: HTMLElement) =>
+        !!el && (el.classList.contains("in-route") || el.classList.contains("selected"));
+
       for (const place of places) {
-        pinsRef.current
-          .get(place.id)
-          ?.classList.toggle("lod-hidden", z < pinMinZoom(place));
+        if (pinMinZoom(place) === 0 || isPinned(pinsRef.current.get(place.id))) claim(place);
+      }
+      for (const place of places) {
+        if (pinMinZoom(place) === 0 || isPinned(pinsRef.current.get(place.id)))
+          pinsRef.current.get(place.id)?.classList.remove("lod-hidden");
+      }
+      for (const place of detailPlaces) {
+        const el = pinsRef.current.get(place.id);
+        if (!el || isPinned(el)) continue;
+        const p = map.project([place.lng, place.lat]);
+        const crowded = taken.some(
+          (t) => Math.abs(t.x - p.x) < LOD_GAP_X && Math.abs(t.y - p.y) < LOD_GAP_Y,
+        );
+        const hidden = z < pinMinZoom(place) || crowded;
+        el.classList.toggle("lod-hidden", hidden);
+        if (!hidden) taken.push({ x: p.x, y: p.y });
       }
     };
+    lodRef.current = updateLod;
     updateLod();
     map.on("zoom", updateLod);
 
@@ -220,6 +254,7 @@ export function MapView({
         const dot = el.querySelector(".pin-dot");
         if (dot) dot.textContent = n !== undefined ? String(n) : "";
       }
+      lodRef.current?.();
 
       // Free stops.
       const live = new Set<string>();
@@ -278,7 +313,7 @@ export function MapView({
     if (!place) return;
     map.easeTo({
       center: [place.lng, place.lat],
-      zoom: Math.max(map.getZoom(), 4.6, pinMinZoom(place) ? pinMinZoom(place) + 0.6 : 0),
+      zoom: Math.max(map.getZoom(), 4.6, pinMinZoom(place) ? DETAIL_FOCUS_ZOOM : 0),
       padding: { top: 60, bottom: bottomInset, left: 0, right: 0 },
       duration: prefersReducedMotion() ? 0 : 600,
     });

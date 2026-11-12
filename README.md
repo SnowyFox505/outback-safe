@@ -59,8 +59,10 @@ brings back the manual Save/Update button.
   times and grades are copied as the source states them, and anything a source
   does not give is left out rather than guessed.
 - Pin coordinates come from Wikipedia and OpenStreetMap (ODbL). Day trips and
-  walks only show on the map once you zoom in, or when you open them from the
-  "Ideas near" list.
+  walks only show on the map from a regional zoom on (about a quarter of the
+  country), or when you open them from the "Ideas near" list. Pins that would
+  overlap are thinned out: main places and route stops always stay, sights come
+  before walks, and more pins appear the closer you zoom.
 - Photos are free-licence files from Wikimedia Commons, downloaded with
   `node scripts/fetch-commons-image.mjs <placeId> "File:Title.jpg" "Alt text"`.
   The photographer, licence and file page are shown under each photo.

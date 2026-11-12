@@ -7,8 +7,14 @@ export const places = placesJson as Place[];
 
 const placeIndex = new Map(places.map((p) => [p.id, p]));
 
-/** Day trips are only pinned once the map is zoomed in, to keep the country view calm. */
-export const DETAIL_ZOOM = 7.4;
+/**
+ * Day trips appear once the map shows roughly a quarter of the country, not the
+ * whole of Australia. Pins that would crowd each other are thinned out in MapView.
+ */
+export const DETAIL_ZOOM = 4.6;
+
+/** Zoom used when a day trip is opened, so close-by pins separate. */
+export const DETAIL_FOCUS_ZOOM = 8;
 
 export function pinMinZoom(p: Place): number {
   return p.minZoom ?? (p.base ? DETAIL_ZOOM : 0);
