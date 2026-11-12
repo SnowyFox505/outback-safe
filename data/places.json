@@ -1051,5 +1051,166 @@
       "licence": "CC BY-SA 4.0",
       "url": "https://commons.wikimedia.org/wiki/File:Healesville_Tachyglossus_aculeatus_in_Healesville_Sanctuary_05.jpg"
     }
+  },
+  {
+    "id": "mossman-gorge",
+    "name": "Mossman Gorge",
+    "kind": "park",
+    "state": "QLD",
+    "lat": -16.4742207,
+    "lng": 145.3483316,
+    "base": "cairns",
+    "inherits": "cairns",
+    "skipHazards": [
+      "box-jellyfish-irukandji"
+    ],
+    "access": "About 80 km north of Cairns",
+    "description": "The gorge section of Daintree National Park, with several rainforest tracks from the Mossman Gorge Centre.",
+    "funFacts": [],
+    "suits": [
+      "family"
+    ],
+    "trail": {
+      "name": "Rainforest circuit track",
+      "distanceKm": 3.4,
+      "duration": "About 2 hours",
+      "shape": "loop",
+      "note": "The track page lists crocodiles as a warning. The park guide says swimming here is dangerous: water levels can rise rapidly, currents can strengthen, and fit, strong swimmers have died. It advises not to enter the water."
+    },
+    "tip": "Shorter walks: the Baral Marrjanga track is 660 m return (about 30 minutes), the Lower river track is 640 m return (about 40 minutes) and the Rex Creek bridge track is 1.4 km return (about 1 hour).",
+    "sources": [
+      {
+        "name": "Queensland Parks: Rainforest circuit track",
+        "url": "https://parks.qld.gov.au/parks/daintree/journeys/rainforest-circuit-track"
+      },
+      {
+        "name": "Queensland Parks: Daintree discovery guide (PDF)",
+        "url": "https://parks.des.qld.gov.au/__data/assets/pdf_file/0026/161927/daintree-discovery-guide.pdf"
+      }
+    ],
+    "image": {
+      "src": "/places/mossman-gorge.jpg",
+      "alt": "Rainforest and river at Mossman Gorge",
+      "credit": "Havardtl / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Mossman_Gorge_near_Cairns_Australia.jpg"
+    }
+  },
+  {
+    "id": "cape-tribulation",
+    "name": "Cape Tribulation boardwalks",
+    "kind": "park",
+    "state": "QLD",
+    "lat": -16.0935937,
+    "lng": 145.4632826,
+    "base": "cairns",
+    "inherits": "cairns",
+    "description": "Boardwalks through the rainforest of Daintree National Park at Cape Tribulation.",
+    "funFacts": [],
+    "suits": [
+      "family"
+    ],
+    "trail": {
+      "name": "Dubuji boardwalk",
+      "distanceKm": 1.2,
+      "shape": "loop",
+      "note": "The park listing gives 1.2 km; the park's discovery guide gives 1.5 km (45 minutes)."
+    },
+    "tip": "The Marrdja boardwalk is a 1.2 km circuit and the Jindalba boardwalk is 650 m return.",
+    "sources": [
+      {
+        "name": "Queensland Parks: Daintree walks",
+        "url": "https://parks.qld.gov.au/parks/daintree/journeys"
+      },
+      {
+        "name": "Queensland Parks: Dubuji boardwalk",
+        "url": "https://parks.qld.gov.au/parks/daintree/journeys/dubuji-boardwalk"
+      }
+    ],
+    "image": {
+      "src": "/places/cape-tribulation.jpg",
+      "alt": "The headland at Cape Tribulation near the Dubuji Boardwalk",
+      "credit": "Laurel Lodged / Wikimedia Commons",
+      "licence": "CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Cape_Tribulation_head,_near_Dubuji_Boardwalk.JPG"
+    }
+  },
+  {
+    "id": "barron-falls",
+    "name": "Barron Falls",
+    "kind": "sight",
+    "state": "QLD",
+    "lat": -16.8336014,
+    "lng": 145.6434187,
+    "base": "cairns",
+    "inherits": "cairns",
+    "skipHazards": [
+      "box-jellyfish-irukandji",
+      "saltwater-crocodiles"
+    ],
+    "access": "Barron Gorge National Park lies about 18 km (lower section) and 27 km (upper section) north-west of Cairns",
+    "description": "A waterfall lookout in Barron Gorge National Park, near Kuranda.",
+    "funFacts": [],
+    "trail": {
+      "name": "Din Din Barron Falls lookout track",
+      "distanceKm": 0.8,
+      "duration": "About 15 minutes",
+      "shape": "one-way",
+      "note": "A boardwalk; distance and time are one way."
+    },
+    "sources": [
+      {
+        "name": "Queensland Parks: Barron Gorge National Park",
+        "url": "https://parks.qld.gov.au/parks/barron-gorge"
+      },
+      {
+        "name": "Queensland Parks: Barron Gorge walks",
+        "url": "https://parks.qld.gov.au/parks/barron-gorge/journeys"
+      }
+    ],
+    "image": {
+      "src": "/places/barron-falls.jpg",
+      "alt": "Barron Falls near Kuranda",
+      "credit": "JustARandomEditor123 / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Barron_Falls,_Queensland.jpg"
+    }
+  },
+  {
+    "id": "crystal-cascades",
+    "name": "Crystal Cascades",
+    "kind": "sight",
+    "state": "QLD",
+    "lat": -16.9628265,
+    "lng": 145.6703185,
+    "base": "cairns",
+    "inherits": "cairns",
+    "skipHazards": [
+      "box-jellyfish-irukandji",
+      "saltwater-crocodiles"
+    ],
+    "access": "About 19 km from Cairns, 20 to 25 minutes by car",
+    "description": "A paved path of about 1.5 km passes several swimming holes before the final waterfall. There is a barbecue and picnic area with toilets.",
+    "funFacts": [],
+    "suits": [
+      "family"
+    ],
+    "trail": {
+      "name": "Crystal Cascades path",
+      "distanceKm": 1.5
+    },
+    "sources": [
+      {
+        "name": "Queensland.com: Crystal Cascades",
+        "url": "https://www.queensland.com/au/en/things-to-do/attractions/p-5ddf12b581144eab322e97f0-crystal-cascades"
+      }
+    ],
+    "image": {
+      "src": "/places/crystal-cascades.jpg",
+      "alt": "Crystal Cascades near Cairns",
+      "credit": "Steve Fitzgerald / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Crystal_Cascades_SF24334-02.jpg"
+    }
   }
 ]
