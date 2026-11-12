@@ -878,6 +878,10 @@
       {
         "name": "Parks Victoria: Wilsons Promontory",
         "url": "https://www.parks.vic.gov.au/places-to-see/parks/wilsons-promontory-national-park"
+      },
+      {
+        "name": "Parks Victoria: Squeaky Beach walk",
+        "url": "https://www.parks.vic.gov.au/places-to-see/sites/squeaky-beach-walk"
       }
     ],
     "image": {
@@ -886,6 +890,14 @@
       "credit": "Dietmar Rabich / Wikimedia Commons",
       "licence": "CC BY-SA 4.0",
       "url": "https://commons.wikimedia.org/wiki/File:Wilsons_Promontory_National_Park_(AU),_Squeaky_Beach_--_2019_--_1644.jpg"
+    },
+    "trail": {
+      "name": "Tidal River to Squeaky Beach",
+      "distanceKm": 4.2,
+      "duration": "1.5 hours return",
+      "grade": "Grade 3",
+      "shape": "return",
+      "note": "Waves can surge over the rocky outcrops. The beach is unpatrolled and dogs are not allowed."
     }
   },
   {
@@ -1778,6 +1790,260 @@
       "credit": "Robert Young from Gdansk, Poland / Wikimedia Commons",
       "licence": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/wiki/File:Swan_Valley_1.jpg"
+    }
+  },
+  {
+    "id": "bondi-coogee-walk",
+    "name": "Bondi to Coogee coastal walk",
+    "kind": "trail",
+    "state": "NSW",
+    "lat": -33.8907,
+    "lng": 151.2724,
+    "base": "sydney",
+    "inherits": "sydney",
+    "description": "A clifftop and beach walk along Sydney's eastern coast, from Bondi Beach south to Coogee.",
+    "funFacts": [],
+    "trail": {
+      "name": "Bondi to Coogee Coastal Walk",
+      "distanceKm": 6,
+      "duration": "2 to 3 hours",
+      "grade": "Grade 2",
+      "shape": "one-way",
+      "note": "Occasional steep sections of stairs. Not suitable for prams or wheelchair users."
+    },
+    "sources": [
+      {
+        "name": "Sydney.com: Bondi to Coogee Coastal Walk",
+        "url": "https://www.sydney.com/things-to-do/nature-and-parks/walks/bondi-to-coogee-coastal-walk"
+      }
+    ],
+    "image": {
+      "src": "/places/bondi-coogee-walk.jpg",
+      "alt": "Bronte Beach, on the Bondi to Coogee Coastal Walk",
+      "credit": "DXR / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Bronte_Beach,_north_view_20230224_2.jpg"
+    }
+  },
+  {
+    "id": "manly-scenic-walkway",
+    "name": "Manly Scenic Walkway",
+    "kind": "trail",
+    "state": "NSW",
+    "lat": -33.802579,
+    "lng": 151.2462032,
+    "base": "sydney",
+    "inherits": "sydney",
+    "description": "A long harbour-side walk through Sydney Harbour National Park, beginning at Mosman's Spit Bridge and finishing at Manly.",
+    "funFacts": [],
+    "trail": {
+      "name": "Manly Scenic Walkway",
+      "distanceKm": 10,
+      "duration": "3 hours 30 minutes to 4 hours 30 minutes",
+      "grade": "Grade 3",
+      "shape": "one-way",
+      "note": "The track detours in places when the tide is high so you do not get wet feet."
+    },
+    "sources": [
+      {
+        "name": "NSW National Parks: Manly Scenic Walkway",
+        "url": "https://www.nationalparks.nsw.gov.au/things-to-do/walking-tracks/manly-scenic-walkway"
+      }
+    ],
+    "image": {
+      "src": "/places/manly-scenic-walkway.jpg",
+      "alt": "Clontarf Beach seen from the Spit to Manly walk",
+      "credit": "Dragonfly27356 / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Clontarf_Beach_from_the_Spit_to_Manly_Walk.jpg"
+    }
+  },
+  {
+    "id": "echo-point",
+    "name": "Echo Point and the Three Sisters",
+    "kind": "sight",
+    "state": "NSW",
+    "lat": -33.73285,
+    "lng": 150.312039,
+    "base": "sydney",
+    "inherits": "sydney",
+    "skipHazards": [
+      "sharks",
+      "rip-currents"
+    ],
+    "description": "The Blue Mountains lookout at Katoomba, with the Three Sisters walk starting next to the Echo Point Visitor Centre.",
+    "funFacts": [],
+    "trail": {
+      "name": "Three Sisters walk",
+      "distanceKm": 0.8,
+      "duration": "25 to 45 minutes",
+      "grade": "Grade 1",
+      "shape": "return",
+      "note": "Weather in the Blue Mountains can be very different to Sydney, so be ready for colder temperatures. The way down to Honeymoon Bridge has sections of steep stairs."
+    },
+    "sources": [
+      {
+        "name": "NSW National Parks: Three Sisters walk",
+        "url": "https://www.nationalparks.nsw.gov.au/things-to-do/walking-tracks/three-sisters-walk"
+      }
+    ],
+    "image": {
+      "src": "/places/echo-point.jpg",
+      "alt": "The Three Sisters seen from Echo Point at Katoomba",
+      "credit": "Maksym Kozlenko / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Echo_Point,_Katoomba.jpg"
+    }
+  },
+  {
+    "id": "barrenjoey-lighthouse",
+    "name": "Barrenjoey Lighthouse",
+    "kind": "sight",
+    "state": "NSW",
+    "lat": -33.580017,
+    "lng": 151.329707,
+    "base": "sydney",
+    "inherits": "sydney",
+    "access": "Paid parking at Governor Phillip Park, Palm Beach. There is no vehicle access to the lighthouse.",
+    "description": "A historic lighthouse on Barrenjoey Head in Ku-ring-gai Chase National Park, reached on foot from Palm Beach.",
+    "funFacts": [],
+    "trail": {
+      "name": "Barrenjoey track",
+      "distanceKm": 1,
+      "duration": "About 30 minutes each way",
+      "shape": "return",
+      "eachWay": true,
+      "note": "The park lists it as needing moderate fitness. It may close in poor weather or high fire danger, so check the park alerts first."
+    },
+    "sources": [
+      {
+        "name": "NSW National Parks: Barrenjoey Lighthouse",
+        "url": "https://www.nationalparks.nsw.gov.au/things-to-do/historic-buildings-places/barrenjoey-lighthouse"
+      }
+    ],
+    "image": {
+      "src": "/places/barrenjoey-lighthouse.jpg",
+      "alt": "Barrenjoey Head Lighthouse at Palm Beach",
+      "credit": "Pdaniels1956 / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Barrenjoey_Head_Lighthouse_22042014.jpg"
+    }
+  },
+  {
+    "id": "green-island",
+    "name": "Green Island",
+    "kind": "reef",
+    "state": "QLD",
+    "lat": -16.7602405,
+    "lng": 145.9740374,
+    "base": "cairns",
+    "inherits": "great-barrier-reef",
+    "access": "About 45 minutes by catamaran from Cairns",
+    "description": "A coral cay about 27 km offshore from Cairns, in Green Island National Park and the Great Barrier Reef Marine Park, surrounded by coral reef.",
+    "funFacts": [
+      "The cay formed about 6,000 years ago and is covered in vine thicket rainforest."
+    ],
+    "sources": [
+      {
+        "name": "Wikipedia: Green Island, Queensland",
+        "url": "https://en.wikipedia.org/wiki/Green_Island,_Queensland"
+      }
+    ],
+    "image": {
+      "src": "/places/green-island.jpg",
+      "alt": "Green Island seen from the jetty side",
+      "credit": "Michał Rosa / Wikimedia Commons",
+      "licence": "CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Green_Island_seen_from_the_jetty_side_(Queensland).jpg"
+    }
+  },
+  {
+    "id": "fitzroy-island",
+    "name": "Fitzroy Island",
+    "kind": "park",
+    "state": "QLD",
+    "lat": -16.9327,
+    "lng": 145.9947,
+    "base": "cairns",
+    "inherits": "great-barrier-reef",
+    "access": "About 45 minutes by ferry from Cairns",
+    "description": "A continental island off Cape Grafton, almost all of it in Fitzroy Island National Park, with four walking tracks.",
+    "funFacts": [
+      "The island separated from the mainland about 8,000 years ago. Its highest point is 240 metres."
+    ],
+    "sources": [
+      {
+        "name": "Wikipedia: Fitzroy Island (Queensland)",
+        "url": "https://en.wikipedia.org/wiki/Fitzroy_Island_(Queensland)"
+      }
+    ],
+    "image": {
+      "src": "/places/fitzroy-island.jpg",
+      "alt": "Fitzroy Island off Cape Grafton",
+      "credit": "Joshua Tagicakibau / Wikimedia Commons",
+      "licence": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Fitzroy_Island.jpg"
+    }
+  },
+  {
+    "id": "millaa-millaa-falls",
+    "name": "Millaa Millaa Falls",
+    "kind": "sight",
+    "state": "QLD",
+    "lat": -17.49556,
+    "lng": 145.61,
+    "base": "cairns",
+    "inherits": "cairns",
+    "skipHazards": [
+      "box-jellyfish-irukandji"
+    ],
+    "access": "On Theresa Creek Road, by sealed road off the Palmerston Highway, about 5 minutes from Millaa Millaa",
+    "description": "A single-drop waterfall on the Atherton Tableland, with a pool at its base.",
+    "funFacts": [
+      "The falls are 18.3 metres high and appear in many tourism photos and TV ads."
+    ],
+    "sources": [
+      {
+        "name": "Wikipedia: Millaa Millaa Falls",
+        "url": "https://en.wikipedia.org/wiki/Millaa_Millaa_Falls"
+      }
+    ],
+    "image": {
+      "src": "/places/millaa-millaa-falls.jpg",
+      "alt": "Millaa Millaa Falls on the Atherton Tableland",
+      "credit": "Steven Penton from Bakers Beach, Tasmania Australia / Wikimedia Commons",
+      "licence": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Millaa_Millaa_Falls,_Atherton_Tablelands,_Queensland._(51352915804).jpg"
+    }
+  },
+  {
+    "id": "crater-lakes",
+    "name": "Crater Lakes National Park",
+    "kind": "park",
+    "state": "QLD",
+    "lat": -17.24583,
+    "lng": 145.62889,
+    "base": "cairns",
+    "inherits": "cairns",
+    "skipHazards": [
+      "box-jellyfish-irukandji"
+    ],
+    "description": "Two volcanically formed lakes on the Atherton Tableland, Lake Barrine and Lake Eacham (Yidyam), each with a walking trail around it.",
+    "funFacts": [
+      "Lake Barrine is known for its giant bull kauri pines, and has boat tours."
+    ],
+    "sources": [
+      {
+        "name": "Wikipedia: Crater Lakes National Park",
+        "url": "https://en.wikipedia.org/wiki/Crater_Lakes_National_Park"
+      }
+    ],
+    "image": {
+      "src": "/places/crater-lakes.jpg",
+      "alt": "Rainforest around Lake Eacham in Crater Lakes National Park",
+      "credit": "Vanbasten 23 / Wikimedia Commons",
+      "licence": "CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Wet_Tropics_of_Queensland_-_Component_around_Lake_Eacham.jpg"
     }
   }
 ]
