@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ChevronLeft } from "lucide-react";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { Button } from "@/components/ui/Button";
-import { ContourBackdrop } from "@/components/ui/ContourBackdrop";
+import { LoginScene } from "@/components/auth/LoginScene";
 
 function GoogleMark() {
   return (
@@ -164,7 +164,9 @@ export function LoginScreen() {
 
   return (
     <main className="scroll-y relative flex h-full flex-col justify-between gap-8 px-6 pb-[calc(env(safe-area-inset-bottom)+28px)] pt-[calc(env(safe-area-inset-top)+48px)]">
-      <ContourBackdrop />
+      <div className="fixed inset-0">
+        <LoginScene nudge={mode} />
+      </div>
       <div className="relative">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ochre">
           Outback Safe
