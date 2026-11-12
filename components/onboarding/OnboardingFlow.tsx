@@ -17,7 +17,7 @@ import type {
 import { Button, IconButton } from "@/components/ui/Button";
 import { AnswerCard } from "./AnswerCard";
 import { LongerTrip } from "./LongerTrip";
-import { TripSummary } from "./TripSummary";
+import { LETTER_DONE, TripSummary } from "./TripSummary";
 
 const TOTAL = questions.length;
 
@@ -221,7 +221,7 @@ export function OnboardingFlow() {
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.7, duration: 0.45, ease: [0.22, 0.8, 0.28, 1] }}
+            transition={{ delay: LETTER_DONE, duration: 0.45, ease: [0.22, 0.8, 0.28, 1] }}
           >
             <Button
               size="lg"
