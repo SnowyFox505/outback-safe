@@ -27,7 +27,7 @@ export function PlanButton() {
       {hydrated && stopCount > 0 && (
         <button
           onClick={() => router.push("/plan/map")}
-          className="flex h-14 w-full items-center justify-center rounded-full border border-bone/10 bg-bone/[0.07] text-[16px] text-bone backdrop-blur-md active:bg-bone/[0.12]"
+          className="flex h-14 w-full items-center justify-center rounded-full border border-bone/10 bg-ink/50 text-[16px] text-bone backdrop-blur-md active:bg-bone/[0.12]"
         >
           Continue your route · {stopCount} stop{stopCount === 1 ? "" : "s"}
         </button>

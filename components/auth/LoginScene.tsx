@@ -104,6 +104,8 @@ interface LoginSceneProps {
   /** Fly the camera down through the layers, then call onDiveEnd. */
   dive?: boolean;
   onDiveEnd?: () => void;
+  /** A slower, pointer-free version for the home screen: it only drifts on its own. */
+  calm?: boolean;
 }
 
 /**
@@ -111,7 +113,7 @@ interface LoginSceneProps {
  * model. It tilts with the mouse or a finger, breathes slowly on its own, and
  * a dotted route with a travelling dot floats above it. Plain CSS 3D, no WebGL.
  */
-export function LoginScene({ nudge, dive = false, onDiveEnd }: LoginSceneProps) {
+export function LoginScene({ nudge, dive = false, onDiveEnd, calm = false }: LoginSceneProps) {
   const reduce = !!useReducedMotion();
 
   // Pointer position from -1 to 1, smoothed by springs.
@@ -130,20 +132,20 @@ export function LoginScene({ nudge, dive = false, onDiveEnd }: LoginSceneProps) 
 
   const rx = useTransform(
     [sy, breathe, extraRx],
-    ([y, b, e]: number[]) => BASE_RX - y * 8 + b * 1.2 + e,
+    ([y, b, e]: number[]) => BASE_RX - y * 8 + b * (calm ? 2.6 : 1.2) + e,
   );
   const rz = useTransform(
     [sx, breathe, extraRz],
-    ([x, b, e]: number[]) => BASE_RZ + x * 13 + b * 3 + e,
+    ([x, b, e]: number[]) => BASE_RZ + x * 13 + b * (calm ? 8 : 3) + e,
   );
 
   useAnimationFrame((t) => {
-    if (!reduce && !dive) breathe.set(Math.sin(t / 4200));
+    if (!reduce && !dive) breathe.set(Math.sin(t / (calm ? 9000 : 4200)));
   });
 
   // Mouse or finger.
   useEffect(() => {
-    if (reduce || dive) return;
+    if (reduce || dive || calm) return;
     const move = (e: PointerEvent) => {
       px.set(clamp((e.clientX / window.innerWidth - 0.5) * 2, -1, 1));
       py.set(clamp((e.clientY / window.innerHeight - 0.5) * 2, -1, 1));
@@ -162,7 +164,7 @@ export function LoginScene({ nudge, dive = false, onDiveEnd }: LoginSceneProps) 
       window.removeEventListener("pointercancel", rest);
       document.documentElement.removeEventListener("pointerleave", rest);
     };
-  }, [px, py, reduce, dive]);
+  }, [px, py, reduce, dive, calm]);
 
   // Ease back to the resting pose if the camera was left somewhere else.
   useEffect(() => {
@@ -220,10 +222,12 @@ export function LoginScene({ nudge, dive = false, onDiveEnd }: LoginSceneProps) 
   return (
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 overflow-hidden"
+      className={`pointer-events-none absolute inset-0 overflow-hidden ${calm ? "opacity-[0.5]" : ""}`}
       style={{ perspective: 900, perspectiveOrigin: "50% 38%" }}
     >
-      <div className="absolute left-1/2 top-[49%] aspect-[300/271] w-[min(116vw,560px)] -translate-x-1/2 -translate-y-1/2">
+      <div
+        className={`absolute left-1/2 ${calm ? "top-[68%]" : "top-[49%]"} aspect-[300/271] w-[min(116vw,560px)] -translate-x-1/2 -translate-y-1/2`}
+      >
         <motion.div
           style={{
             rotateX: rx,
@@ -281,7 +285,13 @@ export function LoginScene({ nudge, dive = false, onDiveEnd }: LoginSceneProps) 
       </div>
 
       {/* Keep the text readable: fade the model out towards the top and bottom. */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,var(--color-ink)_0%,transparent_24%,transparent_50%,var(--color-ink)_88%)]" />
+      <div
+        className={`absolute inset-0 ${
+          calm
+            ? "bg-[linear-gradient(to_bottom,var(--color-ink)_0%,transparent_22%,transparent_62%,var(--color-ink)_100%)]"
+            : "bg-[linear-gradient(to_bottom,var(--color-ink)_0%,transparent_24%,transparent_50%,var(--color-ink)_88%)]"
+        }`}
+      />
     </div>
   );
 }

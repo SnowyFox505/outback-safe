@@ -8,6 +8,7 @@ import type { SavedRoute } from "@/lib/routes";
 import { useTrip } from "@/lib/store";
 import { Button } from "@/components/ui/Button";
 import { Dialog } from "@/components/ui/Dialog";
+import { MiniRoute } from "@/components/ui/MiniRoute";
 
 export function RouteList({ uid }: { uid: string }) {
   const router = useRouter();
@@ -70,9 +71,9 @@ export function RouteList({ uid }: { uid: string }) {
       )}
 
       {routes === null ? (
-        <div className="h-[72px] animate-pulse rounded-[24px] bg-char-800" />
+        <div className="h-[80px] animate-pulse rounded-[24px] bg-char-800" />
       ) : routes.length === 0 ? (
-        <p className="rounded-[24px] border border-dashed border-bone/15 px-5 py-6 text-[14px] leading-relaxed text-bone-dim">
+        <p className="rounded-[24px] border border-dashed border-bone/15 bg-ink/50 px-5 py-6 text-[14px] leading-relaxed text-bone-dim backdrop-blur-md">
           No saved routes yet. Plan a trip, then tap the save button on the map.
         </p>
       ) : (
@@ -81,20 +82,23 @@ export function RouteList({ uid }: { uid: string }) {
             <li
               key={r.id}
               style={{ "--i": Math.min(i, 8) } as React.CSSProperties}
-              className="rise flex items-center gap-1 rounded-[24px] border border-bone/[0.07] bg-char-800 pr-1.5"
+              className="rise flex items-center gap-1 rounded-[24px] border border-bone/[0.07] bg-char-800/90 pr-1.5 backdrop-blur-md"
             >
               <button
                 onClick={() => {
                   loadRoute(r);
                   router.push("/plan/map");
                 }}
-                className="min-h-[72px] min-w-0 flex-1 px-5 py-3 text-left"
+                className="flex min-h-[80px] min-w-0 flex-1 items-center gap-4 px-4 py-3 text-left"
               >
-                <span className="block truncate text-[16px] font-medium text-bone">
-                  {r.name}
-                </span>
-                <span className="block font-mono text-[11px] uppercase tracking-[0.12em] text-bone-faint">
-                  {routeSummary(r)}
+                <MiniRoute stops={r.stops} className="h-[46px] w-[52px] shrink-0" />
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-[16px] font-medium text-bone">
+                    {r.name}
+                  </span>
+                  <span className="block font-mono text-[11px] uppercase tracking-[0.12em] text-bone-faint">
+                    {routeSummary(r)}
+                  </span>
                 </span>
               </button>
               <button
