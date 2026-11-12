@@ -1,18 +1,49 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AUSTRALIA_PATHS, AUSTRALIA_VIEWBOX } from "./australiaOutline";
 
 /** The loading screen always stays at least this long, even if the app is ready sooner. */
 const MIN_MS = 3000;
 const FADE_MS = 450;
+/**
+ * When the app was out of sight for longer than this, the intro plays again on
+ * return, even if the app was never fully closed. A short switch away does not.
+ */
+const AWAY_MS = 90_000;
 
 /**
  * Full-screen intro: the outline of Australia draws itself in ochre and rust.
- * Shown on every cold start for at least three seconds.
+ * Shown on every cold start for at least three seconds, and again when the app
+ * comes back after being away for more than 90 seconds.
  */
 export function LoadingScreen() {
   const [phase, setPhase] = useState<"show" | "fade" | "gone">("show");
+  // Counts the plays, so a replay restarts the drawing animation from the start.
+  const [run, setRun] = useState(0);
+  const phaseRef = useRef(phase);
+  useEffect(() => {
+    phaseRef.current = phase;
+  }, [phase]);
+
+  // Replay after a longer absence (the page stays alive in the background on phones).
+  useEffect(() => {
+    let hiddenAt: number | null = null;
+    const onVisibility = () => {
+      if (document.visibilityState === "hidden") {
+        hiddenAt = Date.now();
+        return;
+      }
+      const away = hiddenAt === null ? 0 : Date.now() - hiddenAt;
+      hiddenAt = null;
+      if (away > AWAY_MS && phaseRef.current === "gone") {
+        setPhase("show");
+        setRun((r) => r + 1);
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => document.removeEventListener("visibilitychange", onVisibility);
+  }, []);
 
   useEffect(() => {
     const started = performance.now();
@@ -39,12 +70,13 @@ export function LoadingScreen() {
       window.clearTimeout(fadeTimer);
       window.clearTimeout(goneTimer);
     };
-  }, []);
+  }, [run]);
 
   if (phase === "gone") return null;
 
   return (
     <div
+      key={run}
       role="status"
       aria-live="polite"
       aria-label="Loading Outback Safe"
